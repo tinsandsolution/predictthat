@@ -1,0 +1,19 @@
+.nav-outer {
+    border: 1px solid green;
+    /* width: 100%; */
+    height: 55px;
+    padding: 0px 10px 0px 10px;
+    /* padding-left: 10px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-image-container {
+
+}
+
+.nav-logo {
+    width: 200px;
+}

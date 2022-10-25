@@ -1,1 +1,18 @@
 /* TODO Add site wide styles */
+
+body {
+    margin: 0px 0px 0px 0px;
+    width: 100vw;
+    display: flex;
+    /* justify-content: center; */
+    /* width: 100vw; */
+    /* border: 3px solid blue; */
+}
+
+#root {
+    /* border: 3px solid pink; */
+    margin: auto;
+    width: 100vw;
+    /* align-items: center; */
+    /* flex-direction: column; */
+}
