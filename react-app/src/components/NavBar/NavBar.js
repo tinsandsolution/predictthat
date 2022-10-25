@@ -1,6 +1,7 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import SignupFormModalButton from './Signup';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 import Logo from '../../assets/predictthatlogo.png'
@@ -9,31 +10,43 @@ import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
+  const history = useHistory()
 
-  let sessionItems
+
+  let sessionNav
   if (sessionUser) {
-    sessionItems = (
-      <>Logged In</>
+    sessionNav = (
+      <div className="nav-outer">
+        <div className='nav-left'>
+          <div className='nav-image-container'>
+            <img className='nav-logo' src={Logo} onClick={() => {history.push('/')}}></img>
+          </div>
+        </div>
+        <div className='nav-right'>
+          Logged In
+        </div>
+
+      </div>
     )
   }
   else {
-    sessionItems = (
-      <>Logged Out</>
-    )
-  }
-  return (
-    <div className="nav-outer">
-      <div className='nav-left'>
-        <div className='nav-image-container'>
-          <img className='nav-logo' src={Logo}></img>
+    sessionNav = (
+      <div className="nav-outer">
+        <div className='nav-inner-logged-out'>
+          <div className='nav-left'>
+            <div className='nav-image-container'>
+              <img className='nav-logo' src={Logo} onClick={() => {history.push('/')}}></img>
+            </div>
+          </div>
+          <div className='nav-right'>
+            <SignupFormModalButton />
+          </div>
+
         </div>
       </div>
-      <div className='nav-right'>
-        {sessionItems}
-      </div>
-
-    </div>
-  );
+    )
+  }
+  return sessionNav
 }
 
 export default NavBar;
