@@ -11,7 +11,7 @@
 }
 
 .nav-inner-logged-out {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin: auto;
     width: 1000px;
     display: flex;
@@ -25,6 +25,7 @@
 }
 
 .nav-right {
+    display: flex;
     /* border: 2px solid green; */
     /* height: inherit; */
 }

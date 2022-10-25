@@ -2,6 +2,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import SignupFormModalButton from './Signup';
+import LoginFormModalButton from './Login';
 import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 import Logo from '../../assets/predictthatlogo.png'
@@ -19,7 +20,7 @@ const NavBar = () => {
       <div className="nav-outer">
         <div className='nav-left'>
           <div className='nav-image-container'>
-            <img className='nav-logo' src={Logo} onClick={() => {history.push('/')}}></img>
+            <img className='nav-logo' alt="logo" src={Logo} onClick={() => {history.push('/')}}></img>
           </div>
         </div>
         <div className='nav-right'>
@@ -35,10 +36,11 @@ const NavBar = () => {
         <div className='nav-inner-logged-out'>
           <div className='nav-left'>
             <div className='nav-image-container'>
-              <img className='nav-logo' src={Logo} onClick={() => {history.push('/')}}></img>
+              <img className='nav-logo' alt="logo" src={Logo} onClick={() => {history.push('/')}}></img>
             </div>
           </div>
           <div className='nav-right'>
+            <LoginFormModalButton />
             <SignupFormModalButton />
           </div>
 
