@@ -12,6 +12,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     funds = db.Column(db.Float, nullable=False, server_default="1000")
 
+    #relationships
+    markets = db.relationship("Market",back_populates="manager" )
+
     @property
     def password(self):
         return self.hashed_password
