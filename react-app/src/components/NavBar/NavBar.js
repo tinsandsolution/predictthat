@@ -6,7 +6,7 @@ import { logout } from '../../store/session';
 
 import SignupFormModalButton from './Signup';
 import LoginFormModalButton from './Login';
-import LogoutButton from '../auth/LogoutButton';
+// import LogoutButton from '../auth/LogoutButton';
 import './NavBar.css'
 import Logo from '../../assets/predictthatlogo.png'
 import { useSelector } from "react-redux";
@@ -45,12 +45,12 @@ const NavBar = () => {
             </div>
 
             <div className='nav-card' onClick={() => history.push('/yourmarkets')}>
-              <i class="fa-solid fa-scale-balanced fa-xl" id="nav-card-icon-color"></i>
+              <i className="fa-solid fa-scale-balanced fa-xl" id="nav-card-icon-color"></i>
               <div className='nav-card-text'>Your Markets</div>
             </div>
 
             <div className='nav-card' onClick={onLogout}>
-              <i class="fa-solid fa-arrow-right-from-bracket fa-xl" id="nav-card-icon-color"></i>
+              <i className="fa-solid fa-arrow-right-from-bracket fa-xl" id="nav-card-icon-color"></i>
               <div className='nav-card-text'>Log Out</div>
             </div>
 
