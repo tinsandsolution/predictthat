@@ -6,9 +6,10 @@
 
 .splash-banner {
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     aspect-ratio: 35/1;
-    background-color: black;
+    background: rgb(63,94,251);
+    background: linear-gradient(8deg, rgba(63,94,251,1) 0%, rgba(0,0,0,1) 78%, rgba(252,70,107,1) 100%);
     color: white;
     text-align: center;
     line-height: 2em;
@@ -52,7 +53,7 @@
 .splash-left-small-text {
     /* width: 90%; */
     height: inherit;
-    margin-top: 2%;
+    margin-top: 4%;
     /* margin: 5% 0% 5% 12%; */
     /* border: 1px solid green; */
     font-size: 1.25vw;
@@ -110,11 +111,13 @@
     width: 30%;
     aspect-ratio: 2/1;
     object-fit: cover;
+    margin-top: 2%;
 }
 
 .splash-card-title {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 1.1vw;
+    margin-top: 2%;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

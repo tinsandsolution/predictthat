@@ -31,6 +31,11 @@ const LoginForm = () => {
     return <Redirect to='/' />;
   }
 
+  const loginDemo = () =>{
+    setEmail('demo@aa.io');
+    setPassword('password')
+  }
+
   return (
     <form className="modal-form" onSubmit={onLogin}>
       <div className='form-title'> Log In Here! </div>
@@ -60,7 +65,7 @@ const LoginForm = () => {
         />
       </div>
       <button className="black-button button-margin" type='submit'>Login</button>
-
+      <button className="black-button button-margin-2" onClick={loginDemo}> Demo User </button>
     </form>
   );
 };
