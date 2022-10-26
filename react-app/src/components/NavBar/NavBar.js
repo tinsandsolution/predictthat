@@ -25,6 +25,7 @@ const NavBar = () => {
         </div>
         <div className='nav-right'>
           Logged In
+          <LogoutButton />
         </div>
 
       </div>
