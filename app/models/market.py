@@ -21,5 +21,13 @@ class Market(db.Model):
         return {
             'id': self.id,
             'manager_id' : self.manager_id,
-            # 'image_url' :
+            'manager' : self.manager.some_dict(),
+            'image_url' : self.image_url,
+            'short_title' : self.short_title,
+            'title' : self.title,
+            'description' : self.description,
+            'expected_resolution_time' : self.expected_resolution_time,
+            'is_open' : self.is_open,
+            'yes_value' : self.yes_value,
+            'no_value' : self.no_value,
         }
