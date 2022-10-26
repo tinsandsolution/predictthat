@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SplashPage from "./SplashPage";
-
+import LoggedInPage from "./LoggedInPage";
 
 const HomePage = () => {
     const sessionUser = useSelector((state) => state.session.user);
 
     if(sessionUser){
-        return <>Logged In</>
+        return <LoggedInPage />
      }
      else{
          return <SplashPage />

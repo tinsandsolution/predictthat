@@ -26,7 +26,7 @@ export const getAllMarkets = () => async (dispatch) => {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_MARKETS:
-      console.log(action.payload)
+      // console.log(action.payload)
       return action.payload.markets
     default:
       return state;

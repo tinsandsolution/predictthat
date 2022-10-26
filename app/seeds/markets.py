@@ -31,20 +31,27 @@ def seed_markets():
     market13 = Market(manager_id='2', image_url='https://i.imgur.com/MVNpjMV.png', short_title='An Bui Passing', title='Will An Bui pass the capstone project on the first try?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
     market14 = Market(manager_id='2', image_url='https://i.imgur.com/Xsh4lDn.png', short_title='Standard Duong Passing', title='Will Standard pass the capstone project on the first try?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
 
+    db.session.add(market13)
+    db.session.add(market8)
+    db.session.add(market3)
+    db.session.add(market10)
+
+
     db.session.add(market1)
     db.session.add(market2)
-    db.session.add(market3)
+    # db.session.add(market3)
     db.session.add(market4)
     db.session.add(market5)
     db.session.add(market6)
     db.session.add(market7)
-    db.session.add(market8)
+    # db.session.add(market8)
     db.session.add(market9)
-    db.session.add(market10)
+    # db.session.add(market10)
     db.session.add(market11)
     db.session.add(market12)
-    db.session.add(market13)
+    # db.session.add(market13)
     db.session.add(market14)
+
 
     db.session.commit()
 
