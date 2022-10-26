@@ -1,0 +1,92 @@
+.splash-container {
+    /* border: 1px solid blue; */
+    width: 100%;
+    margin: auto;
+}
+
+.splash-banner {
+    width: 100%;
+    border: 1px solid black;
+    aspect-ratio: 35/1;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 2em;
+    font-size: 2em;
+    /* vertical-align: middle; */
+    /* justify-items: center; */
+    /* vertical-align: middle; */
+    /* align-items: center; */
+    /* justify-content: center; */
+
+}
+
+.splash-smaller {
+    width: 80%;
+    margin: auto;
+    aspect-ratio: 3/1;
+    /* border: 1px solid black; */
+    display: flex;
+}
+
+.splash-left {
+    width: 30%;
+    height: inherit;
+    /* padding: 5% 5% 5% 5%; */
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splash-left-big-text {
+    width: 90%;
+    height: inherit;
+    margin-top: 5%;
+    /* margin: 5% 5% 5% 5%; */
+    /* border: 1px solid green; */
+    font-size: 4vw;
+    font-weight: 500;
+}
+
+.splash-left-small-text {
+    /* width: 90%; */
+    height: inherit;
+
+    /* margin: 5% 0% 5% 12%; */
+    /* border: 1px solid green; */
+    font-size: 1.25vw;
+    font-weight: 500;
+}
+
+
+.splash-right {
+    width: 70%;
+    height: inherit;
+    border: 1px solid green;
+}
+
+.splash-body-container {
+    width: 100%;
+    aspect-ratio: 3/1;
+    background-image: url("https://images.pexels.com/photos/3946005/pexels-photo-3946005.jpeg");
+    background-position: 0% 60%;
+    background-size: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+
+    /* background-imag */
+    /* border: 1px solid black; */
+}
+
+.splash-text {
+    position: relative;
+    /* bottom: 90%; */
+    /* left: 5%; */
+    width: 30%;
+    /* aspect-ratio: 1/0.5; */
+    border: 10px solid green;
+    font-size:32px;
+    color: black;
+
+}
