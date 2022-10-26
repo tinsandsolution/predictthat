@@ -14,6 +14,7 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      console.log(data)
       setErrors(data);
     }
   };
@@ -31,33 +32,35 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <form className="modal-form" onSubmit={onLogin}>
+      <div className='form-title'> Log In Here! </div>
+      <div className='modal-errors'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className="modal-form-error" key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='form-single-data'>
         <label htmlFor='email'>Email</label>
         <input
           name='email'
           type='text'
-          placeholder='Email'
+          // placeholder='Email'
           value={email}
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className='form-single-data'>
         <label htmlFor='password'>Password</label>
         <input
           name='password'
           type='password'
-          placeholder='Password'
+          // placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
       </div>
+      <button className="black-button button-margin" type='submit'>Login</button>
+
     </form>
   );
 };

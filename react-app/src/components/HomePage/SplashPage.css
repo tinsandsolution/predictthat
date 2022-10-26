@@ -52,7 +52,7 @@
 .splash-left-small-text {
     /* width: 90%; */
     height: inherit;
-
+    margin-top: 2%;
     /* margin: 5% 0% 5% 12%; */
     /* border: 1px solid green; */
     font-size: 1.25vw;
@@ -62,31 +62,92 @@
 
 .splash-right {
     width: 70%;
-    height: inherit;
-    border: 1px solid green;
-}
-
-.splash-body-container {
-    width: 100%;
-    aspect-ratio: 3/1;
-    background-image: url("https://images.pexels.com/photos/3946005/pexels-photo-3946005.jpeg");
-    background-position: 0% 60%;
-    background-size: 100%;
+    /* aspect-ratio: 16 / 9; */
+    /* aspect-ratio: 1/1; */
+    /* border: 1px solid green; */
     display: flex;
-    flex-direction: row-reverse;
-
-    /* background-imag */
-    /* border: 1px solid black; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
 }
 
-.splash-text {
-    position: relative;
-    /* bottom: 90%; */
-    /* left: 5%; */
+.splash-card-wrapper {
+    /* padding-top: 2%; */
+    /* border: 1px solid green; */
+    width: 32%;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    /* padding-left: 1%; */
+    /* padding-top: 1%; */
+    /* aspect-ratio: 1 / 0.1; */
+
+}
+
+.splash-card {
+    border-bottom: 2px solid gainsboro;
+    border-right: 2px solid gainsboro;
+    /* border-top: 1px solid green; */
+    /* padding-top: 5%; */
+    /* border: 1px solid green; */
+    padding-left: 10px;
+    width: 93%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    /* justify-content: space-evenly; */
+    /* border: 1px solid red; */
+}
+
+.splash-card:hover {
+    background-color: whitesmoke;
+}
+
+.splash-card-image {
     width: 30%;
-    /* aspect-ratio: 1/0.5; */
-    border: 10px solid green;
-    font-size:32px;
-    color: black;
+    aspect-ratio: 2/1;
+    object-fit: cover;
+}
+
+.splash-card-title {
+    font-weight: 700;
+    font-size: 1.1vw;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.splash-card-resolves {
+    font-weight: 700;
+    color: gray;
+    margin-top: 1%;
+    font-size: 1vw;
+}
+
+.splash-yes-no {
+    display: flex;
+    /* height: 40%; */
+    /* border: 1px solid black; */
+    flex-direction: row;
+    margin-top: 2%;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.splash-yes-no > *{
+    font-weight: 700;
+    font-size: 1.5vw;
+}
+
+.splash-yes {
+    color: #AA00FF;
+    margin-right: 4%;
+}
+
+.splash-no {
+    color: #265CFF
 
 }

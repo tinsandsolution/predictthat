@@ -19,19 +19,25 @@ const SplashPage = () => {
             "marketUrl" : "",
         },
         "Clones of Etsy July Cohort" : {
-            "imgUrl" : "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstorage.needpix.com%2Frsynced_images%2Fjewelry-parts-spring-ring.jpg&f=1&nofb=1&ipt=beca5715faeeec497d7f381fc7c335a7d9f667f949dc4849cc44740504033d23&ipo=images",
+            "imgUrl" : "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstorage.needpix.com%2Frsynced_images%2Fjewelry-parts-spring-ring.jpg",
             "yes" : 10,
             "no" : 90,
             "marketUrl" : "",
         },
-        "Students Passing Dec 2022" : {
-
+        "June Students Graduating 90%" : {
+            imgUrl : "https://images.pexels.com/photos/1454360/pexels-photo-1454360.jpeg",
+            "yes" : 55,
+            "no" : 45
         },
         "Strikes Given Dec 2022" : {
-
+            imgUrl : "https://images.pexels.com/photos/2228568/pexels-photo-2228568.jpeg",
+            "yes" : 33,
+            "no" : 67
         },
-        "Job Placement Rate June Cohort" : {
-
+        "Job Placement Rate June Cohort 95%" : {
+            imgUrl : "https://images.pexels.com/photos/52608/pexels-photo-52608.jpeg",
+            "yes" : 5,
+            "no" : 95
         },
     }
 
@@ -51,16 +57,26 @@ const SplashPage = () => {
                     </div>
                 </div>
                 <div className="splash-right">
+                    {
+                        Object.keys(fixed_data).map(name => {
+                            return (
+                                <div className='splash-card-wrapper'>
+                                    <div className='splash-card'>
+                                    <img className='splash-card-image' alt="" src={fixed_data[name]["imgUrl"]}></img>
+                                    <div className='splash-card-title'> {name} </div>
+                                    <div className='splash-card-resolves'> Oct 31 </div>
+                                    <div className='splash-yes-no'>
+                                        <div className='splash-yes'> Yes {fixed_data[name]["yes"]}¢</div>
+                                        <div className='splash-no'> No {fixed_data[name]["no"]}¢</div>
+                                    </div>
+                                    </div>
+                                </div>
+                            )
 
+                        })
+                    }
                 </div>
             </div>
-            {/* </div> */}
-
-            {/* <div className="splash-body-container"> */}
-                {/* <img alt="splash" className="splash-image" src={SplashImage}></img> */}
-                {/* <div className="splash-text"> splash text </div> */}
-            {/* </div> */}
-
         </div>
     )
 

@@ -17,9 +17,11 @@ const SignUpForm = () => {
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
+        console.log(data)
         setErrors(data)
       }
     }
+    else setErrors(["password : Passwords must match"])
   };
 
   const updateUsername = (e) => {
@@ -43,13 +45,14 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <form className="modal-form" onSubmit={onSignUp}>
+      <div className='form-title'> Sign up in 2 minutes </div>
+      <div className='modal-errors'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div className="modal-form-error" key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className='form-single-data'>
         <label>User Name</label>
         <input
           type='text'
@@ -58,7 +61,7 @@ const SignUpForm = () => {
           value={username}
         ></input>
       </div>
-      <div>
+      <div className='form-single-data'>
         <label>Email</label>
         <input
           type='text'
@@ -67,7 +70,7 @@ const SignUpForm = () => {
           value={email}
         ></input>
       </div>
-      <div>
+      <div className='form-single-data'>
         <label>Password</label>
         <input
           type='password'
@@ -76,7 +79,7 @@ const SignUpForm = () => {
           value={password}
         ></input>
       </div>
-      <div>
+      <div className='form-single-data'>
         <label>Repeat Password</label>
         <input
           type='password'
@@ -86,7 +89,7 @@ const SignUpForm = () => {
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='black-button button-margin' type='submit'>Sign Up</button>
     </form>
   );
 };
