@@ -59,6 +59,7 @@ const SplashPage = () => {
                 <div className="splash-right">
                     {
                         Object.keys(fixed_data).map(name => {
+
                             return (
                                 <div className='splash-card-wrapper'>
                                     <div className='splash-card'>

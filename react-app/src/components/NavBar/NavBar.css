@@ -20,17 +20,75 @@
     align-items: center;
 }
 
-.nav-image-container {
-
+.nav-inner-logged-in {
+    /* border: 1px solid blue; */
+    margin: auto;
+    width: 98%;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.nav-right {
+.nav-card {
+    /* border: 1px solid black; */
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.nav-card:hover {
+    background-color: rgba(0, 0, 0, 0.116);
+}
+
+.nav-right-logged-in {
     display: flex;
     /* border: 2px solid green; */
-    /* height: inherit; */
+    height: inherit;
+    /* width: 30%; */
 }
 
 .nav-logo {
     width: 200px;
     cursor: pointer;
+}
+
+.nav-right {
+    display: flex;
+    /* border: 2px solid green; */
+    height: inherit;
+}
+
+.nav-card-text {
+    font-size: 90%;
+    font-weight: 600;
+    color: #00000073;
+    text-align: center;
+    position: relative;
+    top: 30%;
+    /* border: 1px solid black; */
+}
+
+.nav-card-text-special {
+    top: 11%;
+}
+
+
+#nav-card-icon-color {
+    color: #00000073;
+}
+
+.nav-card-above-text {
+    /* border: 1px solid black; */
+    margin: none;
+    color: green;
+    font-weight: bold;
+    font-size: 110%;
+}
+.nav-card-special, .nav-card-special:hover  {
+    cursor: default;
+    background-color: white;
 }
