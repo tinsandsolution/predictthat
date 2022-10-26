@@ -44,9 +44,9 @@ const NavBar = () => {
               <div className='nav-card-text nav-card-text-special'>Funds</div>
             </div>
 
-            <div className='nav-card'>
+            <div className='nav-card' onClick={() => history.push('/yourmarkets')}>
               <i class="fa-solid fa-scale-balanced fa-xl" id="nav-card-icon-color"></i>
-              <div className='nav-card-text'>Listings</div>
+              <div className='nav-card-text'>Your Markets</div>
             </div>
 
             <div className='nav-card' onClick={onLogout}>
