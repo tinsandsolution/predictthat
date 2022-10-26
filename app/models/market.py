@@ -9,7 +9,7 @@ class Market(db.Model):
     short_title = db.Column(db.String(255), nullable=False)
     title = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(2000), nullable=False)
-    expected_resolution_time = db.Column(db.DateTime, nullable=False)
+    expected_resolution_time = db.Column(db.DateTime)
     is_open = db.Column(db.Boolean, server_default="true", nullable=False)
     yes_value = db.Column(db.Float, nullable=False, server_default="0")
     no_value = db.Column(db.Float, nullable=False, server_default="0")
