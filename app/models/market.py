@@ -17,6 +17,7 @@ class Market(db.Model):
 
     #relationships
     manager = db.relationship("User", back_populates="markets", lazy=False)
+    positions = db.relationship("Position", back_populates="market", lazy=False)
 
     def to_dict(self):
         return {
@@ -32,4 +33,21 @@ class Market(db.Model):
             'is_open' : self.is_open,
             'yes_value' : self.yes_value,
             'no_value' : self.no_value,
+            "positions" : [i.to_dict() for i in self.positions]
         }
+
+    def some_dict(self):
+        return {
+            'id': self.id,
+            'manager_id' : self.manager_id,
+            'manager' : self.manager.some_dict(),
+            'image_url' : self.image_url,
+            'short_title' : self.short_title,
+            'title' : self.title,
+            'description' : self.description,
+            'is_in_play' : self.is_in_play,
+            'expected_resolution_time' : self.expected_resolution_time,
+            'is_open' : self.is_open,
+            'yes_value' : self.yes_value,
+            'no_value' : self.no_value,
+    }

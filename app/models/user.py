@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
 
     #relationships
     markets = db.relationship("Market",back_populates="manager" )
+    positions = db.relationship("Position", back_populates="user")
 
     @property
     def password(self):

@@ -30,6 +30,24 @@ def makeMarket():
     print(request.cookies,f"\n\n\n\n")
     return { "market" : market.to_dict()}
 
+@market_routes.route('/makepairs',  methods=['POST'])
+@login_required
+def makePairs():
+    # manager_id = current_user.id
+    # form = MakeMarketForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+
+    # market = Market()
+    # form.populate_obj(market)
+    # market.manager_id = manager_id
+
+    # db.session.add(market)
+    # db.session.commit()
+
+    # print(request.cookies,f"\n\n\n\n")
+    return { "market" : "fasdfsda"}
+
+
 # @user_routes.route('/<int:id>/bankroll')
 # @login_required
 # def users(id):
