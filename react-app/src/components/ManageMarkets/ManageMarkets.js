@@ -60,7 +60,11 @@ const ManageMarkets = () => {
                                     </div>
                                 </div>
                                 <div className="manage-card-bottom-right">
-                                        <img className='manage-card-image' alt="" src={market["image_url"]}></img>
+                                        <img className='manage-card-image'
+                                             alt=""
+                                             src={market["image_url"]}
+                                             onError={e => { e.currentTarget.src = "https://i.imgur.com/v4C8Lvf.png"; }}
+                                        ></img>
                                 </div>
                             </div>
                     </div>

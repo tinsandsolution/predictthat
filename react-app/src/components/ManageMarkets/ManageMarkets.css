@@ -40,12 +40,12 @@
 }
 
 .manage-card-bottom-left {
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .mcblt {
     display: flex;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .manage-card-bottom-right {

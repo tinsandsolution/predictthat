@@ -40,9 +40,9 @@ export const createMarket = (marketData) => async (dispatch) => {
   });
   if (response.ok) {
     const data = await response.json();
-    console.log(data)
+    dispatch(getAllMarkets())
+    return data
   }
-  dispatch(getAllMarkets())
 }
 
 export default function reducer(state = initialState, action) {

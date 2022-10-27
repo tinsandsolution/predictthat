@@ -43,7 +43,7 @@ const LoggedInPage = () => {
                             </div>
                         </div>
                         <div className={i % 2 === 0 ? "rest-card-right" : "rest-card-right nb"}>
-                            <img className='rest-card-image' alt="" src={market["image_url"]}></img>
+                            <img className='rest-card-image' alt="" src={market["image_url"]} onError={e => { e.currentTarget.src = "https://i.imgur.com/v4C8Lvf.png"; }}></img>
                         </div>
                      </div>
                     </div>
@@ -78,7 +78,7 @@ const LoggedInPage = () => {
                 return (
                     <div key={market["short_title"]} className='featured-card-wrapper'>
                         {/* <div className='splash-card'> */}
-                        <img className='featured-card-image' alt="" src={market["image_url"]}></img>
+                        <img className='featured-card-image' alt="" src={market["image_url"]} onError={e => { e.currentTarget.src = "https://i.imgur.com/v4C8Lvf.png"; }}></img>
                         <div className={i !== 3 ? "featured-card-right" : "featured-card-right nb"}>
                             <div className='featured-card-title'> {market["short_title"]} </div>
                             <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
