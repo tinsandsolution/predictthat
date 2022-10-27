@@ -16,7 +16,7 @@ class User(db.Model, UserMixin):
     markets = db.relationship("Market",back_populates="manager" )
     positions = db.relationship("Position", back_populates="user")
     sellOrders = db.relationship("SellOrder", back_populates="user")
-    buyOrders = db.relationship("BuyOrder", back_populates="user")
+    # buyOrders = db.relationship("BuyOrder", back_populates="user")
 
     @property
     def password(self):

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
+import OrderBook from "./OrderBook";
 
 const SingleMarketPage = () => {
     const { marketId }  = useParams();
@@ -26,7 +27,8 @@ const SingleMarketPage = () => {
                 <CreateSharesModalButton market_id={market.id}/>
             </div>
             <div className="single-market-bottom">
-                {market.is_in_play ? "buy/sell table goes here" : <div className="no-open-orders-yet">No Open Orders Yet</div>}
+                <div className="single-market-title"> Order Book </div>
+                <OrderBook market={market} />
             </div>
         </div>
     )

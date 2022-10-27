@@ -1,0 +1,20 @@
+.order-book {
+    width: 100%;
+    /* border: 1px solid blue; */
+    min-height: 100px;
+    display: flex;
+}
+
+.buy-yes {
+    border: 1px solid green;
+    width: 50%;
+    min-height: 50px;
+    /* height: inherit; */
+}
+
+.buy-no {
+    border: 1px solid hotpink;
+    width: 50%;
+    min-height: 50px;
+    /* height: inherit; */
+}

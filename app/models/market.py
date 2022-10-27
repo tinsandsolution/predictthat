@@ -19,7 +19,7 @@ class Market(db.Model):
     manager = db.relationship("User", back_populates="markets", lazy=False)
     positions = db.relationship("Position", back_populates="market", lazy=False)
     sellOrders = db.relationship("SellOrder", back_populates="market")
-    buyOrders = db.relationship("BuyOrder", back_populates="market")
+    # buyOrders = db.relationship("BuyOrder", back_populates="market")
 
 
 
@@ -39,7 +39,7 @@ class Market(db.Model):
             'no_value' : self.no_value,
             "positions" : [i.to_dict() for i in self.positions],
             "sellOrders" : [i.to_dict() for i in self.sellOrders],
-            "buyOrders" : [i.to_dict() for i in self.buyOrders]
+            # "buyOrders" : [i.to_dict() for i in self.buyOrders]
 
         }
 
