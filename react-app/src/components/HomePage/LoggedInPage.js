@@ -33,7 +33,7 @@ const LoggedInPage = () => {
                 }
 
                 return (
-                    <div className='rest-card-wrapper'>
+                    <div key={market["short_title"]} className='rest-card-wrapper'>
                     <div className='rest-card'>
                         <div className="rest-card-left">
                             <div className='rest-card-title'> {market["short_title"]} </div>
@@ -76,7 +76,7 @@ const LoggedInPage = () => {
                 }
 
                 return (
-                    <div className='featured-card-wrapper'>
+                    <div key={market["short_title"]} className='featured-card-wrapper'>
                         {/* <div className='splash-card'> */}
                         <img className='featured-card-image' alt="" src={market["image_url"]}></img>
                         <div className={i !== 3 ? "featured-card-right" : "featured-card-right nb"}>

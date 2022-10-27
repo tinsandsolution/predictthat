@@ -1,11 +1,17 @@
 // constants
-const SET_MARKETS = 'session/SET_MARKETS';
-// const REMOVE_USER = 'session/REMOVE_USER';
+const SET_MARKETS = 'market/SET_MARKETS';
+// const CREATE_MARKET = 'market/CREATE_MARKET';
 
 const setMarkets = (markets) => ({
   type: SET_MARKETS,
   payload: markets
 });
+
+// const makeMarket = (markets) => ({
+//   type: CREATE_MARKET,
+//   // payload: market
+// });
+
 
 
 const initialState = { };
@@ -21,6 +27,22 @@ export const getAllMarkets = () => async (dispatch) => {
     dispatch(setMarkets(data));
     // console.log(data)
   }
+}
+
+export const createMarket = (marketData) => async (dispatch) => {
+  // console.log(marketData)
+  console.log("dsfsdfsfd")
+
+  const response = await fetch('/api/markets', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(marketData),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    console.log(data)
+  }
+  dispatch(getAllMarkets())
 }
 
 export default function reducer(state = initialState, action) {

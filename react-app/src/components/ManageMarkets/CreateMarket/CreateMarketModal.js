@@ -16,7 +16,7 @@ function CreateMarketModalButton() {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateMarketForm />
+                    <CreateMarketForm setShowModal={setShowModal} />
                 </Modal>
             )}
         </>
