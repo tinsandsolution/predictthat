@@ -11,6 +11,7 @@ class Market(db.Model):
     description = db.Column(db.String(2000), nullable=False)
     expected_resolution_time = db.Column(db.DateTime)
     is_open = db.Column(db.Boolean, server_default="true", nullable=False)
+    is_in_play = db.Column(db.Boolean, server_default="false", nullable=False)
     yes_value = db.Column(db.Float, nullable=False, server_default="0")
     no_value = db.Column(db.Float, nullable=False, server_default="0")
 
@@ -26,6 +27,7 @@ class Market(db.Model):
             'short_title' : self.short_title,
             'title' : self.title,
             'description' : self.description,
+            'is_in_play' : self.is_in_play,
             'expected_resolution_time' : self.expected_resolution_time,
             'is_open' : self.is_open,
             'yes_value' : self.yes_value,
