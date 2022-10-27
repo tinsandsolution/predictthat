@@ -2,7 +2,7 @@ from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .markets import seed_markets, undo_markets
 from .positions import seed_positions, undo_positions
-
+from .orders import seed_orders, undo_orders
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
 seed_commands = AppGroup('seed')
@@ -14,6 +14,7 @@ def seed():
     seed_users()
     seed_markets()
     seed_positions()
+    seed_orders()
     # Add other seed functions here
 
 
@@ -23,4 +24,5 @@ def undo():
     undo_users()
     undo_markets()
     undo_positions()
+    undo_orders()
     # Add other undo functions here
