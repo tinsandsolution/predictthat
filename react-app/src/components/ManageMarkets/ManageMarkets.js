@@ -51,9 +51,12 @@ const ManageMarkets = () => {
                             <div className='manage-card-title'> {market["title"]} </div>
                             <div className="manage-card-bottom">
                                 <div className="manage-card-bottom-left">
-                                   <div className='manage-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
-                                   <div className='manage-yes-no'>
-                                     {inPlay}
+                                    <div className="mcblt">
+                                        <div className='manage-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
+                                        {inPlay}
+                                    </div>
+                                    <div className="mcblb">
+                                        buttons go here
                                     </div>
                                 </div>
                                 <div className="manage-card-bottom-right">

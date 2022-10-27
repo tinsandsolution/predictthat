@@ -36,6 +36,16 @@
     width: 100%;
     aspect-ratio: 10/1;
     justify-content: space-between;
+    margin-top: .5%;
+}
+
+.manage-card-bottom-left {
+    border: 1px solid black;
+}
+
+.mcblt {
+    display: flex;
+    border: 1px solid red;
 }
 
 .manage-card-bottom-right {
@@ -55,15 +65,6 @@
     margin-top: 1%;
 }
 
-.manage-yes-no {
-    display: flex;
-    width: 100%;
-    height: 33%;
-    flex-direction: row;
-    margin-top: 2%;
-    align-items: center;
-}
-
 .manage-card-image {
     /* height: fit-content; */
     width: 100%;
@@ -76,8 +77,10 @@
 .manage-market-status {
     color: gray;
     font-style: italic;
-    width: 50%;
+    /* width: 50%; */
     font-size: 90%;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .create-a-market {
