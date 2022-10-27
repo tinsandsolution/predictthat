@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import User, Market
 
 market_routes = Blueprint('markets', __name__)
@@ -11,11 +11,11 @@ def markets():
     return {'markets': [market.to_dict() for market in markets]}
 
 
-# @market_routes.route('/<int:id>')
-# @login_required
-# def market(id):
-#     markets = Market.query.all(manager_id=id)
-#     return {'markets': [market.to_dict() for market in markets]}
+@market_routes.route('',  methods=['POST'])
+@login_required
+def makeMarket():
+    markets = Market.query.all(manager_id=id)
+    return {'markets': [market.to_dict() for market in markets]}
 
 # @user_routes.route('/<int:id>/bankroll')
 # @login_required

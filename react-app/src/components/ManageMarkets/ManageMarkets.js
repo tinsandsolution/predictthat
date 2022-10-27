@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { getAllMarkets } from '../../store/market';
 
 import './ManageMarkets.css'
-
+import CreateMarketModalButton from "./CreateMarket/CreateMarketModal";
 
 const ManageMarkets = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -71,13 +71,7 @@ const ManageMarkets = () => {
 
     return (
         <div className="manage-markets-container">
-            <div className="create-a-market fa-2xl">
-                <i className="fa-solid fa-money-bill-trend-up">
-                </i>
-                <div className="create-a-market-text">
-                    Create A New Market
-                </div>
-            </div>
+            <CreateMarketModalButton />
             {makeLongCards(markets)}
         </div>
     )
