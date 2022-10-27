@@ -87,6 +87,7 @@
 .featured-yes-no {
     display: flex;
     width: 100%;
+    height: 33%;
     /* height: 40%; */
     /* border: 1px solid black; */
     flex-direction: row;
@@ -188,15 +189,56 @@
 
 .rest-card-title {
     font-weight: 600;
-    font-size: 75%;
+    font-size: 1em;
     margin-top: 2%;
     margin-right: 2%;
+    /* margin-bottom: 3%; */
+    height: fit-content;
+    /* vertical-align: end; */
+    vertical-align: bottom;
+    /* justify-content: center; */
+    /* text-align: end; */
+    /* align-items: center; */
     border-bottom: 2px solid white;
     /* width: max-content; */
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     /* border: 1px solid black; */
+    /* border: 1px solid red; */
+
+}
+
+.rest-yes-no {
+    display: flex;
+    width: 100%;
+    height: 33%;
+    /* height: 40%; */
+    /* border: 1px solid black; */
+    flex-direction: row;
+    margin-top: 2%;
+    /* justify-content: center; */
+    align-items: center;
+    /* border: 1px solid red; */
+
+}
+
+.rest-card-resolves {
+    font-weight: 700;
+    font-size: 75%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    color: gray;
+    margin-top: 1%;
+    /* border: 1px solid red; */
+    /* font-size: 1vw; */
+}
+
+.rest-none-at-all {
+    color: #19c10d;
+    font-size: 100%;
+    /* border: 1px solid blue; */
 }
 
 .rest-card-wrapper:hover .rest-card-title{

@@ -28,7 +28,7 @@ const LoggedInPage = () => {
 
                 if (market.yes_value === 0 && market.no_value === 0) {
                     yesno = (
-                        <div className="featured-none-at-all">No Bets Yet</div>
+                        <div className="rest-none-at-all">No Bets Yet</div>
                     )
                 }
 
@@ -37,8 +37,8 @@ const LoggedInPage = () => {
                     <div className='rest-card'>
                         <div className="rest-card-left">
                             <div className='rest-card-title'> {market["short_title"]} </div>
-                            <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
-                            <div className='featured-yes-no'>
+                            <div className='rest-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
+                            <div className='rest-yes-no'>
                                 {yesno}
                             </div>
                         </div>
