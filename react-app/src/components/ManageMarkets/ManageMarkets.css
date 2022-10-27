@@ -15,24 +15,39 @@
     /* align-items: center; */
     justify-content: center;
     cursor: pointer;
+    /* border: 1px solid black; */
 }
 
 .manage-card-title {
     font-weight: 600;
     font-size: 150%;
-    margin-top: 2%;
-    margin-right: 2%;
     height: fit-content;
     vertical-align: bottom;
     border-bottom: 2px solid white;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    /* border: 1px solid green; */
+}
+
+.manage-card-bottom {
+    display: flex;
+    /* border: 1px solid black; */
+    width: 100%;
+    aspect-ratio: 10/1;
+    justify-content: space-between;
+}
+
+.manage-card-bottom-right {
+    height: 100%;
+    width: 40%;
+    margin-right: 2%;
+    /* border: 1px solid red; */
 }
 
 .manage-card-resolves {
     font-weight: 700;
-    font-size: 150%;
+    font-size: 125%;
     height: 20%;
     display: flex;
     align-items: center;
@@ -47,4 +62,42 @@
     flex-direction: row;
     margin-top: 2%;
     align-items: center;
+}
+
+.manage-card-image {
+    /* height: fit-content; */
+    width: 100%;
+    aspect-ratio: 4/1;
+    /* height: inherit; */
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.manage-market-status {
+    color: gray;
+    font-style: italic;
+    width: 50%;
+    font-size: 90%;
+}
+
+.create-a-market {
+    width: 100%;
+    aspect-ratio: 10/1;
+    background-color: aliceblue;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-a-market-text {
+    margin-top: 2%;
+    font-size: 80%;
+    user-select: none;
+}
+
+.create-a-market:hover {
+    cursor: pointer;
+    background-color: rgb(217, 233, 248);
 }

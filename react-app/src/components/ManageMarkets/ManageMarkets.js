@@ -25,33 +25,41 @@ const ManageMarkets = () => {
             <>
             {markets.map(market => {
 
-                // const i = markets.findIndex((ele) => ele === market)
-
-                let i = 1
-
-                let yesno = (
+                let manageOptions = (
                     <>
-                        <div className='splash-yes'> Yes {market.yes_value}¢</div>
-                        <div className='splash-no'> No {market.no_value}¢</div>
+                    <div className="manage-market-button"></div>
                     </>
                 )
+                if (market.is_in_play) {
 
-                if (market.yes_value === 0 && market.no_value === 0) {
-                    yesno = (
-                        <div className="rest-none-at-all">No Bets Yet</div>
+                }
+                else {
+
+                }
+
+                let inPlay = (
+                        <div className="manage-market-status">Trading has not yet begun. You can still edit the title, description, expected resolution time. You can also delete.</div>
+                )
+                if (market.is_in_play) {
+                    inPlay = (
+                        <div className="manage-market-status">Trading has already begun. You are only able to resolve this market by entering the outcome.</div>
                     )
                 }
 
                 return (
                     <div className='manage-card-wrapper'>
                             <div className='manage-card-title'> {market["title"]} </div>
-                            <div className='manage-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
-                            <div className='manage-yes-no'>
-                                {yesno}
+                            <div className="manage-card-bottom">
+                                <div className="manage-card-bottom-left">
+                                   <div className='manage-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
+                                   <div className='manage-yes-no'>
+                                     {inPlay}
+                                    </div>
+                                </div>
+                                <div className="manage-card-bottom-right">
+                                        <img className='manage-card-image' alt="" src={market["image_url"]}></img>
+                                </div>
                             </div>
-                        {/* <div className={i % 2 === 0 ? "rest-card-right" : "rest-card-right nb"}> */}
-                            {/* <img className='rest-card-image' alt="" src={market["image_url"]}></img> */}
-                        {/* </div> */}
                     </div>
                 )
 
@@ -63,6 +71,13 @@ const ManageMarkets = () => {
 
     return (
         <div className="manage-markets-container">
+            <div className="create-a-market fa-2xl">
+                <i className="fa-solid fa-money-bill-trend-up">
+                </i>
+                <div className="create-a-market-text">
+                    Create A New Market
+                </div>
+            </div>
             {makeLongCards(markets)}
         </div>
     )
