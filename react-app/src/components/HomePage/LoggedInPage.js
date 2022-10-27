@@ -1,9 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import './LoggedInPage.css'
+import { useHistory } from 'react-router-dom';
 
 const LoggedInPage = () => {
     const sessionUser = useSelector((state) => state.session.user);
     let markets = useSelector((state) => state.markets)
+    const history = useHistory();
+
     markets.sort((a,b) => a["id"] - b["id"])
 
     let featureMarkets = markets.slice(0,4)
@@ -33,7 +36,7 @@ const LoggedInPage = () => {
                 }
 
                 return (
-                    <div key={market["short_title"]} className='rest-card-wrapper'>
+                    <div key={market["short_title"]} className='rest-card-wrapper' onClick={()=> history.push("/markets/" + market.id)}>
                     <div className='rest-card'>
                         <div className="rest-card-left">
                             <div className='rest-card-title'> {market["short_title"]} </div>
@@ -76,7 +79,7 @@ const LoggedInPage = () => {
                 }
 
                 return (
-                    <div key={market["short_title"]} className='featured-card-wrapper'>
+                    <div key={market["short_title"]} className='featured-card-wrapper' onClick={()=> history.push("/markets/" + market.id)}>
                         {/* <div className='splash-card'> */}
                         <img className='featured-card-image' alt="" src={market["image_url"]} onError={e => { e.currentTarget.src = "https://i.imgur.com/v4C8Lvf.png"; }}></img>
                         <div className={i !== 3 ? "featured-card-right" : "featured-card-right nb"}>
