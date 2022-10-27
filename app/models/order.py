@@ -10,6 +10,7 @@ class SellOrder(db.Model):
     price = db.Column(db.Float, nullable=False)
     quantity_filled = db.Column(db.Integer, server_default="0", nullable=False)
     is_fulfilled = db.Column(db.Boolean, server_default="false", nullable=False)
+    is_yes = db.Column(db.Boolean, nullable=False)
 
     #relationships
     user = db.relationship("User", back_populates="sellOrders")
@@ -23,6 +24,7 @@ class SellOrder(db.Model):
             'market_id' : self.market_id,
             'market' : self.market.some_dict(),
             'quantity' : self.quantity,
+            'is_yes': self.is_yes,
             'price' : self.price,
             'quantity_filled' : self.quantity_filled,
             'is_fulfilled' : self.is_fulfilled,

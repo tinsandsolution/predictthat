@@ -3,12 +3,24 @@ import './OrderBook.css'
 const OrderBook = ({market}) => {
     console.log(market)
 
+    const yesOrders = market.sellOrders.filter(order=> order.is_yes === true )
+    const noOrders = market.sellOrders.filter(order=> order.is_yes === false )
+
+
     return (
         <div className="order-book">
             {/* in here, you want to view all the sell offers for "yes" */}
             <div className="buy-yes">
                 Buy Yes Asks
-                {/* {market.buyOrders.map(buyOrder)} */}
+                {yesOrders.map(order => {
+                    return (
+                        <div>
+                            Price: {order.price} ---
+                            Quantity : {order.quantity} ---
+                            Already Filled : {order.quantity_filled}
+                        </div>
+                    )
+                })}
             </div>
             {/* in here, you want to view all the sell offers for "no" */}
             <div className="buy-no">
