@@ -18,6 +18,10 @@ class Market(db.Model):
     #relationships
     manager = db.relationship("User", back_populates="markets", lazy=False)
     positions = db.relationship("Position", back_populates="market", lazy=False)
+    sellOrders = db.relationship("SellOrder", back_populates="market")
+    buyOrders = db.relationship("BuyOrder", back_populates="market")
+
+
 
     def to_dict(self):
         return {

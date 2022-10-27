@@ -10,7 +10,9 @@ def seed_positions():
     # short_title
     # title
     # description
-    position1 = Position(user_id='1', market_id = '5', yes_shares = "10", no_shares = "10")
+    position1 = Position(user_id='1', market_id = '1', yes_shares = "10", no_shares = "10")
+    position2 = Position(user_id='2', market_id = '1', yes_shares = "100", no_shares = "50")
+    position3 = Position(user_id='3', market_id = '1', yes_shares = "60", no_shares = "20")
     # market1 = Market(manager_id='1', image_url='https://i.imgur.com/dJoFZMa.png', short_title='A/a Employees Union', title='Will the A/a employees vote to unionize by January 1, 2022?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
     # market2 = Market(manager_id='1', image_url='https://i.imgur.com/UVCdHta.png', short_title='August Student Deferred', title='Will at least one student in the August Cohort take a deferral on their week 20 assessment?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
     # market3 = Market(manager_id='1', image_url='https://i.imgur.com/n9nndWD.png', short_title='Elon Musk A/a CEO', title='Will Elon Musk be CEO of A/a by January 31, 2022?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
@@ -27,6 +29,9 @@ def seed_positions():
     # market14 = Market(manager_id='2', image_url='https://i.imgur.com/Xsh4lDn.png', short_title='Standard Duong Passing', title='Will Standard pass the capstone project on the first try?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
 
     db.session.add(position1)
+    db.session.add(position2)
+    db.session.add(position3)
+
 
     # db.session.add(market13)
     # db.session.add(market8)
