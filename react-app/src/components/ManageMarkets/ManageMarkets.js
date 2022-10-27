@@ -27,22 +27,25 @@ const ManageMarkets = () => {
 
                 let manageOptions = (
                     <>
-                    <div className="manage-market-button"></div>
+                    <div className="manage-market-button">Resolve Market</div>
                     </>
                 )
-                if (market.is_in_play) {
-
-                }
-                else {
+                if (!market.is_in_play) {
+                    manageOptions = (
+                        <>
+                        <div className="manage-market-button">Manage Market</div>
+                        <div className="manage-market-button">Resolve Market</div>
+                        </>
+                    )
 
                 }
 
                 let inPlay = (
-                        <div className="manage-market-status">Trading has not yet begun. You can still edit the title, description, expected resolution time. You can also delete.</div>
+                        <div className="manage-market-status">Trading has not yet begun. You can modify this market.</div>
                 )
                 if (market.is_in_play) {
                     inPlay = (
-                        <div className="manage-market-status">Trading has already begun. You are only able to resolve this market by entering the outcome.</div>
+                        <div className="manage-market-status">Trading has already begun. You are only able to resolve this market.</div>
                     )
                 }
 
@@ -56,7 +59,7 @@ const ManageMarkets = () => {
                                         {inPlay}
                                     </div>
                                     <div className="mcblb">
-                                        buttons go here
+                                        {manageOptions}
                                     </div>
                                 </div>
                                 <div className="manage-card-bottom-right">

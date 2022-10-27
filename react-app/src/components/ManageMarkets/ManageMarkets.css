@@ -20,7 +20,7 @@
 
 .manage-card-title {
     font-weight: 600;
-    font-size: 150%;
+    font-size: 1.5vw;
     height: fit-content;
     vertical-align: bottom;
     border-bottom: 2px solid white;
@@ -41,11 +41,21 @@
 
 .manage-card-bottom-left {
     /* border: 1px solid black; */
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    justify-content: space-between
 }
 
 .mcblt {
     display: flex;
+    flex-direction: column;
+    /* width: 80%; */
     /* border: 1px solid red; */
+}
+
+.mcblb {
+    display: flex;
 }
 
 .manage-card-bottom-right {
@@ -57,12 +67,14 @@
 
 .manage-card-resolves {
     font-weight: 700;
-    font-size: 125%;
-    height: 20%;
+    font-size: 1.25vw;
+    /* line-height: 125%; */
+    /* height: 20%; */
     display: flex;
     align-items: center;
     color: gray;
     margin-top: 1%;
+    /* border: 1px solid green; */
 }
 
 .manage-card-image {
@@ -78,8 +90,9 @@
     color: gray;
     font-style: italic;
     /* width: 50%; */
-    font-size: 90%;
-    margin-left: 1%;
+    font-size: 1vw;
+    /* border: 1px solid blue; */
+    margin-top: 1%;
     margin-right: 1%;
 }
 
