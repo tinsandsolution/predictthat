@@ -1,0 +1,50 @@
+.manage-markets-container {
+    width: 70%;
+    /* margin-top: 2%; */
+    margin: auto;
+}
+
+.manage-card-wrapper {
+    border-bottom: 3px solid gainsboro;
+    /* border: 1px solid green; */
+    width: 100%;
+    aspect-ratio: 5/1;
+    display: flex;
+    /* padding: 1% 1% 1% 1%; */
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    cursor: pointer;
+}
+
+.manage-card-title {
+    font-weight: 600;
+    font-size: 150%;
+    margin-top: 2%;
+    margin-right: 2%;
+    height: fit-content;
+    vertical-align: bottom;
+    border-bottom: 2px solid white;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.manage-card-resolves {
+    font-weight: 700;
+    font-size: 150%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    color: gray;
+    margin-top: 1%;
+}
+
+.manage-yes-no {
+    display: flex;
+    width: 100%;
+    height: 33%;
+    flex-direction: row;
+    margin-top: 2%;
+    align-items: center;
+}

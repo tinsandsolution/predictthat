@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import NavBar from './components/NavBar/NavBar';
 import HomePage from './components/HomePage/HomePage';
-import YourMarkets from './components/ManageMarkets/HomePage';
+import ManageMarkets from './components/ManageMarkets/ManageMarkets';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -42,7 +42,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/yourmarkets' exact={true} >
-          <YourMarkets />
+          <ManageMarkets />
         </ProtectedRoute>
         <Route path='/' >
           <HomePage />
