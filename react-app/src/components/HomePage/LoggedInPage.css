@@ -34,8 +34,12 @@
 
 .featured-card-wrapper:hover .featured-card-title{
     /* color: blue */
-    border-bottom: 2px solid black;
-    /* text-decoration: underline; */
+    /* background-color: aliceblue; */
+    /* border-bottom: 2px solid black; */
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 5%;
+    text-decoration-color: rgba(0, 0, 128, 0.589);
     /* text-underline-offset: 0px 10px; */
 }
 
@@ -72,16 +76,27 @@
 }
 
 .featured-none-at-all {
-    color: #19c10d
+    color: #19c10d;
+    font-size: 100%;
+    /* border: 1px solid blue; */
 }
 
 .featured-card-title {
     font-weight: 600;
-    font-size: 1.1vw;
+    font-size: 75%;
     margin-top: 2%;
+    margin-right: 2%;
     border-bottom: 2px solid white;
-    width: fit-content;
+    /* width: max-content; */
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.featured-card-resolves {
+    font-weight: 700;
+    font-size: 75%;
+    color: gray;
+    margin-top: 1%;
+    /* font-size: 1vw; */
 }

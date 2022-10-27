@@ -32,7 +32,7 @@ const LoggedInPage = () => {
                         <img className='featured-card-image' alt="" src={market["image_url"]}></img>
                         <div className="featured-card-right">
                             <div className='featured-card-title'> {market["short_title"]} </div>
-                            <div className='splash-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
+                            <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
                             <div className='featured-yes-no'>
                                 {yesno}
                             </div>
