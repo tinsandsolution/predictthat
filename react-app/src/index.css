@@ -17,17 +17,16 @@ body {
 }
 
 .modal-form {
-    width: 90%;
-    /* border: 3px solid black; */
-    /* min-width: 350px; */
-    /* max-width: 350px; */
+    /* border: 10px solid purple; */
+    position: absolute;
+    background-color:white;
+    border-radius: 10px;
     word-wrap: break-word;
-    /* min-height: 400px; */
-    /* max-height: 600px; */
-    padding: 5% 5% 0% 5% ;
+    padding: 1% 1% 0% 1% ;
     display: flex;
     flex-direction: column;
     margin-bottom: 0px;
+    width: 25%;
 }
 
 .modal-form-error {
