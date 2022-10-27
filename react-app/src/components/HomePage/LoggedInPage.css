@@ -143,6 +143,8 @@
     cursor: pointer;
 }
 
+
+
 .rest-card {
     display: flex;
     width: 96%;
@@ -166,8 +168,10 @@
     height: inherit;
     /* border: 1px solid black; */
     border-right: 1px solid gainsboro;
+}
 
-
+.nb {
+    border-right: none;
 }
 
 .rest-card-image {
@@ -202,6 +206,6 @@
     text-decoration: underline;
     text-decoration-thickness: 3px;
     text-underline-offset: 10%;
-    text-decoration-color: rgba(0, 0, 128, 0.589);
+    text-decoration-color: black;
     /* text-underline-offset: 0px 10px; */
 }

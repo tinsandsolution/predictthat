@@ -8,12 +8,16 @@ const LoggedInPage = () => {
 
     let featureMarkets = markets.slice(0,4)
     let restMarkets = markets.slice(4)
-    // restMarkets
+    restMarkets.reverse()
 
     const makeRegularCards = (markets) => {
         return (
             <>
             {markets.map(market => {
+
+                const i = markets.findIndex((ele) => ele === market)
+
+                // let i = 1
 
                 let yesno = (
                     <>
@@ -38,7 +42,7 @@ const LoggedInPage = () => {
                                 {yesno}
                             </div>
                         </div>
-                        <div className="rest-card-right">
+                        <div className={i % 2 === 0 ? "rest-card-right" : "rest-card-right nb"}>
                             <img className='rest-card-image' alt="" src={market["image_url"]}></img>
                         </div>
                      </div>
@@ -55,6 +59,8 @@ const LoggedInPage = () => {
         return (
             <>
             {markets.map(market => {
+
+                const i = markets.findIndex((ele) => ele === market)
 
                 let yesno = (
                     <>
@@ -73,7 +79,7 @@ const LoggedInPage = () => {
                     <div className='featured-card-wrapper'>
                         {/* <div className='splash-card'> */}
                         <img className='featured-card-image' alt="" src={market["image_url"]}></img>
-                        <div className="featured-card-right">
+                        <div className={i !== 3 ? "featured-card-right" : "featured-card-right nb"}>
                             <div className='featured-card-title'> {market["short_title"]} </div>
                             <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
                             <div className='featured-yes-no'>
