@@ -1,3 +1,20 @@
-.create-market-modal-form {
-    width: 50%;
+.create-shares-modal-form {
+    /* width: 60%; */
+}
+
+.create-shares-modal-button {
+    /* border: 1px solid black; */
+    width: fit-content;
+    padding: 1% 2% 1% 2%;
+    border-radius: 5px;
+    color: white;
+    background-color: green;
+    font-size: 1.2vw;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: .5%;
+}
+
+.create-shares-modal-button:hover {
+    background-color: rgba(0, 128, 0, 0.685);
 }
