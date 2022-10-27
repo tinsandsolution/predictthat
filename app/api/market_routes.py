@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Market
-from ..forms.market_forms import MakeMarketForm
+from app.models import db, User, Market, Position
+from ..forms.market_forms import MakeMarketForm, MakeSharesForm
 
 
 market_routes = Blueprint('markets', __name__)
@@ -33,19 +33,27 @@ def makeMarket():
 @market_routes.route('/makepairs',  methods=['POST'])
 @login_required
 def makePairs():
-    # manager_id = current_user.id
-    # form = MakeMarketForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    user_id = current_user.id
+    form = MakeSharesForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    # market = Market()
-    # form.populate_obj(market)
-    # market.manager_id = manager_id
+    position = Position()
+    form.populate_obj(position)
+    position.user_id = user_id
 
-    # db.session.add(market)
-    # db.session.commit()
+    # print(position.no_shares,f"\n\n\n\n\n")
+    user = User.query.filter_by(id=user_id).first()
+    # print(user)
+    user.funds = user.funds - position.no_shares
+    # print(f"\n\n\n\n\n")
+
+
+
+    db.session.add(position)
+    db.session.commit()
 
     # print(request.cookies,f"\n\n\n\n")
-    return { "market" : "fasdfsda"}
+    return { "New User Funds" : user.funds }, 200
 
 
 # @user_routes.route('/<int:id>/bankroll')

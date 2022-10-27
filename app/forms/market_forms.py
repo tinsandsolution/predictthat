@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, IntegerField
 # from wtforms.validators import DataRequired, Email, ValidationError
-from app.models import Market
+from app.models import Market, Position
 
 class MakeMarketForm(FlaskForm):
     # manager_id
@@ -15,6 +15,16 @@ class MakeMarketForm(FlaskForm):
     short_title = StringField('short_title')
     title = StringField('title')
     description = StringField('description')
+
+class MakeSharesForm(FlaskForm):
+    # market_id
+    # yes_shares
+    # no_shares
+
+    market_id = IntegerField('market_id')
+    yes_shares = IntegerField('yes_shares')
+    no_shares = IntegerField('no_shares')
+
 
 
 # def user_exists(form, field):

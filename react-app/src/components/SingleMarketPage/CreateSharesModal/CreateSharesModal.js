@@ -3,8 +3,9 @@ import { Modal } from "../../../context/Modal"
 import './CreateShares.css'
 import CreateSharesForm from "./CreateSharesForm";
 
-function CreateSharesModalButton() {
+function CreateSharesModalButton({market_id}) {
     const [showModal, setShowModal] = useState(false)
+    // console.log(market_id)
 
     return (
         <>
@@ -15,7 +16,7 @@ function CreateSharesModalButton() {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <CreateSharesForm setShowModal={setShowModal} />
+                    <CreateSharesForm setShowModal={setShowModal} market_id={market_id} />
                 </Modal>
             )}
         </>

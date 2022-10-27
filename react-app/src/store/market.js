@@ -1,4 +1,7 @@
+import { authenticate } from "./session";
+
 // constants
+
 const SET_MARKETS = 'market/SET_MARKETS';
 // const CREATE_MARKET = 'market/CREATE_MARKET';
 
@@ -31,7 +34,7 @@ export const getAllMarkets = () => async (dispatch) => {
 
 export const createMarket = (marketData) => async (dispatch) => {
   // console.log(marketData)
-  console.log("dsfsdfsfd")
+  // console.log("dsfsdfsfd")
 
   const response = await fetch('/api/markets', {
     method: "POST",
@@ -41,6 +44,27 @@ export const createMarket = (marketData) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
+    return data
+  }
+}
+
+export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
+  // console.log("fasdfasdfsda")
+  // console.log("fasdfasdfsda")
+  const response = await fetch('/api/markets/makepairs', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      "yes_shares" : pairs,
+      "no_shares" : pairs,
+      "market_id" : market_id
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    dispatch(authenticate())
+    // console.log(data)
     return data
   }
 }

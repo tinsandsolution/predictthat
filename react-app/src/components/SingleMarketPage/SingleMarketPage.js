@@ -12,7 +12,7 @@ const SingleMarketPage = () => {
 
 
     const market = markets.filter(market => parseInt(market.id) === parseInt(marketId))[0]
-    console.log(market)
+    // console.log(market.id)
 
     return (
         <div className="single-market-container">
@@ -21,11 +21,9 @@ const SingleMarketPage = () => {
                     {market.title}
                 </div>
                 <div className="single-market-below-title">
-                    {/* sdfasdfads */}
-
                     {market.description}
                 </div>
-                <CreateSharesModalButton />
+                <CreateSharesModalButton market_id={market.id}/>
             </div>
             <div className="single-market-bottom">
                 {market.is_in_play ? "buy/sell table goes here" : <div className="no-open-orders-yet">No Open Orders Yet</div>}

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createMarket } from '../../../store/market';
+import { createSharesAction} from '../../../store/market'
 
-const CreateSharesForm = ({setShowModal}) => {
+const CreateSharesForm = ({setShowModal, market_id}) => {
+  // console.log(market_id)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
@@ -19,7 +20,7 @@ const CreateSharesForm = ({setShowModal}) => {
 
     if (errors.length) setErrors(errors)
     else {
-      // const data = await dispatch(createMarket({title, short_title, description, image_url}));
+      const data = await dispatch(createSharesAction({pairs,market_id}));
       setShowModal(false)
       // return history.push('/yourmarkets')
     }
