@@ -7,22 +7,18 @@ const CreateMarketForm = () => {
 
   // title
   const [title, setTitle] = useState('')
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  // image_url
-  const [image_url, setImage_url] = useState('')
   // short_title
   const [short_title, setShort_title] = useState('')
-
+  // image_url
+  const [image_url, setImage_url] = useState('')
   // description
   const [description, setDescription] = useState('')
   // date
+  // needs filling
 
   // const user = useSelector(state => state.session.user);
   // const dispatch = useDispatch();
-  const onLogin = async (e) => {
+  const onSubmitMarket = async (e) => {
     e.preventDefault();
     // const data = await dispatch(login(email, password));
     // if (data) {
@@ -35,17 +31,21 @@ const CreateMarketForm = () => {
     setTitle(e.target.value);
   };
 
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
+  const updateShort_title = (e) => {
+    setShort_title(e.target.value);
   };
 
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
+  const updateImage_url = (e) => {
+    setImage_url(e.target.value);
   };
+
+  const updateDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
 
   return (
-    <form className="modal-form create-market-modal-form" onSubmit={onLogin}>
+    <form className="modal-form create-market-modal-form" onSubmit={onSubmitMarket}>
       <div className='form-title'> Create a Market </div>
       <div className='modal-errors'>
         {errors.map((error, ind) => (
@@ -57,22 +57,42 @@ const CreateMarketForm = () => {
         <input
           name='title'
           type='text'
-          placeholder='Will Kanye West Run For President In 2028?'
+          placeholder='Will Oprah Run For President In 2028?'
           value={title}
           onChange={updateTitle}
         />
       </div>
       <div className='form-single-data'>
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='short_title'>Short Title</label>
         <input
-          name='password'
-          type='password'
-          // placeholder='Password'
-          value={password}
-          onChange={updatePassword}
+          name='short_title'
+          type='text'
+          placeholder='Oprah 2028'
+          value={short_title}
+          onChange={updateShort_title}
         />
       </div>
-      <button className="black-button button-margin" type='submit'>Login</button>
+      <div className='form-single-data'>
+        <label htmlFor='image_url'>Image Url</label>
+        <input
+          name='image_url'
+          type='text'
+          placeholder='https://i.imgur.com/jG3tSug.png'
+          value={image_url}
+          onChange={updateImage_url}
+        />
+      </div>
+      <div className='form-single-data'>
+        <label htmlFor='description'>Description</label>
+        <input
+          name='description'
+          type='text'
+          placeholder='The WSJ will be used as the defining authority to determine the outcome.'
+          value={description}
+          onChange={updateDescription}
+        />
+      </div>
+      <button className="black-button button-margin" type='submit'>Create Market</button>
     </form>
   );
 };
