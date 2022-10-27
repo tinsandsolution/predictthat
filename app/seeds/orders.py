@@ -1,4 +1,4 @@
-from app.models import db, BuyOrder, SellOrder
+from app.models import db, BuyOrder, SellOrder, Market
 
 # Adds a demo user, you can add other users here if you want
 def seed_orders():
@@ -15,6 +15,9 @@ def seed_orders():
     order4 = SellOrder(user_id='1', market_id = '1', quantity = "10", price = "0.65", quantity_filled = "3", is_fulfilled = False)
     order5 = SellOrder(user_id='2', market_id = '1', quantity = "30", price = "0.50", quantity_filled = "2", is_fulfilled = False)
     order6 = SellOrder(user_id='3', market_id = '1', quantity = "10", price = "0.55", quantity_filled = "1", is_fulfilled = False)
+
+    market = Market.query.filter_by(id='1').first()
+    market.is_in_play = True
 
 
     db.session.add(order1)
