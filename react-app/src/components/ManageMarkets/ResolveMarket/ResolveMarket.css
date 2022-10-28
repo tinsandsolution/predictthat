@@ -1,0 +1,49 @@
+.resolve-modal-form {
+    width: 50%;
+}
+
+.resolve-market-button {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    font-size: 1vw;
+    padding: 1% 2% 1% 2%;
+}
+
+.resolve-single-data {
+    /* border: 1px solid lightgray; */
+    /* padding: 1% 4% 1% 4%; */
+    /* border-radius: 10px; */
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+}
+
+
+.resolve-market-select {
+    width: 49%;
+    aspect-ratio: 3/1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.resolve-yes {
+    background-color: #265cff79;
+}
+
+.resolve-no {
+    background-color: #aa00ff5e;
+}
+
+.yes-selected {
+    background-color: #265CFF;
+}
+
+.no-selected {
+    background-color: #AA00FF;
+}

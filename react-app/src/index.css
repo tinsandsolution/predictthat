@@ -47,6 +47,24 @@ body {
     font-size: 120%;
 }
 
+.form-explanation {
+    /* border: 1px solid green; */
+    line-height: 140%;
+    /* border-bottom: 1px solid black; */
+    /* margin-bottom: 2%; */
+    /* padding-bottom: 2%; */
+    /* font-weight: 700; */
+    font-size: 110%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 5%;
+    /* margin: auto; */
+}
+
+.form-explanation > ul > li{
+    list-style-type: upper-roman;
+}
+
 .form-single-data {
     border: 1px solid lightgray;
     padding: 1% 4% 1% 4%;
