@@ -3,18 +3,44 @@
     /* border: 1px solid blue; */
     min-height: 100px;
     display: flex;
+
 }
 
 .buy-yes {
-    border: 1px solid green;
+    border-top: 1px solid gainsboro;
     width: 50%;
     min-height: 50px;
     /* height: inherit; */
 }
 
 .buy-no {
-    border: 1px solid hotpink;
+    border-top: 1px solid gainsboro;
+
     width: 50%;
     min-height: 50px;
     /* height: inherit; */
+}
+
+.buy-yes-title {
+    border-bottom: 1px solid gainsboro;
+    background-color: rgba(220, 220, 220, 0.308);
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #265CFF;
+    font-weight: 600;
+    user-select: none;
+}
+.buy-no-title {
+    border-bottom: 1px solid gainsboro;
+    background-color: rgba(220, 220, 220, 0.308);
+
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #AA00FF;
+    font-weight: 600;
+    user-select: none;
 }

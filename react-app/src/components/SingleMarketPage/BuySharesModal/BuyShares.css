@@ -1,0 +1,28 @@
+.buy-shares-modal-form {
+    width: 60%;
+}
+
+.buy-shares-modal-button {
+    border-bottom: 1px solid gainsboro;
+    width: 100%;
+    aspect-ratio: 20/1;
+    color: #265CFF;
+    font-size: 1vw;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.make-it-no {
+    color: #AA00FF;
+}
+
+.buy-shares-modal-button:hover {
+    background-color: rgba(220, 220, 220, 0.308);
+}
+
+.buy-shares-data {
+    display: flex;
+}

@@ -1,8 +1,8 @@
 import './OrderBook.css'
 
-const OrderBook = ({market}) => {
-    console.log(market)
+import BuySharesModalButton from './BuySharesModal/BuySharesModal'
 
+const OrderBook = ({market}) => {
     const yesOrders = market.sellOrders.filter(order=> order.is_yes === true )
     const noOrders = market.sellOrders.filter(order=> order.is_yes === false )
 
@@ -11,20 +11,21 @@ const OrderBook = ({market}) => {
         <div className="order-book">
             {/* in here, you want to view all the sell offers for "yes" */}
             <div className="buy-yes">
-                Buy Yes Asks
+                <div className="buy-yes-title">Buy Yes - # Available</div>
                 {yesOrders.map(order => {
                     return (
-                        <div>
-                            Price: {order.price} ---
-                            Quantity : {order.quantity} ---
-                            Already Filled : {order.quantity_filled}
-                        </div>
+                        <BuySharesModalButton order={order} isYes={true} />
                     )
                 })}
             </div>
             {/* in here, you want to view all the sell offers for "no" */}
             <div className="buy-no">
-                Buy No Asks
+                <div className="buy-no-title">Buy No - # Available</div>
+                {noOrders.map(order => {
+                    return (
+                        <BuySharesModalButton order={order} isYes={false} />
+                    )
+                })}
             </div>
             {/* {market.is_in_play ? "hayd" : <div className="no-open-orders-yet">No Open Orders Yet</div>} */}
         </div>
