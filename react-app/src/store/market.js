@@ -48,6 +48,19 @@ export const createMarket = (marketData) => async (dispatch) => {
   }
 }
 
+export const modifyMarket = (marketData) => async (dispatch) => {
+  const response = await fetch('/api/markets', {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(marketData),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    return data
+  }
+}
+
 export const resolveMarket = (outcome, market_id) => async (dispatch) => {
 
   let marketData = { "is_open" : "false", "market_id" : market_id}

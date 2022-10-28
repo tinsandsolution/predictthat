@@ -6,6 +6,7 @@ import { getAllMarkets } from '../../store/market';
 import './ManageMarkets.css'
 import CreateMarketModalButton from "./CreateMarket/CreateMarketModal";
 import ResolveMarketModalButton from "./ResolveMarket/ResolveMarketModal";
+import ManageMarketModalButton from "./ManageMarket/ManageMarketModal";
 
 const ManageMarkets = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -27,15 +28,11 @@ const ManageMarkets = () => {
             {markets.map(market => {
 
                 let manageOptions = (
-                    <>
                     <ResolveMarketModalButton market={market} />
-                    </>
                 )
                 if (!market.is_in_play) {
                     manageOptions = (
-                        <>
-                        <div className="manage-market-button">Manage Market</div>
-                        </>
+                        <ManageMarketModalButton market={market}/>
                     )
 
                 }
