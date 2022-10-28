@@ -37,8 +37,6 @@ def makeMarket():
 @market_routes.route('/makepairs',  methods=['POST'])
 @login_required
 def makePairs():
-    print(f"dsfasdfdsfasdfs\n\n\n\n\n")
-
     user_id = current_user.id
     form = MakeSharesForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -48,7 +46,6 @@ def makePairs():
     position.user_id = user_id
 
     userPosition = Position.query.filter_by(user_id=user_id, market_id=position.market_id).first()
-    # print(userPosition,f"\n\n\n\n\n\n","userposition",f"\n\n\n\n\n\n")
     if userPosition is None:
         db.session.add(position)
     else:
@@ -56,9 +53,9 @@ def makePairs():
         userPosition.no_shares += position.yes_shares
 
     user = User.query.filter_by(id=user_id).first()
-    # print(user)
+    market = Market.query.filter_by(id=position.market_id).first()
+    market.is_in_play = True
     user.funds = user.funds - position.yes_shares
-    # print(f"\n\n\n\n\n")
 
     db.session.commit()
 
