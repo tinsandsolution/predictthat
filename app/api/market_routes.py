@@ -10,7 +10,7 @@ market_routes = Blueprint('markets', __name__)
 @market_routes.route('')
 def markets():
     # print(f"blah\n\n\n\n")
-    print(f"market routes\n\n\n\n\n")
+    # print(f"market routes\n\n\n\n\n")
     markets = Market.query.all()
     return {'markets': [market.to_dict() for market in markets]}
 
@@ -18,7 +18,7 @@ def markets():
 @market_routes.route('',  methods=['POST'])
 @login_required
 def makeMarket():
-    print("blah")
+    # print("blah")
 
     manager_id = current_user.id
     form = MakeMarketForm()
@@ -31,36 +31,37 @@ def makeMarket():
     db.session.add(market)
     db.session.commit()
 
-    print(request.cookies,f"\n\n\n\n")
+    # print(request.cookies,f"\n\n\n\n")
     return { "market" : market.to_dict()}
 
 @market_routes.route('/makepairs',  methods=['POST'])
 @login_required
 def makePairs():
-    print(f"dsfasdfdsfasdfs\n\n\n\n\n", flush=True)
+    print(f"dsfasdfdsfasdfs\n\n\n\n\n")
 
     user_id = current_user.id
     form = MakeSharesForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    # userPosition = Position.query.filter_by(user_id=user_id).first()
-    # print(userPosition,f"\n\n\n\n\n\n")
     position = Position()
     form.populate_obj(position)
     position.user_id = user_id
 
-    # print(position.no_shares,f"\n\n\n\n\n")
+    userPosition = Position.query.filter_by(user_id=user_id, market_id=position.market_id).first()
+    # print(userPosition,f"\n\n\n\n\n\n","userposition",f"\n\n\n\n\n\n")
+    if userPosition is None:
+        db.session.add(position)
+    else:
+        userPosition.yes_shares += position.yes_shares
+        userPosition.no_shares += position.yes_shares
+
     user = User.query.filter_by(id=user_id).first()
     # print(user)
-    user.funds = user.funds - position.no_shares
+    user.funds = user.funds - position.yes_shares
     # print(f"\n\n\n\n\n")
 
-
-
-    db.session.add(position)
     db.session.commit()
 
-    # print(request.cookies,f"\n\n\n\n")
     return { "New User Funds" : user.funds }, 200
 
 

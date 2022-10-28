@@ -23,7 +23,7 @@ def authenticate():
     """
     Authenticates a user.
     """
-    print(f"authentication\n\n\n\n\n")
+    # print(f"authentication\n\n\n\n\n")
 
     # print(f"fasdfasdfsad\n\n\n\n\n\n")
     if current_user.is_authenticated:
