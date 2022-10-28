@@ -6,8 +6,8 @@ class Position(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id", ondelete="CASCADE"))
     market_id = db.Column(db.Integer,db.ForeignKey("markets.id", ondelete="CASCADE"))
-    yes_shares = db.Column(db.Integer)
-    no_shares = db.Column(db.Integer)
+    yes_shares = db.Column(db.Integer, nullable=False)
+    no_shares = db.Column(db.Integer,  nullable=False)
 
     #relationships
     user = db.relationship("User", back_populates="positions")

@@ -41,3 +41,8 @@
 .no-open-orders-yet {
     font-size: 2vw;
 }
+
+.single-market-resolved {
+    font-size: 125%;
+    font-weight: 600;
+}

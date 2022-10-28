@@ -37,6 +37,7 @@ class Market(db.Model):
             'is_open' : self.is_open,
             "positions" : [i.to_dict() for i in self.positions],
             "sellOrders" : [i.to_dict() for i in self.sellOrders],
+            "outcome_yes" : self.outcome_yes
             # "buyOrders" : [i.to_dict() for i in self.buyOrders]
         }
 

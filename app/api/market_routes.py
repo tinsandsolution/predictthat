@@ -1,6 +1,7 @@
+from turtle import pos
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import db, User, Market, Position
+from app.models import db, User, Market, Position, SellOrder
 from ..forms.market_forms import MakeMarketForm, MakeSharesForm, ResolveMarketForm
 import sys
 
@@ -77,7 +78,43 @@ def resolveMarket():
 
     db.session.commit()
 
-    return { "Success" : "Market Has Resolved Successfully" }, 200
+    settlePositions(uh_market.market_id,uh_market.outcome_yes)
+
+    return { "Success" : "Market Has Resolved Successfully, and positions have been settled." }, 200
+
+def settlePositions(market_id, outcome_yes):
+    # so we need to close all relevant positions, which involves querying all the positions
+    positions = Position.query.filter_by(market_id = market_id).all()
+
+    # now we basically need to iterate through this list
+    for position in positions:
+        # we're going to grab three things, user_id, yes_shares, no_shares
+        user_id = position.user_id
+        yes_shares = position.yes_shares
+        no_shares = position.no_shares
+
+        user = User.query.filter_by(id= user_id).first()
+        if outcome_yes: user.funds + yes_shares
+        else: user.funds + no_shares
+
+        db.session.delete(position)
+        pass
+
+    # and then we need to close orders
+    sellOrders = SellOrder.query.filter_by(market_id = market_id).all()
+    for sellOrder in sellOrders:
+        user_id = sellOrder.user_id
+        is_yes = False
+        if outcome_yes: is_yes = True
+
+        if sellOrder.is_yes == is_yes:
+            user = User.query.filter_by(id= user_id).first()
+            user.funds = user.funds + sellOrder.quantity - sellOrder.quantity_filled
+
+        db.session.delete(sellOrder)
+
+    db.session.commit()
+    return None
 
 
 # @user_routes.route('/<int:id>/bankroll')

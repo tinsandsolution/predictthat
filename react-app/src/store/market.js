@@ -66,6 +66,7 @@ export const resolveMarket = (outcome, market_id) => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
+    dispatch(authenticate())
     return data
   }
   return {"yes" :"yes"}

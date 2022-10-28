@@ -102,6 +102,11 @@
     /* border: 1px solid blue; */
 }
 
+.featured-none-at-all-but-close {
+    color: red;
+}
+
+
 .featured-card-title {
     font-weight: 600;
     font-size: 75%;

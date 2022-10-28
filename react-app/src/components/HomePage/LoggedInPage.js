@@ -29,9 +29,14 @@ const LoggedInPage = () => {
                     </>
                 )
 
-                if (market.yes_value === 0 && market.no_value === 0) {
+                if (market.is_in_play === false) {
                     yesno = (
-                        <div className="rest-none-at-all">No Bets Yet</div>
+                        <div className="featured-none-at-all">No Bets Yet</div>
+                    )
+                }
+                if (market.is_open === false) {
+                    yesno = (
+                        <div className="featured-none-at-all-but-close">Resolved</div>
                     )
                 }
 
@@ -72,9 +77,14 @@ const LoggedInPage = () => {
                     </>
                 )
 
-                if (market.yes_value === 0 && market.no_value === 0) {
+                if (market.is_in_play === false) {
                     yesno = (
                         <div className="featured-none-at-all">No Bets Yet</div>
+                    )
+                }
+                if (market.is_open === false) {
+                    yesno = (
+                        <div className="featured-none-at-all-but-close">Resolved</div>
                     )
                 }
 
