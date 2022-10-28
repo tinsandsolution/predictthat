@@ -25,4 +25,16 @@
 
 .buy-shares-data {
     display: flex;
+    width: 100%;
+}
+
+.buy-shares-data-left {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.buy-shares-data-right {
+    width: 50%;
+    padding-left: 1%;
 }

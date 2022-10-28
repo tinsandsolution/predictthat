@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import './LoggedInPage.css'
 import { useHistory } from 'react-router-dom';
+import { properYesNo } from "../../utils/properYesNo";
 
 const LoggedInPage = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -22,12 +23,7 @@ const LoggedInPage = () => {
 
                 // let i = 1
 
-                let yesno = (
-                    <>
-                        <div className='splash-yes'> Yes {market.yes_value}¢</div>
-                        <div className='splash-no'> No {market.no_value}¢</div>
-                    </>
-                )
+                let yesno = properYesNo(market)
 
                 if (market.is_in_play === false) {
                     yesno = (
@@ -70,12 +66,7 @@ const LoggedInPage = () => {
 
                 const i = markets.findIndex((ele) => ele === market)
 
-                let yesno = (
-                    <>
-                        <div className='splash-yes'> Yes {market.yes_value}¢</div>
-                        <div className='splash-no'> No {market.no_value}¢</div>
-                    </>
-                )
+                let yesno = properYesNo(market)
 
                 if (market.is_in_play === false) {
                     yesno = (
