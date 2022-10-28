@@ -23,6 +23,9 @@ def authenticate():
     """
     Authenticates a user.
     """
+    print(f"authentication\n\n\n\n\n")
+
+    # print(f"fasdfasdfsad\n\n\n\n\n\n")
     if current_user.is_authenticated:
         return current_user.to_dict()
     return {'errors': ['Unauthorized']}
@@ -33,6 +36,8 @@ def login():
     """
     Logs a user in
     """
+    print(f"login\n\n\n\n\n")
+
     form = LoginForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
