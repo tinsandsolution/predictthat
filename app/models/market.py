@@ -12,8 +12,8 @@ class Market(db.Model):
     expected_resolution_time = db.Column(db.DateTime)
     is_open = db.Column(db.Boolean, server_default="true", nullable=False)
     is_in_play = db.Column(db.Boolean, server_default="false", nullable=False)
-    yes_value = db.Column(db.Float, nullable=False, server_default="0")
-    no_value = db.Column(db.Float, nullable=False, server_default="0")
+    outcome_yes = db.Column(db.Boolean)
+
 
     #relationships
     manager = db.relationship("User", back_populates="markets", lazy=False)
