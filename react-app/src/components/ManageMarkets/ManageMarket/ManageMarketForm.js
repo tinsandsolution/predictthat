@@ -37,7 +37,7 @@ const ManageMarketForm = ({setShowModal, market}) => {
 
     //
     else {
-      const data = await dispatch(modifyMarket({title, short_title, description, image_url}));
+      const data = await dispatch(modifyMarket({title, short_title, description, image_url}, market.id));
       setShowModal(false)
       return history.push('/yourmarkets')
     }
@@ -62,7 +62,7 @@ const ManageMarketForm = ({setShowModal, market}) => {
 
   return (
     <form className="modal-form create-market-modal-form" onSubmit={onSubmitMarket}>
-      <div className='form-title'> Manage Market </div>
+      <div className='form-title'> Manage Market</div>
       <div className='modal-errors'>
         {errors.map((error, ind) => (
           <div className="modal-form-error" key={ind}>{error}</div>

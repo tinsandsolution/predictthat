@@ -35,6 +35,23 @@ def makeMarket():
     # print(request.cookies,f"\n\n\n\n")
     return { "market" : market.to_dict()}
 
+@market_routes.route('/<int:id>',  methods=['PUT'])
+@login_required
+def modifyMarket(id):
+    # print("blah")
+
+    form = MakeMarketForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    market = Market.query.filter_by(id=id).first()
+    form.populate_obj(market)
+
+    db.session.add(market)
+    db.session.commit()
+
+    # print(request.cookies,f"\n\n\n\n")
+    return { "market" : market.to_dict()}
+
 @market_routes.route('/makepairs',  methods=['POST'])
 @login_required
 def makePairs():

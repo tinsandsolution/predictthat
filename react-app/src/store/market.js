@@ -48,8 +48,8 @@ export const createMarket = (marketData) => async (dispatch) => {
   }
 }
 
-export const modifyMarket = (marketData) => async (dispatch) => {
-  const response = await fetch('/api/markets', {
+export const modifyMarket = (marketData,market_id) => async (dispatch) => {
+  const response = await fetch(`/api/markets/${market_id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(marketData),
