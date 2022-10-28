@@ -48,6 +48,22 @@ export const createMarket = (marketData) => async (dispatch) => {
   }
 }
 
+export const resolveMarket = (marketData) => async (dispatch) => {
+  console.log(marketData)
+
+  return {"hey" : "hey"}
+  // const response = await fetch('/api/markets', {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify(marketData),
+  // });
+  // if (response.ok) {
+  //   const data = await response.json();
+  //   dispatch(getAllMarkets())
+  //   return data
+  // }
+}
+
 export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
   // console.log("fasdfasdfsda")
   // console.log("fasdfasdfsda")

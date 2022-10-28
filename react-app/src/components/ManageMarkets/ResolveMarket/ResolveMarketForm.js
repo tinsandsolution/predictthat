@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createMarket } from '../../../store/market';
+import { resolveMarket } from '../../../store/market';
 
 const ResolveMarketForm = ({setShowModal, market}) => {
   const dispatch = useDispatch();
@@ -12,9 +12,9 @@ const ResolveMarketForm = ({setShowModal, market}) => {
   // const user = useSelector(state => state.session.user);
   const onSubmitMarket = async (e) => {
     e.preventDefault();
-    const data = await dispatch(createMarket({}));
+    const data = await dispatch(resolveMarket(outcome));
     setShowModal(false)
-    return history.push('/yourmarkets')
+    return history.push('/markets/' + market.id)
   };
 
   return (
