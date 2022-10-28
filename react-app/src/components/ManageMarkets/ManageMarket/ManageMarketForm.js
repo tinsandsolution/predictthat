@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { modifyMarket } from '../../../store/market';
+import { modifyMarket, deleteMarket } from '../../../store/market';
 
 const ManageMarketForm = ({setShowModal, market}) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [confirmDelete, setConfirmDelete] = useState(false)
 
   const [errors, setErrors] = useState([]);
 
@@ -43,6 +44,13 @@ const ManageMarketForm = ({setShowModal, market}) => {
     }
   };
 
+  const onDeleteMarket = async (e) => {
+    // e.preventDefault();
+    const data = await dispatch(deleteMarket(market.id));
+    setShowModal(false)
+    return history.push('/yourmarkets')
+  };
+
   const updateTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -61,6 +69,7 @@ const ManageMarketForm = ({setShowModal, market}) => {
 
 
   return (
+    <>
     <form className="modal-form create-market-modal-form" onSubmit={onSubmitMarket}>
       <div className='form-title'> Manage Market</div>
       <div className='modal-errors'>
@@ -109,7 +118,14 @@ const ManageMarketForm = ({setShowModal, market}) => {
         />
       </div>
       <button className="black-button button-margin" type='submit'>Edit Market</button>
+      {
+        !confirmDelete ?
+                       <div className='black-button button-margin-2 div-modifier-button' type='notsubmit' onClick={()=>setConfirmDelete(true)}> Delete Market </div>
+                       :
+                       <div className='red-button button-margin-2 div-modifier-button' type='notsubmit' onClick={()=>onDeleteMarket()}> Confirm Delete </div>
+      }
     </form>
+    </>
   );
 };
 

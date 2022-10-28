@@ -52,6 +52,19 @@ def modifyMarket(id):
     # print(request.cookies,f"\n\n\n\n")
     return { "market" : market.to_dict()}
 
+@market_routes.route('/<int:id>',  methods=['DELETE'])
+@login_required
+def deleteMarket(id):
+    # print("blah")
+
+    market = Market.query.filter_by(id=id).first()
+
+    db.session.delete(market)
+    db.session.commit()
+
+    # print(request.cookies,f"\n\n\n\n")
+    return { "Market" : "Market Deleted Successfully"}
+
 @market_routes.route('/makepairs',  methods=['POST'])
 @login_required
 def makePairs():

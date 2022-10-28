@@ -61,6 +61,17 @@ export const modifyMarket = (marketData,market_id) => async (dispatch) => {
   }
 }
 
+export const deleteMarket = (market_id) => async (dispatch) => {
+  const response = await fetch(`/api/markets/${market_id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    return data
+  }
+}
+
 export const resolveMarket = (outcome, market_id) => async (dispatch) => {
 
   let marketData = { "is_open" : "false", "market_id" : market_id}
