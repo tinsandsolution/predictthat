@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField
+from wtforms import StringField, IntegerField, BooleanField
 # from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Market, Position
 
@@ -25,6 +25,13 @@ class MakeSharesForm(FlaskForm):
     yes_shares = IntegerField('yes_shares')
     no_shares = IntegerField('no_shares')
 
+class ResolveMarketForm(FlaskForm):
+    # is_open
+    # outcome_yes
+
+    market_id = IntegerField('market_id')
+    is_open = BooleanField('is_open')
+    outcome_yes = BooleanField('outcome_yes')
 
 
 # def user_exists(form, field):

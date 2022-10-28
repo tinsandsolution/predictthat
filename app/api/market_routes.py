@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Market, Position
-from ..forms.market_forms import MakeMarketForm, MakeSharesForm
+from ..forms.market_forms import MakeMarketForm, MakeSharesForm, ResolveMarketForm
 import sys
 
 market_routes = Blueprint('markets', __name__)
@@ -60,6 +60,24 @@ def makePairs():
     db.session.commit()
 
     return { "New User Funds" : user.funds }, 200
+
+@market_routes.route('/resolve',  methods=['POST'])
+@login_required
+def resolveMarket():
+    user_id = current_user.id
+    form = ResolveMarketForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    uh_market = Market()
+    form.populate_obj(uh_market)
+
+    market = Market.query.filter_by(id=uh_market.market_id).first()
+    market.is_open = uh_market.is_open
+    market.outcome_yes = uh_market.outcome_yes
+
+    db.session.commit()
+
+    return { "Success" : "Market Has Resolved Successfully" }, 200
 
 
 # @user_routes.route('/<int:id>/bankroll')

@@ -12,7 +12,7 @@ const ResolveMarketForm = ({setShowModal, market}) => {
   // const user = useSelector(state => state.session.user);
   const onSubmitMarket = async (e) => {
     e.preventDefault();
-    const data = await dispatch(resolveMarket(outcome));
+    const data = await dispatch(resolveMarket(outcome, market.id));
     setShowModal(false)
     return history.push('/markets/' + market.id)
   };

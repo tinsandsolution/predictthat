@@ -48,20 +48,27 @@ export const createMarket = (marketData) => async (dispatch) => {
   }
 }
 
-export const resolveMarket = (marketData) => async (dispatch) => {
-  console.log(marketData)
+export const resolveMarket = (outcome, market_id) => async (dispatch) => {
 
-  return {"hey" : "hey"}
-  // const response = await fetch('/api/markets', {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify(marketData),
-  // });
-  // if (response.ok) {
-  //   const data = await response.json();
-  //   dispatch(getAllMarkets())
-  //   return data
-  // }
+  let marketData = { "is_open" : "false", "market_id" : market_id}
+  if (outcome === "yes") {
+    marketData["outcome_yes"] = "true"
+  }
+  else {
+    marketData["outcome_yes"] = "false"
+  }
+
+  const response = await fetch('/api/markets/resolve', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(marketData),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    return data
+  }
+  return {"yes" :"yes"}
 }
 
 export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
