@@ -41,7 +41,9 @@ const LoggedInPage = () => {
                     <div className='rest-card'>
                         <div className="rest-card-left">
                             <div className='rest-card-title'> {market["short_title"]} </div>
-                            <div className='rest-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
+                            {/* <div className='rest-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div> */}
+                            <div className='rest-card-resolves'> {market.is_open === true ? "Ongoing" : ""} </div>
+
                             <div className='rest-yes-no'>
                                 {yesno}
                             </div>
@@ -85,7 +87,9 @@ const LoggedInPage = () => {
                         <img className='featured-card-image' alt="" src={market["image_url"]} onError={e => { e.currentTarget.src = "https://i.imgur.com/v4C8Lvf.png"; }}></img>
                         <div className={i !== 3 ? "featured-card-right" : "featured-card-right nb"}>
                             <div className='featured-card-title'> {market["short_title"]} </div>
-                            <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div>
+                            {/* <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div> */}
+                            <div className='featured-card-resolves'> {market.is_open === true ? "Ongoing" : ""} </div>
+
                             <div className='featured-yes-no'>
                                 {yesno}
                             </div>
