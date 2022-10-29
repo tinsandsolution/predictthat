@@ -3,11 +3,14 @@ import './OrderBook.css'
 import BuySharesModalButton from './BuySharesModal/BuySharesModal'
 
 const OrderBook = ({market}) => {
-    const yesOrders = market.sellOrders.filter(order=> order.is_yes === true )
-    const noOrders = market.sellOrders.filter(order=> order.is_yes === false )
+    let yesOrders = market.sellOrders.filter(order=> order.is_yes === true )
+    yesOrders.sort((a,b) => a.price - b.price)
+    let noOrders = market.sellOrders.filter(order=> order.is_yes === false )
+    noOrders.sort((a,b) => a.price - b.price)
 
 
     return (
+        <>
         <div className="order-book">
             {/* in here, you want to view all the sell offers for "yes" */}
             <div className="buy-yes">
@@ -27,8 +30,9 @@ const OrderBook = ({market}) => {
                     )
                 })}
             </div>
-            {/* {market.is_in_play ? "hayd" : <div className="no-open-orders-yet">No Open Orders Yet</div>} */}
         </div>
+        {market.is_in_play ? "" : <div className="no-open-orders-yet">No Open Orders Yet</div>}
+        </>
     )
 }
 

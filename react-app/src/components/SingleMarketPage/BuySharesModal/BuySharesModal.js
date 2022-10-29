@@ -3,7 +3,7 @@ import { Modal } from "../../../context/Modal"
 import './BuyShares.css'
 
 import { makeProperCents } from "../../../utils/properPrice";
-// import BuySharesForm from "./BuySharesForm";
+import BuySharesForm from "./BuySharesForm";
 
 function BuySharesModalButton({order, isYes}) {
     const [showModal, setShowModal] = useState(false)
@@ -25,7 +25,7 @@ function BuySharesModalButton({order, isYes}) {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     hay
-                    {/* <CreateSharesForm setShowModal={setShowModal} market_id={market_id} /> */}
+                    <BuySharesForm setShowModal={setShowModal} order={order} />
                 </Modal>
             )}
         </>

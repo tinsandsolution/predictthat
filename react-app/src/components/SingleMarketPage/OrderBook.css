@@ -1,7 +1,7 @@
 .order-book {
     width: 100%;
     /* border: 1px solid blue; */
-    min-height: 100px;
+    /* min-height: 100px; */
     display: flex;
 
 }
@@ -43,4 +43,15 @@
     color: #AA00FF;
     font-weight: 600;
     user-select: none;
+}
+.no-open-orders-yet {
+    font-size: 2vw;
+    border-bottom: 2px solid gainsboro;
+    /* border-top: 1px solid black; */
+    width: 100%;
+    display: flex;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    justify-content: center;
+    align-items: center;
 }
