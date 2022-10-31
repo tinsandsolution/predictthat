@@ -146,21 +146,34 @@ def settlePositions(market_id, outcome_yes):
     db.session.commit()
     return None
 
-# @market_routes.route('/<int:id>/orders',  methods=['POST'])
-# @login_required
-# def createOrder(id):
-#     print(f"\n\n\n\ndfdfd\n\n\n")
-#     form = OrderForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+@market_routes.route('/<int:id>/orders',  methods=['POST'])
+@login_required
+def createOrder(id):
+    # print(f"\n\n\n\ndfdfd\n\n\n")
+    user_id = current_user.id
 
-#     order = SellOrder.query.filter_by(id=id).first()
-#     form.populate_obj(order)
+    form = OrderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     db.session.add(order)
-#     db.session.commit()
+    order = SellOrder()
+    form.populate_obj(order)
+    order.user_id = user_id
+    order.quantity_filled = 0
 
-#     # print(request.cookies,f"\n\n\n\n")
-#     return { "order" : order.to_dict()}
+    db.session.add(order)
+
+    userPosition = Position.query.filter_by(user_id=user_id, market_id=id).first()
+    if order.is_yes is True:
+        userPosition.yes_shares -= order.quantity
+    else:
+        userPosition.no_shares -= order.quantity
+
+
+
+    db.session.commit()
+
+    # print(request.cookies,f"\n\n\n\n")
+    return { "order" : order.to_dict()}
 
 
 # @user_routes.route('/<int:id>/bankroll')
