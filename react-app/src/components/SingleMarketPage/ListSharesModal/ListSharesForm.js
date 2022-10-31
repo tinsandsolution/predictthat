@@ -17,7 +17,7 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
   const onSubmitMarket = async (e) => {
     e.preventDefault();
     let errors = [];
-
+    console.log(price)
     if (errors.length) setErrors(errors)
     else {
       const data = await dispatch(listSharesAction({isYes, shares, price, market_id}));
@@ -61,6 +61,7 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
           placeholder="0"
           value={shares}
           onChange={updateShares}
+          required={true}
         />
       </div>
       <div className='form-single-data'>
@@ -75,6 +76,7 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
             placeholder="19"
             value={price}
             onChange={updatePrice}
+            required={true}
           />
           <span className='price-cents-input-add'>¢</span>
         </div>
