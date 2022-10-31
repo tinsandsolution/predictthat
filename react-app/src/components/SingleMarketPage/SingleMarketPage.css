@@ -31,7 +31,7 @@
 .single-market-bottom {
     width: 100%;
     min-height: 50px;
-    /* border: 1px solid blue; */
+    /* border: 1px solid green; */
     display: flex;
     flex-direction: column;
     /* justify-content: center; */

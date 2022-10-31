@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
+import ListShares from "./ListSharesModal/ListSharesModal";
 import OrderBook from "./OrderBook";
 
 const SingleMarketPage = () => {
@@ -47,6 +48,7 @@ const SingleMarketPage = () => {
             <div className="single-market-bottom">
                 <div className="single-market-title"> Order Book </div>
                 <OrderBook market={market} />
+                <ListShares market={market} />
             </div>
         </div>
     )

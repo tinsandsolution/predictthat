@@ -1,0 +1,47 @@
+.single-market-list-shares {
+    /* border: 1px solid black; */
+    width: 100%;
+    display: flex;
+}
+
+.sell-yes-section, .sell-no-section {
+    width: 50%;
+    /* border: 1px solid black; */
+    display: flex;
+    aspect-ratio: 20/1;
+
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgba(220, 220, 220, 0.61);
+    font-weight: 600;
+    /* border-radius: 10px; */
+
+}
+
+.sell-section:hover {
+    background-color: rgba(220, 220, 220, 0.37);
+
+}
+
+.sell-yes-section{
+    color: #265CFF;
+    border-right: 1px solid rgba(220, 220, 220, 0.678);
+}
+
+.sell-no-section {
+    color: #AA00FF;
+}
+
+#input-price {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 10%;
+    font-size: 1.2vw;
+    /* width: 10px; */
+}
+
+.price-cents-input-add{
+    font-size: 1.2vw;
+    /* color: red; */
+}
