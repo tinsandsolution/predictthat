@@ -20,7 +20,9 @@ const setMarkets = (markets) => ({
 const initialState = { };
 
 export const getAllMarkets = () => async (dispatch) => {
-  const response = await fetch('/api/markets');
+  const response = await fetch('/api/markets',{
+    method: "GET"
+  });
   if (response.ok) {
     const data = await response.json();
     if (data.errors) {
@@ -119,7 +121,7 @@ export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
 
 export const listSharesAction = ({isYes, shares, price, market_id}) => async (dispatch) => {
 
-  const response = await fetch(`/api/markets/{market_id}/orders`, {
+  const response = await fetch(`/api/markets/${market_id}/orders`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
