@@ -117,6 +117,25 @@ export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
   }
 }
 
+export const listSharesAction = ({isYes, shares, price, market_id}) => async (dispatch) => {
+
+  const response = await fetch('/api/markets/makepairs', {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      "market_id" : market_id,
+      "quantity" : shares,
+      "price" : price/100
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    // console.log(data)
+    return data
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_MARKETS:

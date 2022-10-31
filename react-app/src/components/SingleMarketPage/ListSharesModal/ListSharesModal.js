@@ -39,7 +39,7 @@ function ListShares({market}) {
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     hay
-                    <ListSharesForm setShowModal={setShowModal} isYes={isYes} availableShares={availableShares} />
+                    <ListSharesForm setShowModal={setShowModal} isYes={isYes} availableShares={availableShares} market={market} />
                 </Modal>
             )}
         </>

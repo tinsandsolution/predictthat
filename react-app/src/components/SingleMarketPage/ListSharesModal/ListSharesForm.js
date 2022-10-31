@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
-const ListSharesForm = ({setShowModal, isYes, availableShares}) => {
+import { listSharesAction } from '../../../store/market';
+const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
   // console.log(market_id)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
+
+  const market_id = market.id
 
   const [errors, setErrors] = useState([]);
   const [shares, setShares] = useState()
@@ -15,12 +17,10 @@ const ListSharesForm = ({setShowModal, isYes, availableShares}) => {
   const onSubmitMarket = async (e) => {
     e.preventDefault();
     let errors = [];
-    // if (parseInt(pairs) <= 0) errors.push("You cannot create less than one pair.")
-    // if (parseInt(pairs) > Math.floor(parseInt(sessionUser.funds))) errors.push("You do not have enough money in your account.")
 
     if (errors.length) setErrors(errors)
     else {
-      // const data = await dispatch(createSharesAction({pairs,market_id}));
+      const data = await dispatch(listSharesAction({isYes, shares, price, market_id}));
       setShowModal(false)
       // return history.push('/yourmarkets')
     }
