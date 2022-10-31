@@ -2,14 +2,14 @@ from turtle import pos
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Market, Position, SellOrder
-# from ..forms.market_forms import MakeMarketForm, MakeSharesForm, ResolveMarketForm, OrderForm
+from ..forms.market_forms import EditOrderForm
 import sys
-
+import time
 order_routes = Blueprint('orders', __name__)
 
 @order_routes.route('/<int:id>',  methods=['DELETE'])
 @login_required
-def deleteMarket(id):
+def deleteOrder(id):
     order = SellOrder.query.filter_by(id=id).first()
 
     to_credit = order.quantity - order.quantity_filled
@@ -31,19 +31,35 @@ def deleteMarket(id):
 
 
 
-# @order_routes.route('/<int:id>',  methods=['PUT'])
-# @login_required
-# def modifyMarket(id):
-#     # print("blah")
+@order_routes.route('/<int:id>',  methods=['PUT'])
+@login_required
+def modifyOrder(id):
+    form = EditOrderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     form = MakeMarketForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+    # so you can either change the price or the quantity of the order.
+    # if you increase the price of the order, it's pretty simple - just modify it.
+    # if you change the quantity of the order, you're going to have to do some math with some positions.
 
-#     market = Market.query.filter_by(id=id).first()
-#     form.populate_obj(market)
+    order = SellOrder.query.filter_by(id=id).first()
+    position = Position.query.filter_by(user_id = order.user_id, market_id = order.market_id).first()
 
-#     db.session.add(market)
-#     db.session.commit()
+    oldQuantity = order.quantity # say it's 5
+    form.populate_obj(order)
+    db.session.add(order)
+    db.session.commit()
 
-#     # print(request.cookies,f"\n\n\n\n")
-#     return { "market" : market.to_dict()}
+    order = SellOrder.query.filter_by(id=id).first()
+    newQuantity = order.quantity # say it's 3
+
+    delta = oldQuantity - newQuantity # so it's 2
+    # we're going to add this delta to the current position
+    if order.is_yes: position.yes_shares += delta
+    else: position.no_shares += delta
+
+
+    db.session.add(order)
+    db.session.add(position)
+    db.session.commit()
+
+    return { "order" : order.to_dict()}

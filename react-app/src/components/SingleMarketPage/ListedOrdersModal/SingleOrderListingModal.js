@@ -8,9 +8,22 @@ import { makeProperCents } from "../../../utils/properPrice";
 import BuySharesForm from "./BuySharesForm";
 import ManageSharesForm from "./ManageSharesForm";
 
-function SingleListedOrderModalButton({order, isYes, orders}) {
+function SingleListedOrderModalButton({order, isYes, orders, market}) {
     const [showModal, setShowModal] = useState(false)
     const sessionUser = useSelector((state) => state.session.user);
+
+    const position = market.positions.filter(position => position.user_id === sessionUser.id)[0]
+    let sharesAvailable = null
+    if (isYes) sharesAvailable = position.yes_shares
+    else sharesAvailable = position.no_shares
+
+
+
+
+    console.log(position)
+
+
+
     const belongsToUser = sessionUser.id === order.user_id
 
     // console.log(market_id)
@@ -46,7 +59,7 @@ function SingleListedOrderModalButton({order, isYes, orders}) {
                     {
                         belongsToUser
                             ?
-                                <ManageSharesForm setShowModal={setShowModal} order={order} />
+                                <ManageSharesForm setShowModal={setShowModal} order={order} sharesAvailable={sharesAvailable}/>
                             :
                                 <BuySharesForm setShowModal={setShowModal} order={order} />
                     }
