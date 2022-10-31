@@ -17,7 +17,7 @@ const OrderBook = ({market}) => {
                 <div className="buy-yes-title">Buy Yes - # Available</div>
                 {yesOrders.map(order => {
                     return (
-                        <SingleListedOrderModalButton order={order} isYes={true} />
+                        <SingleListedOrderModalButton order={order} isYes={true} orders={yesOrders}  />
                     )
                 })}
             </div>
@@ -26,7 +26,7 @@ const OrderBook = ({market}) => {
                 <div className="buy-no-title">Buy No - # Available</div>
                 {noOrders.map(order => {
                     return (
-                        <SingleListedOrderModalButton order={order} isYes={false} />
+                        <SingleListedOrderModalButton order={order} isYes={false} orders={noOrders} />
                     )
                 })}
             </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSharesAction} from '../../../store/market'
+import { deleteOrderAction } from '../../../store/market'
 import { makeProperCents } from '../../../utils/properPrice';
 
 const ManageSharesForm = ({setShowModal, order}) => {
@@ -32,15 +32,16 @@ const ManageSharesForm = ({setShowModal, order}) => {
 
   const onDeleteOrder = async (e) => {
     // e.preventDefault();
-    // const data = await dispatch(deleteMarket(market.id));
+    let order_id = order.id
+    const data = await dispatch(deleteOrderAction(order_id));
     setShowModal(false)
     // return history.push('/yourmarkets')
   };
 
-
-  return (
-    <form className="modal-form create-shares-modal-form" onSubmit={onSubmitMarket}>
-      <div className='form-title'> Manage Your Open Order</div>
+  let formData = <></>
+  if (order.quantity_filled === 0) {
+    formData = (
+      <>
       <div className='form-explanation'>
         <ul>
           <li>You have listed {order.quantity} {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) at $.{makeProperCents(order.price)} each.</li>
@@ -56,33 +57,55 @@ const ManageSharesForm = ({setShowModal, order}) => {
         </ul>
       </div>
       <div className='modal-errors'>
-        {errors.map((error, ind) => (
-          <div className="modal-form-error" key={ind}>{error}</div>
-        ))}
-      </div>
-      <div className='form-single-data'>
-        {/*  - {"Max. " + Math.floor(parseInt(sessionUser.funds)) +" Shares"} */}
-        {/* <label htmlFor='pairs'>{order.is_yes ? "\"Yes\"" : "\"No\""} Shares To Purchase</label>
-        <input
-          name='pairs'
-          type='number'
-          min="1"
-          max={Math.floor(parseInt(sessionUser.funds))}
-          // max="100"
-          placeholder=""
-          value={pairs}
-          onChange={updatePairs}
-        /> */}
-      </div>
+      {errors.map((error, ind) => (
+        <div className="modal-form-error" key={ind}>{error}</div>
+      ))}
+    </div>
+    <div className='form-single-data'>
+      {/*  - {"Max. " + Math.floor(parseInt(sessionUser.funds)) +" Shares"} */}
+      {/* <label htmlFor='pairs'>{order.is_yes ? "\"Yes\"" : "\"No\""} Shares To Purchase</label>
+      <input
+        name='pairs'
+        type='number'
+        min="1"
+        max={Math.floor(parseInt(sessionUser.funds))}
+        // max="100"
+        placeholder=""
+        value={pairs}
+        onChange={updatePairs}
+      /> */}
+    </div>
+    <button className="black-button button-margin-3" type='submit'>Confirm Change</button>
+    </>
+    )
 
-      {
-        order.quantity_filled === 0
-          ?
-            <button className="black-button button-margin-3" type='submit'>Confirm Change</button>
-          :
-            ""
-      }
+  }
+  else {
+    formData = (
+      <>
+      <div className='form-explanation'>
+        <ul>
+          <li>You have listed {order.quantity} {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) at $.{makeProperCents(order.price)} each. <span className='green'>{order.quantity_filled}</span> are unsold.</li>
+          <li>
+            This order is partially filled. You are able to delete the rest of the order.
+           </li>
+          <li> Upon deleting, you will be credited with <span className='green'>{order.quantity_filled}</span> {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) to your account. You will immediately be able to re-list them.</li>
+        </ul>
+      </div>
+      <div className='modal-errors'>
+      {errors.map((error, ind) => (
+        <div className="modal-form-error" key={ind}>{error}</div>
+      ))}
+    </div>
+    </>
+    )
+  }
 
+
+  return (
+    <form className="modal-form create-shares-modal-form" onSubmit={onSubmitMarket}>
+      <div className='form-title'> Manage Your Open Order</div>
+      {formData}
       {
         !confirmDelete ?
                        <div className='black-button button-margin div-modifier-button' type='notsubmit' onClick={()=>setConfirmDelete(true)}> Delete Order </div>

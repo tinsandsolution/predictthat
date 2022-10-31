@@ -49,3 +49,7 @@
     /* line-height: 200%; */
     color: red;
 }
+
+.last-share-listing-no-border {
+    border-bottom: none;
+}
