@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, BooleanField
+from wtforms import StringField, IntegerField, BooleanField, FloatField
 # from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Market, Position
 
@@ -32,6 +32,29 @@ class ResolveMarketForm(FlaskForm):
     market_id = IntegerField('market_id')
     is_open = BooleanField('is_open')
     outcome_yes = BooleanField('outcome_yes')
+
+class OrderForm(FlaskForm):
+    # user_id
+    # market_id
+    # quantity
+    # price
+    # quantity_filled
+    # is_fulfilled
+    # order1 = SellOrder(user_id='1',
+    #                    market_id = '1',
+    #                    quantity = "23",
+    #                    price = "0.33",
+    #                    quantity_filled = "5",
+    #                    is_fulfilled = False,
+    #                    is_yes = True)
+
+    user_id = IntegerField('user_id')
+    market_id = IntegerField('market_id')
+    quantity = IntegerField('quantity')
+    price = FloatField('price')
+    # quantity_filled = IntegerField('quantity_filled')
+    # is_fulfilled = BooleanField('is_fulfilled')
+    is_yes = BooleanField('is_yes')
 
 
 # def user_exists(form, field):

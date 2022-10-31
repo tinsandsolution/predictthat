@@ -2,7 +2,7 @@ from turtle import pos
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Market, Position, SellOrder
-from ..forms.market_forms import MakeMarketForm, MakeSharesForm, ResolveMarketForm
+from ..forms.market_forms import MakeMarketForm, MakeSharesForm, ResolveMarketForm, OrderForm
 import sys
 
 market_routes = Blueprint('markets', __name__)
@@ -145,6 +145,22 @@ def settlePositions(market_id, outcome_yes):
 
     db.session.commit()
     return None
+
+@market_routes.route('/<int:id>/orders',  methods=['POST'])
+@login_required
+def createOrder(id):
+    print(f"\n\n\n\ndfdfd\n\n\n")
+    form = OrderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    order = SellOrder.query.filter_by(id=id).first()
+    form.populate_obj(order)
+
+    db.session.add(order)
+    db.session.commit()
+
+    # print(request.cookies,f"\n\n\n\n")
+    return { "order" : order.to_dict()}
 
 
 # @user_routes.route('/<int:id>/bankroll')

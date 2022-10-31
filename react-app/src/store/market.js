@@ -119,13 +119,14 @@ export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
 
 export const listSharesAction = ({isYes, shares, price, market_id}) => async (dispatch) => {
 
-  const response = await fetch('/api/markets/makepairs', {
+  const response = await fetch(`/api/markets/{market_id}/orders`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       "market_id" : market_id,
       "quantity" : shares,
-      "price" : price/100
+      "price" : price/100,
+      "is_yes" : isYes
     }),
   });
   if (response.ok) {
