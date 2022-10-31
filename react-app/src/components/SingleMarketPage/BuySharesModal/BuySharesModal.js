@@ -23,7 +23,7 @@ function BuySharesModalButton({order, isYes}) {
                     <div className="buy-shares-data-right">
                         {order.quantity-order.quantity_filled}
                         {sessionUser.id === order.user_id ?
-                                <span className="buy-shares-but-it-belongs-to-you"> (Your Order) </span>
+                                <div className="buy-shares-but-it-belongs-to-you"> (Your Order) </div>
                             :
                                 ""
                         }
