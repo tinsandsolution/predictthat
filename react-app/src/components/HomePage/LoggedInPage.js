@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import './LoggedInPage.css'
 import { useHistory } from 'react-router-dom';
-import { properYesNo } from "../../utils/properYesNo";
+import { showPrices } from "../../utils/showPrices";
 
 const LoggedInPage = () => {
     const sessionUser = useSelector((state) => state.session.user);
@@ -23,18 +23,7 @@ const LoggedInPage = () => {
 
                 // let i = 1
 
-                let yesno = properYesNo(market)
-
-                if (market.is_in_play === false) {
-                    yesno = (
-                        <div className="featured-none-at-all">No Bets Yet</div>
-                    )
-                }
-                if (market.is_open === false) {
-                    yesno = (
-                        <div className="featured-none-at-all-but-close">Resolved</div>
-                    )
-                }
+                let yesno = showPrices(market)
 
                 return (
                     <div key={market["short_title"]} className='rest-card-wrapper' onClick={()=> history.push("/markets/" + market.id)}>
@@ -68,18 +57,7 @@ const LoggedInPage = () => {
 
                 const i = markets.findIndex((ele) => ele === market)
 
-                let yesno = properYesNo(market)
-
-                if (market.is_in_play === false) {
-                    yesno = (
-                        <div className="featured-none-at-all">No Bets Yet</div>
-                    )
-                }
-                if (market.is_open === false) {
-                    yesno = (
-                        <div className="featured-none-at-all-but-close">Resolved</div>
-                    )
-                }
+                let yesno = showPrices(market)
 
                 return (
                     <div key={market["short_title"]} className='featured-card-wrapper' onClick={()=> history.push("/markets/" + market.id)}>

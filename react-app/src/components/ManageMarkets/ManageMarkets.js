@@ -36,6 +36,12 @@ const ManageMarkets = () => {
                     )
 
                 }
+                if (!market.is_open) {
+                    manageOptions = (
+                        <></>
+                    )
+
+                }
 
                 let inPlay = (
                         <div className="manage-market-status">Trading has not yet begun. You can modify this market.</div>
@@ -44,6 +50,12 @@ const ManageMarkets = () => {
                     inPlay = (
                         <div className="manage-market-status">Trading has already begun. You are only able to resolve this market.</div>
                     )
+                }
+                if (!market.is_open) {
+                    inPlay = (
+                        <div className="manage-market-status"> This market is closed and resolved. </div>
+                    )
+
                 }
 
                 return (

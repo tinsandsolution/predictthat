@@ -7,9 +7,8 @@ const findLowestOffer = (orders) => {
     return makeProperCents(Math.min(...prices))
 }
 
-
-export const properYesNo = (market) => {
-    if (market.sellOrders.length === 0) return <></>
+const properYesNo = (market) => {
+    if (market.sellOrders.length === 0) return "No Sell Orders"
 
     const sellOrders = market.sellOrders
 
@@ -22,4 +21,24 @@ export const properYesNo = (market) => {
             <div className='splash-no'> No {findLowestOffer(noShares)}¢</div>
         </>
     )
+}
+
+
+export const showPrices = (market) => {
+    let yesno = properYesNo(market)
+
+    if (yesno === "No Sell Orders") {
+        yesno = (
+            <div className="featured-none-at-all">No Bets Yet</div>
+        )
+    }
+
+    if (market.is_open === false) {
+        yesno = (
+            <div className="featured-none-at-all-but-close">Resolved</div>
+        )
+    }
+
+    return yesno
+
 }

@@ -12,6 +12,8 @@ class Market(db.Model):
     expected_resolution_time = db.Column(db.DateTime)
     is_open = db.Column(db.Boolean, server_default="true", nullable=False)
     is_in_play = db.Column(db.Boolean, server_default="false", nullable=False)
+    yes_value = db.Column(db.Float, nullable=False, server_default="0")
+    no_value = db.Column(db.Float, nullable=False, server_default="0")
     outcome_yes = db.Column(db.Boolean)
 
 
@@ -37,7 +39,9 @@ class Market(db.Model):
             'is_open' : self.is_open,
             "positions" : [i.to_dict() for i in self.positions],
             "sellOrders" : [i.to_dict() for i in self.sellOrders],
-            "outcome_yes" : self.outcome_yes
+            "outcome_yes" : self.outcome_yes,
+            'yes_value' : self.yes_value,
+            'no_value' : self.no_value,
             # "buyOrders" : [i.to_dict() for i in self.buyOrders]
         }
 
