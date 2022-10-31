@@ -38,3 +38,9 @@
     width: 50%;
     padding-left: 1%;
 }
+
+.buy-shares-but-it-belongs-to-you {
+    font-size: .7vw;
+    margin-left: 1%;
+    color: red;
+}

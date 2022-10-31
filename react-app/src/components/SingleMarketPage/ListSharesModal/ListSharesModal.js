@@ -13,6 +13,7 @@ function ListShares({market}) {
 
 
     let position = market.positions.filter(position => position.user_id === sessionUser.id)[0]
+    if (!position) return <></>
 
     return (
         <>

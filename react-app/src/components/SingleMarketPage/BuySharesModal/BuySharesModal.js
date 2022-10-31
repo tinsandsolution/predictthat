@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import { useSelector } from "react-redux";
+
 import { Modal } from "../../../context/Modal"
 import './BuyShares.css'
 
@@ -7,6 +9,8 @@ import BuySharesForm from "./BuySharesForm";
 
 function BuySharesModalButton({order, isYes}) {
     const [showModal, setShowModal] = useState(false)
+    const sessionUser = useSelector((state) => state.session.user);
+
     // console.log(market_id)
 
     return (
@@ -18,13 +22,17 @@ function BuySharesModalButton({order, isYes}) {
                     </div>
                     <div className="buy-shares-data-right">
                         {order.quantity-order.quantity_filled}
+                        {sessionUser.id === order.user_id ?
+                                <span className="buy-shares-but-it-belongs-to-you"> (Your Order) </span>
+                            :
+                                ""
+                        }
                     </div>
 
                 </div>
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    hay
                     <BuySharesForm setShowModal={setShowModal} order={order} />
                 </Modal>
             )}
