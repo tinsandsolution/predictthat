@@ -1,5 +1,5 @@
 .create-shares-modal-form {
-    /* width: 60%; */
+    width: 30%;
 }
 
 .create-shares-modal-button {
@@ -17,4 +17,11 @@
 
 .create-shares-modal-button:hover {
     background-color: rgba(0, 128, 0, 0.685);
+}
+
+.out-of-funds {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    margin: 2% 0% 2% 0%;
 }

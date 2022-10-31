@@ -14,7 +14,7 @@ const ManageMarkets = () => {
     const dispatch = useDispatch();
     let markets = useSelector((state) => state.markets)
     markets = markets.filter((market) => market.manager_id === sessionUser.id)
-
+    markets.sort((a,b) => b["id"] - a["id"])
     useEffect(() => {
       (async() => {
         await dispatch(getAllMarkets());

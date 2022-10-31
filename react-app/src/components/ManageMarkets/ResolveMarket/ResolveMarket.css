@@ -3,11 +3,16 @@
 }
 
 .resolve-market-button {
-    background-color: black;
-    color: white;
+    background: rgb(38,92,255);
+    background: linear-gradient(153deg, rgba(38,92,255,1) 0%, rgba(34,34,34,1) 63%, rgba(170,0,255,1) 100%);    color: white;
     border-radius: 5px;
     font-size: 1vw;
     padding: 1% 2% 1% 2%;
+}
+
+.manage-market-button {
+    background: black;
+
 }
 
 .resolve-single-data {

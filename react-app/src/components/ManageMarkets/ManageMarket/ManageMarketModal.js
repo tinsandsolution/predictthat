@@ -8,7 +8,7 @@ function ManageMarketModalButton({market}) {
 
     return (
         <>
-            <div className="resolve-market-button" onClick={()=> setShowModal(true)}>
+            <div className="resolve-market-button manage-market-button" onClick={()=> setShowModal(true)}>
                     Modify Market
             </div>
             {showModal && (

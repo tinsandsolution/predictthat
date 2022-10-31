@@ -39,8 +39,10 @@ const CreateSharesForm = ({setShowModal, market_id}) => {
         <ul>
           <li>$1 is withdrawn from your account</li>
           <li>You are credited with one "yes" and one "no" share.</li>
+          <li>Afterwards, you are able list those shares on the market at whatever price you would like.</li>
         </ul>
-        Afterwards, you are able list those shares on the market at whatever price you would like.
+        When a market resolves to "yes", users are credited $1 for every "yes" share they hold. <br />
+        When a market resolves to "no", users are credited $1 for every "no" share they hold.
       </div>
       <div className='modal-errors'>
         {errors.map((error, ind) => (
@@ -61,7 +63,12 @@ const CreateSharesForm = ({setShowModal, market_id}) => {
         />
       </div>
 
-      <button className="black-button button-margin" type='submit'>Confirm Transaction</button>
+      { Math.floor(parseInt(sessionUser.funds)) >= 1
+              ?
+                <button className="black-button button-margin" type='submit'>Confirm Transaction</button>
+              :
+                <div className='form-explanation out-of-funds'> You have no funds. </div>
+      }
     </form>
   );
 };
