@@ -7,15 +7,14 @@ def seed_orders():
     # quantity
     # price
     # quantity_filled
-    # is_fulfilled
-    order1 = SellOrder(user_id='1', market_id = '1', quantity = "23", price = "0.33", quantity_filled = "5", is_fulfilled = False, is_yes = True)
-    order2 = SellOrder(user_id='2', market_id = '1', quantity = "121", price = "0.44", quantity_filled = "25", is_fulfilled = False, is_yes = True)
-    order3 = SellOrder(user_id='3', market_id = '1', quantity = "41", price = "0.44", quantity_filled = "13", is_fulfilled = False, is_yes = True)
-    order7 = SellOrder(user_id='3', market_id = '1', quantity = "1", price = "0.45", quantity_filled = "0", is_fulfilled = False, is_yes = True)
+    order1 = SellOrder(user_id='1', market_id = '1', quantity = "23", price = "0.33", quantity_filled = "5", is_yes = True)
+    order2 = SellOrder(user_id='2', market_id = '1', quantity = "121", price = "0.44", quantity_filled = "25", is_yes = True)
+    order3 = SellOrder(user_id='3', market_id = '1', quantity = "41", price = "0.44", quantity_filled = "13", is_yes = True)
+    order7 = SellOrder(user_id='3', market_id = '1', quantity = "1", price = "0.45", quantity_filled = "0", is_yes = True)
 
-    order4 = SellOrder(user_id='1', market_id = '1', quantity = "10", price = "0.65", quantity_filled = "3", is_fulfilled = False, is_yes = False)
-    order5 = SellOrder(user_id='2', market_id = '1', quantity = "30", price = "0.50", quantity_filled = "2", is_fulfilled = False, is_yes = False)
-    order6 = SellOrder(user_id='3', market_id = '1', quantity = "10", price = "0.55", quantity_filled = "1", is_fulfilled = False, is_yes = False)
+    order4 = SellOrder(user_id='1', market_id = '1', quantity = "10", price = "0.65", quantity_filled = "3", is_yes = False)
+    order5 = SellOrder(user_id='2', market_id = '1', quantity = "30", price = "0.50", quantity_filled = "2", is_yes = False)
+    order6 = SellOrder(user_id='3', market_id = '1', quantity = "10", price = "0.55", quantity_filled = "1", is_yes = False)
 
     market = Market.query.filter_by(id='1').first()
     market.is_in_play = True

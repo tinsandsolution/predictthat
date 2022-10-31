@@ -39,21 +39,13 @@ class OrderForm(FlaskForm):
     # quantity
     # price
     # quantity_filled
-    # is_fulfilled
-    # order1 = SellOrder(user_id='1',
-    #                    market_id = '1',
-    #                    quantity = "23",
-    #                    price = "0.33",
-    #                    quantity_filled = "5",
-    #                    is_fulfilled = False,
-    #                    is_yes = True)
+
 
     user_id = IntegerField('user_id')
     market_id = IntegerField('market_id')
     quantity = IntegerField('quantity')
     price = FloatField('price')
-    # quantity_filled = IntegerField('quantity_filled')
-    # is_fulfilled = BooleanField('is_fulfilled')
+
     is_yes = BooleanField('is_yes')
 
 class EditOrderForm(FlaskForm):
