@@ -1,6 +1,6 @@
 import './OrderBook.css'
 
-import BuySharesModalButton from './ListedOrdersModal/SingleOrderListingModal'
+import SingleListedOrderModalButton from './ListedOrdersModal/SingleOrderListingModal'
 
 const OrderBook = ({market}) => {
     let yesOrders = market.sellOrders.filter(order=> order.is_yes === true )
@@ -17,7 +17,7 @@ const OrderBook = ({market}) => {
                 <div className="buy-yes-title">Buy Yes - # Available</div>
                 {yesOrders.map(order => {
                     return (
-                        <BuySharesModalButton order={order} isYes={true} />
+                        <SingleListedOrderModalButton order={order} isYes={true} />
                     )
                 })}
             </div>
@@ -26,7 +26,7 @@ const OrderBook = ({market}) => {
                 <div className="buy-no-title">Buy No - # Available</div>
                 {noOrders.map(order => {
                     return (
-                        <BuySharesModalButton order={order} isYes={false} />
+                        <SingleListedOrderModalButton order={order} isYes={false} />
                     )
                 })}
             </div>
