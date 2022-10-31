@@ -8,6 +8,7 @@
     border-radius: 5px;
     font-size: 1vw;
     padding: 1% 2% 1% 2%;
+    cursor: pointer;
 }
 
 .manage-market-button {

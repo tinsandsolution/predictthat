@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from 'react';
 
 import { getAllMarkets } from '../../store/market';
+import { useHistory } from 'react-router-dom';
 
 import './ManageMarkets.css'
 import CreateMarketModalButton from "./CreateMarket/CreateMarketModal";
@@ -11,6 +12,8 @@ import ManageMarketModalButton from "./ManageMarket/ManageMarketModal";
 const ManageMarkets = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const [loaded, setLoaded] = useState(false);
+    const history = useHistory();
+
     const dispatch = useDispatch();
     let markets = useSelector((state) => state.markets)
     markets = markets.filter((market) => market.manager_id === sessionUser.id)
@@ -60,7 +63,7 @@ const ManageMarkets = () => {
 
                 return (
                     <div className='manage-card-wrapper'>
-                            <div className='manage-card-title'> {market["title"]} </div>
+                            <div className='manage-card-title' onClick={()=> history.push("/markets/" + market.id)}> {market["title"]} </div>
                             <div className="manage-card-bottom">
                                 <div className="manage-card-bottom-left">
                                     <div className="mcblt">
@@ -87,7 +90,9 @@ const ManageMarkets = () => {
         )
     }
 
-
+    if (!loaded) {
+        return null;
+      }
     return (
         <div className="manage-markets-container">
             <CreateMarketModalButton />
