@@ -2,14 +2,16 @@ import React, {useState} from "react";
 import { useSelector } from "react-redux";
 
 import { Modal } from "../../../context/Modal"
-import './BuyShares.css'
+import './SingleOrderListing.css'
 
 import { makeProperCents } from "../../../utils/properPrice";
 import BuySharesForm from "./BuySharesForm";
+import ManageSharesForm from "./ManageSharesForm";
 
-function BuySharesModalButton({order, isYes}) {
+function SingleListedOrderModalButton({order, isYes}) {
     const [showModal, setShowModal] = useState(false)
     const sessionUser = useSelector((state) => state.session.user);
+    const belongsToUser = sessionUser.id === order.user_id
 
     // console.log(market_id)
 
@@ -22,7 +24,7 @@ function BuySharesModalButton({order, isYes}) {
                     </div>
                     <div className="buy-shares-data-right">
                         {order.quantity-order.quantity_filled}
-                        {sessionUser.id === order.user_id ?
+                        {belongsToUser ?
                                 <div className="buy-shares-but-it-belongs-to-you"> (Your Order) </div>
                             :
                                 ""
@@ -33,7 +35,13 @@ function BuySharesModalButton({order, isYes}) {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <BuySharesForm setShowModal={setShowModal} order={order} />
+                    {
+                        belongsToUser
+                            ?
+                                <ManageSharesForm setShowModal={setShowModal} order={order} />
+                            :
+                                <BuySharesForm setShowModal={setShowModal} order={order} />
+                    }
                 </Modal>
             )}
         </>
@@ -41,4 +49,4 @@ function BuySharesModalButton({order, isYes}) {
 
 }
 
-export default BuySharesModalButton
+export default SingleListedOrderModalButton

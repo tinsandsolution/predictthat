@@ -1,6 +1,6 @@
 import './OrderBook.css'
 
-import BuySharesModalButton from './BuySharesModal/BuySharesModal'
+import BuySharesModalButton from './ListedOrdersModal/SingleOrderListingModal'
 
 const OrderBook = ({market}) => {
     let yesOrders = market.sellOrders.filter(order=> order.is_yes === true )
