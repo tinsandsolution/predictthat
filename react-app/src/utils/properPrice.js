@@ -6,7 +6,7 @@ const firstPass = (price) => {
         else return s[1]
     }
     catch {
-        return "-- "
+        return "--"
     }
 }
 
