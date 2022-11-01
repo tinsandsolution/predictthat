@@ -6,6 +6,7 @@ import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
 import ListShares from "./ListSharesModal/ListSharesModal";
 import OrderBook from "./OrderBook";
+import { showOdds } from "../../utils/showPrices";
 
 const SingleMarketPage = () => {
     const { marketId }  = useParams();
@@ -15,7 +16,10 @@ const SingleMarketPage = () => {
     const markets = useSelector((state) => state.markets)
 
 
+
     const market = markets.filter(market => parseInt(market.id) === parseInt(marketId))[0]
+
+
     // console.log(market.id)
     if(!sessionUser) history.push("/")
 
@@ -44,9 +48,13 @@ const SingleMarketPage = () => {
                     {market.title}
                 </div>
                 <div className="single-market-below-title">
+                    Created by {market.manager.username}. <br />
                     {market.description}
                 </div>
-                <CreateSharesModalButton market_id={market.id}/>
+                <div className="single-market-button-and-odds">
+                    <CreateSharesModalButton market_id={market.id}/>
+                    <div className="single-market-odds"> Current Odds: {showOdds(market)}% </div>
+                </div>
             </div>
             {
                 sessionUser

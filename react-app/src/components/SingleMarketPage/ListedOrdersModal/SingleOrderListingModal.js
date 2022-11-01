@@ -18,15 +18,8 @@ function SingleListedOrderModalButton({order, isYes, orders, market}) {
     else sharesAvailable = position.no_shares
 
 
-
-
-    console.log(position)
-
-
-
     const belongsToUser = sessionUser.id === order.user_id
 
-    // console.log(market_id)
     const ordersLength = orders.length
     const orderIndex = orders.indexOf(order) + 1
     const isLast = ordersLength === orderIndex

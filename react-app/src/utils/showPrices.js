@@ -3,7 +3,7 @@ import './prices.css'
 
 const findLowestOffer = (orders) => {
     const prices = orders.map(order => order["price"])
-    console.log(prices)
+    // console.log(prices)
     return makeProperCents(Math.min(...prices))
 }
 
@@ -40,5 +40,28 @@ export const showPrices = (market) => {
     }
 
     return yesno
+
+}
+
+export const showOdds = (market) => {
+    // if neither yesOdds or noOdds
+    if (market.sellOrders.length === 0) return "--"
+
+    const sellOrders = market.sellOrders
+
+    const yesShares = sellOrders.filter(sellOrder => sellOrder.is_yes === true)
+    const noShares = sellOrders.filter(sellOrder => sellOrder.is_yes === false)
+
+    const yesOdds = findLowestOffer(yesShares)
+    console.log(yesOdds)
+    const noOdds = findLowestOffer(noShares)
+    console.log(noOdds)
+
+    if(noOdds !== "-- " && yesOdds !== "-- ") return (100-parseInt(noOdds) + parseInt(yesOdds))/2
+    // if there has a yesOdds
+    if (yesOdds !== "-- ") return parseInt(yesOdds)
+    if (noOdds !== "-- ") return 1 - parseInt(noOdds)
+    // if there has a noOdds
+
 
 }
