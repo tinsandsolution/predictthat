@@ -1,5 +1,5 @@
 import { makeProperCents } from "./properPrice"
-
+import './prices.css'
 
 const findLowestOffer = (orders) => {
     const prices = orders.map(order => order["price"])
@@ -16,10 +16,10 @@ const properYesNo = (market) => {
     const noShares = sellOrders.filter(sellOrder => sellOrder.is_yes === false)
 
     return (
-        <>
-            <div className='splash-yes'> Yes {findLowestOffer(yesShares)}¢</div>
-            <div className='splash-no'> No {findLowestOffer(noShares)}¢</div>
-        </>
+        <div className="card-yes-no-wrapper">
+            <div className='card-yes'> <span className="gthft">Yes </span>{findLowestOffer(yesShares)}¢</div>
+            <div className='card-no'> <span className="gthft">No </span>{findLowestOffer(noShares)}¢</div>
+        </div>
     )
 }
 

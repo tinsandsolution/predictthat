@@ -152,3 +152,9 @@ body {
     color: green;
     font-weight: 600;
 }
+
+@media screen and (max-width: 1190px) {
+    .gthft {
+      display: none;
+    }
+  }

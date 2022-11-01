@@ -1,0 +1,16 @@
+.card-yes-no-wrapper {
+    /* border: 1px solid black; */
+    width: 100%;
+    display: flex;
+}
+
+.card-yes {
+    color: #AA00FF;
+    margin-right: 2%;
+    /* width: 50%; */
+}
+
+.card-no {
+    color: #265CFF;
+    /* width: 50%; */
+}
