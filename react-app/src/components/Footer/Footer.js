@@ -1,7 +1,9 @@
 import './Footer.css'
 
-export const Footer = () => (
+const Footer = () => (
     <footer className="footer">
         hay
     </footer>
 )
+
+export default Footer

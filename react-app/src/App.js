@@ -6,6 +6,7 @@ import NavBar from './components/NavBar/NavBar';
 import HomePage from './components/HomePage/HomePage';
 import ManageMarkets from './components/ManageMarkets/ManageMarkets';
 import SingleMarketPage from './components/SingleMarketPage/SingleMarketPage';
+import Footer from './components/Footer/Footer';
 
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
@@ -33,15 +34,15 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/fdsfsdf' >
+        {/* <Route path='/fdsfsdf' >
           <h1>fdgsdg</h1>
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        </Route> */}
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/yourmarkets' exact={true} >
           <ManageMarkets />
         </ProtectedRoute>
@@ -52,6 +53,7 @@ function App() {
           <HomePage />
         </Route>
       </Switch>
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
