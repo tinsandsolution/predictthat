@@ -78,6 +78,13 @@ const SplashPage = () => {
                     }
                 </div>
             </div>
+            {/* <div className='preview-image-splash-order-wrapper'>
+                <img className='preview-image-splash-order-book'
+                    src="https://i.imgur.com/AX2AxLr.png"
+                >
+
+                </img>
+            </div> */}
         </div>
     )
 

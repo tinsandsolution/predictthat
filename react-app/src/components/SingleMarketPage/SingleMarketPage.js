@@ -53,7 +53,7 @@ const SingleMarketPage = () => {
                 </div>
                 <div className="single-market-button-and-odds">
                     <CreateSharesModalButton market_id={market.id}/>
-                    <div className="single-market-odds"> Current Odds: {showOdds(market)}% </div>
+                    <div className="single-market-odds"> Current Odds: {Math.round(showOdds(market))}% </div>
                 </div>
             </div>
             {
