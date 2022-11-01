@@ -37,4 +37,19 @@
 .buy-shares-data-right {
     width: 50%;
     padding-left: 1%;
+    display: flex;
+    align-items: center;
+
+}
+
+.buy-shares-but-it-belongs-to-you {
+    font-size: .7vw;
+    margin-left: 1%;
+    /* margin-bottom: 4%; */
+    /* line-height: 200%; */
+    color: red;
+}
+
+.last-share-listing-no-border {
+    border-bottom: none;
 }

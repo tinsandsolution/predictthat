@@ -12,10 +12,19 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      console.log(data)
-      setErrors(data);
+    let errors = []
+
+    const emailRegex = /^.{1,100}@.{1,100}?\..{1,100}$/
+    if (!email.match(emailRegex)) errors.push("Please enter a valid email")
+
+    setErrors(errors)
+
+    if (!errors.length) {
+      const data = await dispatch(login(email, password));
+      if (data) {
+        console.log(data)
+        setErrors(data);
+      }
     }
   };
 

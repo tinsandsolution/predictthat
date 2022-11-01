@@ -29,7 +29,7 @@ const LoggedInPage = () => {
                     <div key={market["short_title"]} className='rest-card-wrapper' onClick={()=> history.push("/markets/" + market.id)}>
                     <div className='rest-card'>
                         <div className="rest-card-left">
-                            <div className='rest-card-title'> {market["short_title"]} </div>
+                            <div className='rest-card-title'> <span> {market["short_title"]} </span>  </div>
                             {/* <div className='rest-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div> */}
                             <div className='rest-card-resolves'> {market.is_open === true ? "Ongoing" : ""} </div>
 
@@ -64,7 +64,7 @@ const LoggedInPage = () => {
                         {/* <div className='splash-card'> */}
                         <img className='featured-card-image' alt="" src={market["image_url"]} onError={e => { e.currentTarget.src = "https://i.imgur.com/v4C8Lvf.png"; }}></img>
                         <div className={i !== 3 ? "featured-card-right" : "featured-card-right nb"}>
-                            <div className='featured-card-title'> {market["short_title"]} </div>
+                            <div className='featured-card-title'> <span> {market["short_title"]} </span> </div>
                             {/* <div className='featured-card-resolves'> {market.expected_resolution_time === null ? "Ongoing" : market.expected_resolution_time} </div> */}
                             <div className='featured-card-resolves'> {market.is_open === true ? "Ongoing" : ""} </div>
 

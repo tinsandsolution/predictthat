@@ -13,6 +13,7 @@ function ListShares({market}) {
 
 
     let position = market.positions.filter(position => position.user_id === sessionUser.id)[0]
+    if (!position) return <></>
 
     return (
         <>
@@ -24,7 +25,7 @@ function ListShares({market}) {
                         setAvailableShares(position.yes_shares)
                     }}
                     >
-                        List Your "Yes" Shares - {position.yes_shares} Available
+                        Sell Your "Yes" Shares - {position.yes_shares} Available
                 </div>
                 <div className="sell-no-section sell-section"
                     onClick={()=> {
@@ -33,7 +34,7 @@ function ListShares({market}) {
                         setAvailableShares(position.no_shares)
                     }}
                     >
-                        List Your "No" Shares - {position.no_shares} Available
+                        Sell Your "No" Shares - {position.no_shares} Available
                 </div>
             </div>
             {showModal && (

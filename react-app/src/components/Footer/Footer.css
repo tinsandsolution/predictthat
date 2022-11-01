@@ -1,0 +1,8 @@
+.footer {
+    width: 100%;
+    aspect-ratio: 20/1;
+    border: 1px solid pink;
+    position: relative;
+    bottom: 0;
+    background-color: pink;
+}

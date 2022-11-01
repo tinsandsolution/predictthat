@@ -14,14 +14,20 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
+    let errors = []
+    const emailRegex = /^.{1,100}@.{1,100}?\..{1,100}$/
+    if (!email.match(emailRegex)) errors.push("Please enter a valid email")
+    if (password !== repeatPassword) errors.push(["password : Passwords must match"])
+
+    setErrors(errors)
+
+    if (!errors.length) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         console.log(data)
         setErrors(data)
       }
     }
-    else setErrors(["password : Passwords must match"])
   };
 
   const updateUsername = (e) => {

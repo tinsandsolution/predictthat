@@ -139,6 +139,33 @@ export const listSharesAction = ({isYes, shares, price, market_id}) => async (di
   }
 }
 
+export const deleteOrderAction = (order_id) => async (dispatch) => {
+  const response = await fetch(`/api/orders/${order_id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    return data
+  }
+}
+
+export const modifyOrderAction = ({quantity, price},order_id) => async (dispatch) => {
+  const response = await fetch(`/api/orders/${order_id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      "quantity" : quantity,
+      "price" : price/100,
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    return data
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_MARKETS:

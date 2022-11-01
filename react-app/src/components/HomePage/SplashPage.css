@@ -133,6 +133,7 @@
 .splash-yes-no {
     display: flex;
     /* height: 40%; */
+    /* background-color: #265CFF; */
     /* border: 1px solid black; */
     flex-direction: row;
     margin-top: 2%;
@@ -140,14 +141,16 @@
     align-items: center;
 }
 
-.splash-yes-no > *{
+.splash-yes-no > * {
     font-weight: 700;
-    font-size: 1.5vw;
+    font-size: 1.4vw;
 }
 
 .splash-yes {
     color: #AA00FF;
+    /* color: black; */
     margin-right: 4%;
+    /* font-size: 90%; */
 }
 
 .splash-no {

@@ -17,7 +17,10 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
   const onSubmitMarket = async (e) => {
     e.preventDefault();
     let errors = [];
-
+    // console.log(price)
+    if (shares < 1) errors.push("Cannot sell less than one share.")
+    if (shares > availableShares) errors.push("Cannot sell more shares than you have.")
+    if (price < 1 || price > 99) errors.push("Price must be between 1¢ and 99¢.")
     if (errors.length) setErrors(errors)
     else {
       const data = await dispatch(listSharesAction({isYes, shares, price, market_id}));
@@ -61,6 +64,7 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
           placeholder="0"
           value={shares}
           onChange={updateShares}
+          required={true}
         />
       </div>
       <div className='form-single-data'>
@@ -75,6 +79,7 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
             placeholder="19"
             value={price}
             onChange={updatePrice}
+            required={true}
           />
           <span className='price-cents-input-add'>¢</span>
         </div>
