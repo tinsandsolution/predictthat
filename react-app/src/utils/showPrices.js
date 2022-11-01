@@ -53,14 +53,14 @@ export const showOdds = (market) => {
     const noShares = sellOrders.filter(sellOrder => sellOrder.is_yes === false)
 
     const yesOdds = findLowestOffer(yesShares)
-    console.log(yesOdds)
+    // console.log(yesOdds)
     const noOdds = findLowestOffer(noShares)
-    console.log(noOdds)
+    // console.log(noOdds)
 
-    if(noOdds !== "-- " && yesOdds !== "-- ") return (100-parseInt(noOdds) + parseInt(yesOdds))/2
+    if(!isNaN(noOdds) && !isNaN(yesOdds)) return (100-parseInt(noOdds) + parseInt(yesOdds))/2
     // if there has a yesOdds
-    if (yesOdds !== "-- ") return parseInt(yesOdds)
-    if (noOdds !== "-- ") return 1 - parseInt(noOdds)
+    if (!isNaN(yesOdds)) return parseInt(yesOdds)
+    if (!isNaN(noOdds)) return 1 - parseInt(noOdds)
     // if there has a noOdds
 
 
