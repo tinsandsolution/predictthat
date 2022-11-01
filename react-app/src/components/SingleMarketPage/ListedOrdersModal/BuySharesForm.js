@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createSharesAction} from '../../../store/market'
+import { fillOrderAction } from '../../../store/market'
 import { makeProperCents } from '../../../utils/properPrice';
 
 const BuySharesForm = ({setShowModal, order}) => {
@@ -9,28 +9,38 @@ const BuySharesForm = ({setShowModal, order}) => {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
 
+  const [errors, setErrors] = useState([]);
+  const [quantity, setQuantity] = useState(1)
+
+
   let available = order.quantity - order.quantity_filled
 
-
-  const [errors, setErrors] = useState([]);
-  const [pairs, setPairs] = useState(1)
+  const findMaxPoss = () => {
+    // so we have two possible cases
+    // the first condition is where it's simply the available amount
+    if (sessionUser.funds >= available * order.price) return available
+    // the second case is where it's less, in which case we have to do some math
+    else {
+      // so we're going to find currentfunds, and floor it to the lowest amount
+      const floorFunds = Math.floor(parseInt(sessionUser.funds))
+      return floorFunds / order.price
+    }
+  }
 
   const onSubmitMarket = async (e) => {
     e.preventDefault();
     let errors = [];
-    if (parseInt(pairs) <= 0) errors.push("You cannot create less than one pair.")
-    if (parseInt(pairs) > Math.floor(parseInt(sessionUser.funds))) errors.push("You do not have enough money in your account.")
 
     if (errors.length) setErrors(errors)
     else {
-      // const data = await dispatch(createSharesAction({pairs,market_id}));
+      const data = await dispatch(fillOrderAction(order,quantity));
       setShowModal(false)
       // return history.push('/yourmarkets')
     }
   };
 
-  const updatePairs = (e) => {
-    setPairs(e.target.value);
+  const updateQuantity = (e) => {
+    setQuantity(e.target.value);
   };
 
 
@@ -41,7 +51,7 @@ const BuySharesForm = ({setShowModal, order}) => {
         {/* When you create a pair of shares: */}
         <ul>
           <li>{available} {order.is_yes ? "\"Yes\"" : "\"No\""} shares are available at $.{makeProperCents(order.price)} each.</li>
-          <li>You have enough funds to purchase _____ </li>
+          <li>You have enough funds to purchase <span className='green'>{findMaxPoss()}</span>. </li>
         </ul>
       </div>
       <div className='modal-errors'>
@@ -51,16 +61,15 @@ const BuySharesForm = ({setShowModal, order}) => {
       </div>
       <div className='form-single-data'>
         {/*  - {"Max. " + Math.floor(parseInt(sessionUser.funds)) +" Shares"} */}
-        <label htmlFor='pairs'>{order.is_yes ? "\"Yes\"" : "\"No\""} Shares To Purchase</label>
+        <label htmlFor='quantity'>{order.is_yes ? "\"Yes\"" : "\"No\""} Shares To Purchase (Max. {findMaxPoss()})</label>
         <input
-          name='pairs'
+          name='quantity'
           type='number'
           min="1"
-          max={Math.floor(parseInt(sessionUser.funds))}
-          // max="100"
+          max={findMaxPoss()}
           placeholder=""
-          value={pairs}
-          onChange={updatePairs}
+          value={quantity}
+          onChange={updateQuantity}
         />
       </div>
 

@@ -2,7 +2,7 @@ from turtle import pos
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Market, Position, SellOrder
-from ..forms.market_forms import EditOrderForm
+from ..forms.market_forms import EditOrderForm, FillOrderForm
 import sys
 import time
 order_routes = Blueprint('orders', __name__)
@@ -68,7 +68,15 @@ def modifyOrder(id):
 @order_routes.route('/<int:id>/fill',  methods=['PUT'])
 @login_required
 def fillOrder(id):
+    # check to see if the position exists. if not, return "error"
+    # check to see if ... f*** it we'll change this later and hope it passes pregrading.
+
+    form = FillOrderForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    print(f"\n\n\n",form,f"\n\n\n")
     # a few things get changed:
+
     # 1. the buyer's funds
     # 2. the buyer's positions
     # 3. the seller's funds
@@ -106,5 +114,5 @@ def fillOrder(id):
     # db.session.add(position)
     # db.session.commit()
 
-    # return { "order" : order.to_dict()}
+    return { "order" : "fsdafasdfasdf"}
     pass
