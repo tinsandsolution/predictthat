@@ -25,6 +25,7 @@
 .single-market-below-title {
     width: 100%;
     height: 50%;
+    font-size: 105%;
     /* border: 1px solid black; */
 }
 
@@ -41,6 +42,22 @@
 
 
 .single-market-resolved {
+    font-size: 125%;
+    font-weight: 600;
+}
+
+.single-market-button-and-odds {
+    display: flex;
+    /* border: 1px solid black; */
+    align-items: center;
+    margin-bottom: .5%;
+}
+
+.single-market-odds {
+    display: flex;
+    /* border: 1px solid black; */
+    margin-left: 1%;
+    align-items: center;
     font-size: 125%;
     font-weight: 600;
 }

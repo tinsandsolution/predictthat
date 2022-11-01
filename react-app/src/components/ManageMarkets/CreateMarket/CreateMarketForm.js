@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createMarket } from '../../../store/market';
+import { SelectDatepicker } from 'react-select-datepicker';
+
 
 const CreateMarketForm = ({setShowModal}) => {
   const dispatch = useDispatch();
@@ -18,6 +20,8 @@ const CreateMarketForm = ({setShowModal}) => {
   // description
   const [description, setDescription] = useState('')
   // date needs filling
+  const [date, setDate] = useState();
+
 
   // const user = useSelector(state => state.session.user);
   const onSubmitMarket = async (e) => {
@@ -57,6 +61,10 @@ const CreateMarketForm = ({setShowModal}) => {
 
   const updateDescription = (e) => {
     setDescription(e.target.value);
+  };
+
+  const onDateChange = (e) => {
+    setDate(date);
   };
 
 
@@ -108,6 +116,12 @@ const CreateMarketForm = ({setShowModal}) => {
           onChange={updateDescription}
         />
       </div>
+      {/* <div className='form-single-data'>
+        <SelectDatepicker
+          selectedDate={date}
+          onDateChange={onDateChange}
+        />
+      </div> */}
       <button className="black-button button-margin" type='submit'>Create Market</button>
     </form>
   );

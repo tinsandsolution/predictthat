@@ -166,6 +166,28 @@ export const modifyOrderAction = ({quantity, price},order_id) => async (dispatch
   }
 }
 
+export const fillOrderAction = (order, quantity) => async (dispatch) => {
+  const response = await fetch(`/api/orders/${order.id}/fill`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      "quantity" : quantity,
+      "price" : order.price,
+      "user_id" : order.user_id,
+      "market_id" : order.market_id,
+      "is_yes" : order.is_yes
+    }),
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(getAllMarkets())
+    dispatch(authenticate())
+
+    return data
+  }
+}
+
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_MARKETS:
