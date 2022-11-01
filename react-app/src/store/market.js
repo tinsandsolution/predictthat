@@ -172,12 +172,17 @@ export const fillOrderAction = (order, quantity) => async (dispatch) => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       "quantity" : quantity,
-      // "price" : price/100,
+      "price" : order.price,
+      "user_id" : order.user_id,
+      "market_id" : order.market_id,
+      "is_yes" : order.is_yes
     }),
   });
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
+    dispatch(authenticate())
+
     return data
   }
 }

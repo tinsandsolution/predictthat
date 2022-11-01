@@ -40,7 +40,7 @@ const NavBar = () => {
 
             <div className='nav-card nav-card-special'>
               <div className='nav-card-above-text'>
-                ${sessionUser && sessionUser.funds}
+                ${sessionUser && parseFloat(sessionUser.funds).toFixed(2)}
               </div>
               <div className='nav-card-text nav-card-text-special'>Funds</div>
             </div>

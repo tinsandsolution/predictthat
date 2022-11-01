@@ -55,6 +55,11 @@ class EditOrderForm(FlaskForm):
 class FillOrderForm(FlaskForm):
     quantity = IntegerField('quantity')
     price = FloatField('price')
+    user_id = IntegerField('user_id')
+    market_id = IntegerField('market_id')
+    is_yes = BooleanField('is_yes')
+    # id = IntegerField('id')
+
 
 # def user_exists(form, field):
 #     # Checking if user exists
