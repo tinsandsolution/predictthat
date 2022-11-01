@@ -45,7 +45,7 @@ export const showPrices = (market) => {
 
 export const showOdds = (market) => {
     // if neither yesOdds or noOdds
-    if (market.sellOrders.length === 0) return "--"
+    if (market.sellOrders.length === 0) return "-- "
 
     const sellOrders = market.sellOrders
 
@@ -57,10 +57,10 @@ export const showOdds = (market) => {
     const noOdds = findLowestOffer(noShares)
     // console.log(noOdds)
 
-    if(!isNaN(noOdds) && !isNaN(yesOdds)) return (100-parseInt(noOdds) + parseInt(yesOdds))/2
+    if(!isNaN(noOdds) && !isNaN(yesOdds)) return Math.round((100-parseInt(noOdds) + parseInt(yesOdds))/2)
     // if there has a yesOdds
-    if (!isNaN(yesOdds)) return parseInt(yesOdds)
-    if (!isNaN(noOdds)) return 1 - parseInt(noOdds)
+    if (!isNaN(yesOdds)) return Math.round(parseInt(yesOdds))
+    if (!isNaN(noOdds)) return Math.round(1 - parseInt(noOdds))
     // if there has a noOdds
 
 
