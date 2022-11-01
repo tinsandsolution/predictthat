@@ -169,10 +169,26 @@ body {
 
 footer {
     margin: auto;
-    margin-bottom: 0;
-    border: 1px solid black;
+    margin-bottom: 1%;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: center;
+    /* font-style: none; */
     /* position: relative; */
     /* bottom: 0; */
+    /* font-size: 125% */
+}
+
+footer > * {
+    text-decoration: none;
+    color: black;
+    font-size: 125%;
+}
+
+#footer-bullet {
+    margin-left: 4%;
+    margin-right: 4%;
+    /* color: teal; */
+    /* font-size: 500%; */
+
 }
