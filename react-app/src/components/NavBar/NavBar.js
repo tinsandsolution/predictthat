@@ -19,6 +19,7 @@ const NavBar = () => {
   const dispatch = useDispatch()
   const onLogout = async (e) => {
     await dispatch(logout());
+    history.push('/')
   };
 
   let sessionNav

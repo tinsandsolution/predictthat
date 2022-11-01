@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
@@ -8,6 +9,7 @@ import OrderBook from "./OrderBook";
 
 const SingleMarketPage = () => {
     const { marketId }  = useParams();
+    const history = useHistory();
 
     const sessionUser = useSelector((state) => state.session.user);
     const markets = useSelector((state) => state.markets)
@@ -15,6 +17,7 @@ const SingleMarketPage = () => {
 
     const market = markets.filter(market => parseInt(market.id) === parseInt(marketId))[0]
     // console.log(market.id)
+    if(!sessionUser) history.push("/")
 
     if (market.is_open === false) {
         return (
@@ -45,11 +48,17 @@ const SingleMarketPage = () => {
                 </div>
                 <CreateSharesModalButton market_id={market.id}/>
             </div>
-            <div className="single-market-bottom">
-                <div className="single-market-title"> Order Book </div>
-                <OrderBook market={market} />
-                <ListShares market={market} />
-            </div>
+            {
+                sessionUser
+                    ?
+                        <div className="single-market-bottom">
+                            <div className="single-market-title"> Order Book </div>
+                            <OrderBook market={market} />
+                            <ListShares market={market} />
+                        </div>
+                    :
+                    ""
+            }
         </div>
     )
 }
