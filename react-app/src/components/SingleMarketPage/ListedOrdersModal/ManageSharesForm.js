@@ -50,7 +50,7 @@ const ManageSharesForm = ({setShowModal, order, sharesAvailable}) => {
   };
 
   const onDeleteOrder = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     let order_id = order.id
     const data = await dispatch(deleteOrderAction(order_id));
     setShowModal(false)
