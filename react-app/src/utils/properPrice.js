@@ -1,4 +1,4 @@
-export const makeProperCents = (price) => {
+const firstPass = (price) => {
     try {
         let s = String(price).split(".")
         // return s
@@ -8,4 +8,10 @@ export const makeProperCents = (price) => {
     catch {
         return "-- "
     }
+}
+
+export const makeProperCents = (price) => {
+    let newPrice = firstPass(price)
+    if (newPrice[0] === "0") return newPrice[1]
+    return newPrice
 }
