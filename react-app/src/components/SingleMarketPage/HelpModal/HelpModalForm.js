@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import SuggestedTransactions from './SuggestedTransactions';
 const HelpForm = ({setShowModal, market_id}) => {
   // console.log(market_id)
@@ -57,7 +58,10 @@ const HelpForm = ({setShowModal, market_id}) => {
                 ?
                     <span className='red'>Please enter odds between 0 and 100.</span>
                 :
-                    <SuggestedTransactions odds={odds}/>
+                    <>
+                      Assuming that you are correct about the odds, these following actions have a <a className="external-link" target="_blank" href="https://en.wikipedia.org/wiki/Expected_value">positive expected value.</a>
+                      <SuggestedTransactions odds={odds}/>
+                    </>
         }
 
       </div>

@@ -197,3 +197,8 @@ footer > * {
     /* font-size: 500%; */
 
 }
+
+.external-link {
+    text-decoration: none;
+    color: green;
+}
