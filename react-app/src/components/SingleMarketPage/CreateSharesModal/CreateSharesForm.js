@@ -22,7 +22,7 @@ const CreateSharesForm = ({setShowModal, market_id}) => {
     else {
       const data = await dispatch(createSharesAction({pairs,market_id}));
       if (data.errors) {
-        console.log(data)
+        // console.log(data)
         setErrors(data.errors);
       }
       else setShowModal(false)

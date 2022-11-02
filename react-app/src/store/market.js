@@ -137,6 +137,12 @@ export const listSharesAction = ({isYes, shares, price, market_id}) => async (di
       "is_yes" : isYes
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())

@@ -156,6 +156,10 @@ def settlePositions(market_id, outcome_yes):
 @login_required
 def createOrder(id):
     # print(f"\n\n\n\ndfdfd\n\n\n")
+    market = Market.query.filter_by(id=id).first()
+    if market.is_open == False:
+        return { "errors" : ["This market is closed. You are unable to list shares.", "Please refresh to see how the market resolved."] }, 400
+
     user_id = current_user.id
 
     form = OrderForm()
