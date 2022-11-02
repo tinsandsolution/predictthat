@@ -82,11 +82,13 @@ def makePairs():
     else:
         userPosition.yes_shares += position.yes_shares
         userPosition.no_shares += position.yes_shares
+        db.session.add(userPosition)
 
     user = User.query.filter_by(id=user_id).first()
     market = Market.query.filter_by(id=position.market_id).first()
     market.is_in_play = True
     user.funds = user.funds - position.yes_shares
+    # db.session.add(market)
 
     db.session.commit()
 
