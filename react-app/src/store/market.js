@@ -110,6 +110,12 @@ export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
       "market_id" : market_id
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
@@ -131,6 +137,12 @@ export const listSharesAction = ({isYes, shares, price, market_id}) => async (di
       "is_yes" : isYes
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
@@ -143,6 +155,13 @@ export const deleteOrderAction = (order_id) => async (dispatch) => {
   const response = await fetch(`/api/orders/${order_id}`, {
     method: "DELETE",
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
@@ -159,6 +178,13 @@ export const modifyOrderAction = ({quantity, price},order_id) => async (dispatch
       "price" : price/100,
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
@@ -167,6 +193,7 @@ export const modifyOrderAction = ({quantity, price},order_id) => async (dispatch
 }
 
 export const fillOrderAction = (order, quantity) => async (dispatch) => {
+  // console.log("dfdsafsed")
   const response = await fetch(`/api/orders/${order.id}/fill`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -175,9 +202,17 @@ export const fillOrderAction = (order, quantity) => async (dispatch) => {
       "price" : order.price,
       "user_id" : order.user_id,
       "market_id" : order.market_id,
-      "is_yes" : order.is_yes
+      "is_yes" : order.is_yes,
+      "updated_at" : order.updated_at
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+      // console.log("dfasdfasf")
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())

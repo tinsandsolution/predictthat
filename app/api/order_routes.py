@@ -11,9 +11,12 @@ order_routes = Blueprint('orders', __name__)
 @login_required
 def deleteOrder(id):
     order = SellOrder.query.filter_by(id=id).first()
+    if order == None: return { "errors" : ["This market is closed. You are unable to delete orders.", "Please refresh to see how the market resolved."] }, 400
 
     to_credit = order.quantity - order.quantity_filled
     market_id = order.market_id
+
+
     user_id = current_user.id
 
     userPosition = Position.query.filter_by(user_id=user_id, market_id=market_id).first()
@@ -42,6 +45,8 @@ def modifyOrder(id):
     # if you change the quantity of the order, you're going to have to do some math with some positions.
 
     order = SellOrder.query.filter_by(id=id).first()
+    if order == None: return { "errors" : ["This market is closed. You are unable to modify orders.", "Please refresh to see how the market resolved."] }, 400
+
     position = Position.query.filter_by(user_id = order.user_id, market_id = order.market_id).first()
 
     oldQuantity = order.quantity # say it's 5
@@ -72,12 +77,18 @@ def fillOrder(id):
     # check to see if ... f*** it we'll change this later and hope it passes pregrading.
     buyer_id = current_user.id
 
-
-
     form = FillOrderForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     emptyOrder = SellOrder()
     form.populate_obj(emptyOrder)
+
+    errorCheckOrder = SellOrder.query.filter_by(id=id).first()
+    if errorCheckOrder == None: return { "errors" : ["This market is closed. You are unable to purchase shares.", "Please refresh to see how the market resolved."] }, 400
+    if errorCheckOrder.updated_at != emptyOrder.updated_at:
+         return { "errors" : ["This listing has been modified. Please refresh to view the updated version of this listing."] }, 400
+
+
+
 
     userPosition = Position.query.filter_by(user_id=buyer_id, market_id=emptyOrder.market_id).first()
     if userPosition is None:

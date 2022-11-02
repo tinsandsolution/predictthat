@@ -75,6 +75,10 @@ def makePairs():
     position = Position()
     form.populate_obj(position)
     position.user_id = user_id
+    market = Market.query.filter_by(id=position.market_id).first()
+    if market.is_open == False:
+        return { "errors" : ["This market is closed. You are unable to create extra shares.", "Please refresh to see how the market resolved."] }, 400
+
 
     userPosition = Position.query.filter_by(user_id=user_id, market_id=position.market_id).first()
     if userPosition is None:
@@ -152,6 +156,10 @@ def settlePositions(market_id, outcome_yes):
 @login_required
 def createOrder(id):
     # print(f"\n\n\n\ndfdfd\n\n\n")
+    market = Market.query.filter_by(id=id).first()
+    if market.is_open == False:
+        return { "errors" : ["This market is closed. You are unable to list shares.", "Please refresh to see how the market resolved."] }, 400
+
     user_id = current_user.id
 
     form = OrderForm()

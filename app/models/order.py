@@ -1,4 +1,5 @@
 from .db import db
+from datetime import datetime
 
 class SellOrder(db.Model):
     __tablename__ = 'sellorders'
@@ -10,6 +11,7 @@ class SellOrder(db.Model):
     price = db.Column(db.Float, nullable=False)
     quantity_filled = db.Column(db.Integer, server_default="0", nullable=False)
     is_yes = db.Column(db.Boolean, nullable=False)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     #relationships
     user = db.relationship("User", back_populates="sellOrders")
@@ -26,4 +28,5 @@ class SellOrder(db.Model):
             'is_yes': self.is_yes,
             'price' : self.price,
             'quantity_filled' : self.quantity_filled,
+            'updated_at' : self.updated_at,
         }

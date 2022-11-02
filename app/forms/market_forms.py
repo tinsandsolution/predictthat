@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, BooleanField, FloatField
+from wtforms import StringField, IntegerField, BooleanField, FloatField, DateField
 # from wtforms.validators import DataRequired, Email, ValidationError
 from app.models import Market, Position
 
@@ -58,6 +58,7 @@ class FillOrderForm(FlaskForm):
     user_id = IntegerField('user_id')
     market_id = IntegerField('market_id')
     is_yes = BooleanField('is_yes')
+    updated_at = DateField('updated_at')
     # id = IntegerField('id')
 
 

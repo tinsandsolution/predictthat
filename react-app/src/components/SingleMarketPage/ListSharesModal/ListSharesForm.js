@@ -24,7 +24,11 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
     if (errors.length) setErrors(errors)
     else {
       const data = await dispatch(listSharesAction({isYes, shares, price, market_id}));
-      setShowModal(false)
+      if (data.errors) {
+        // console.log(data)
+        setErrors(data.errors);
+      }
+      else setShowModal(false)
       // return history.push('/yourmarkets')
     }
   };

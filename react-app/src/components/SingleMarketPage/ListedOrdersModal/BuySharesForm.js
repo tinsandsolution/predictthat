@@ -30,12 +30,15 @@ const BuySharesForm = ({setShowModal, order}) => {
   const onSubmitMarket = async (e) => {
     e.preventDefault();
     let errors = [];
-
+    // console.log("fasdfasdf")
     if (errors.length) setErrors(errors)
     else {
       const data = await dispatch(fillOrderAction(order,quantity));
-      setShowModal(false)
-      // return history.push('/yourmarkets')
+      if (data.errors) {
+        // console.log(data)
+        setErrors(data.errors);
+      }
+      else setShowModal(false)
     }
   };
 
