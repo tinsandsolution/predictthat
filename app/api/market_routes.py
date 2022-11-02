@@ -75,6 +75,10 @@ def makePairs():
     position = Position()
     form.populate_obj(position)
     position.user_id = user_id
+    market = Market.query.filter_by(id=position.market_id).first()
+    if market.is_open == False:
+        return { "errors" : ["This market is closed. You are unable to create extra shares.", "Please refresh to see how the market resolved."] }, 400
+
 
     userPosition = Position.query.filter_by(user_id=user_id, market_id=position.market_id).first()
     if userPosition is None:

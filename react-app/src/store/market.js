@@ -110,6 +110,12 @@ export const createSharesAction = ({pairs,market_id}) => async (dispatch) => {
       "market_id" : market_id
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())

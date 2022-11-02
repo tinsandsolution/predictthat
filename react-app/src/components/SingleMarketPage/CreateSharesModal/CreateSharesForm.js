@@ -21,7 +21,11 @@ const CreateSharesForm = ({setShowModal, market_id}) => {
     if (errors.length) setErrors(errors)
     else {
       const data = await dispatch(createSharesAction({pairs,market_id}));
-      setShowModal(false)
+      if (data.errors) {
+        console.log(data)
+        setErrors(data.errors);
+      }
+      else setShowModal(false)
       // return history.push('/yourmarkets')
     }
   };
