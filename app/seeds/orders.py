@@ -60,6 +60,17 @@ def seed_orders():
     orders.extend(forAMarket(2,95))
     orders.extend(forAMarket(3,5))
     orders.extend(forAMarket(4,4))
+    for x in range(5, 24):
+        is_traded = random.choice([True, True, False])
+        if is_traded == False: continue
+
+        market = Market.query.filter_by(id=x).first()
+        market.is_in_play = True
+        db.session.commit()
+        orders.extend(forAMarket(x,random.randint(5,95)))
+
+
+
     for order in orders: db.session.add(order)
 
     db.session.commit()
