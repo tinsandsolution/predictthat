@@ -8,9 +8,9 @@ def forAMarket(market_id,odds):
     newOrders = []
 
     if market_id > 2:
-        position1 = Position(user_id='1', market_id = market_id, yes_shares = "1", no_shares = "1")
-        position2 = Position(user_id='2', market_id = market_id, yes_shares = "1", no_shares = "1")
-        position3 = Position(user_id='3', market_id = market_id, yes_shares = "1", no_shares = "1")
+        position1 = Position(user_id='1', market_id = market_id, yes_shares = "0", no_shares = "0")
+        position2 = Position(user_id='2', market_id = market_id, yes_shares = "0", no_shares = "0")
+        position3 = Position(user_id='3', market_id = market_id, yes_shares = "0", no_shares = "0")
         db.session.add(position1)
         db.session.add(position2)
         db.session.add(position3)
@@ -67,7 +67,8 @@ def seed_orders():
         market = Market.query.filter_by(id=x).first()
         market.is_in_play = True
         db.session.commit()
-        orders.extend(forAMarket(x,random.randint(5,95)))
+        if market.short_title == "Yasamine Cruz Passing": orders.extend(forAMarket(x,95))
+        else: orders.extend(forAMarket(x,random.randint(5,95)))
 
 
 
