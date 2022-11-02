@@ -65,7 +65,7 @@ const SplashPage = () => {
                                     <div className='splash-card'>
                                     <img className='splash-card-image' alt="" src={fixed_data[name]["imgUrl"]}></img>
                                     <div className='splash-card-title'> {name} </div>
-                                    <div className='splash-card-resolves'> Oct 31 </div>
+                                    <div className='splash-card-resolves'> Ongoing </div>
                                     <div className='splash-yes-no'>
                                         <div className='splash-yes'> Yes {fixed_data[name]["yes"]}¢</div>
                                         <div className='splash-no'> No {fixed_data[name]["no"]}¢</div>
