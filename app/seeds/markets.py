@@ -16,7 +16,7 @@ def seed_markets():
     # short_title
     # title
     # description
-    market1 = Market(manager_id='1', image_url='https://i.imgur.com/dJoFZMa.png', is_in_play = True, short_title='A/a Employees Union', title='Will the A/a employees vote to unionize by January 1, 2022?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
+    market1 = Market(manager_id='1', image_url='https://i.imgur.com/dJoFZMa.png', short_title='A/a Employees Union', title='Will the A/a employees vote to unionize by January 1, 2022?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
     market2 = Market(manager_id='1', image_url='https://i.imgur.com/UVCdHta.png', short_title='August Student Deferred', title='Will at least one student in the August Cohort take a deferral on their week 20 assessment?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
     market3 = Market(manager_id='1', image_url='https://i.imgur.com/n9nndWD.png', is_in_play = True, short_title='Elon Musk A/a CEO', title='Will Elon Musk be CEO of A/a by January 31, 2022?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
     market4 = Market(manager_id='1', image_url='https://i.imgur.com/EQA5B9D.png', short_title='Etsy Clone Frequency', title='Will the August Cohort present at least 5 clones of Etsy for their group project?', description='Confirmation of this will be determined by a screenshot of a slack message from at least one TA')
