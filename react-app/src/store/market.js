@@ -202,7 +202,8 @@ export const fillOrderAction = (order, quantity) => async (dispatch) => {
       "price" : order.price,
       "user_id" : order.user_id,
       "market_id" : order.market_id,
-      "is_yes" : order.is_yes
+      "is_yes" : order.is_yes,
+      "updated_at" : order.updated_at
     }),
   });
   if (response.status === 400) {
