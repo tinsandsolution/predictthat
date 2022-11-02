@@ -14,8 +14,13 @@ function SingleListedOrderModalButton({order, isYes, orders, market}) {
 
     const position = market.positions.filter(position => position.user_id === sessionUser.id)[0]
     let sharesAvailable = null
-    if (isYes) sharesAvailable = position.yes_shares
-    else sharesAvailable = position.no_shares
+    try {
+        if (isYes) sharesAvailable = position.yes_shares
+        else sharesAvailable = position.no_shares
+    }
+    catch {
+
+    }
 
 
     const belongsToUser = sessionUser.id === order.user_id

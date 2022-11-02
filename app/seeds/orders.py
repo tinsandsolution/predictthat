@@ -1,36 +1,78 @@
-from app.models import db, SellOrder, Market
-
+from app.models import db, SellOrder, Market, Position
+import random
 # Adds a demo user, you can add other users here if you want
+
+def forAMarket(market_id,odds):
+    if odds <= 3: odds = 4
+    if odds >= 97: odds = 96
+    newOrders = []
+
+    if market_id > 2:
+        position1 = Position(user_id='1', market_id = market_id, yes_shares = "0", no_shares = "0")
+        position2 = Position(user_id='2', market_id = market_id, yes_shares = "0", no_shares = "0")
+        position3 = Position(user_id='3', market_id = market_id, yes_shares = "0", no_shares = "0")
+        db.session.add(position1)
+        db.session.add(position2)
+        db.session.add(position3)
+        db.session.commit()
+
+    for x in range(0,10):
+        user_id = str(random.randint(1,3))
+        quantity = str(random.randint(2,60))
+        quantity_filled = str(0)
+        is_yes = random.choice([True, False])
+        price = "0.50"
+
+
+        partially_filled = random.choice([True, False])
+        if partially_filled:
+            quantity_filled = str(random.randint(1,int(quantity)-1))
+
+        if is_yes:
+            delta = random.randint(-3,3)
+            price = "0." + properCents(odds+delta)
+        else:
+            delta = random.randint(-3,3)
+            price = "0." + properCents(100 - odds + delta)
+
+        newOrders.append(SellOrder(user_id=user_id, market_id = market_id, quantity = quantity, price = price, quantity_filled = quantity_filled, is_yes = is_yes))
+    return newOrders
+
+
+
+def properCents(number):
+    strN = str(number)
+    if len(strN) == 1: return "0" + strN
+    else: return str(number)
+
 def seed_orders():
-    # user_id
-    # market_id
-    # quantity
-    # price
-    # quantity_filled
-    order1 = SellOrder(user_id='1', market_id = '1', quantity = "23", price = "0.33", quantity_filled = "5", is_yes = True)
-    order2 = SellOrder(user_id='2', market_id = '1', quantity = "121", price = "0.44", quantity_filled = "25", is_yes = True)
-    order3 = SellOrder(user_id='3', market_id = '1', quantity = "41", price = "0.44", quantity_filled = "13", is_yes = True)
-    order7 = SellOrder(user_id='3', market_id = '1', quantity = "1", price = "0.45", quantity_filled = "0", is_yes = True)
+    orders = [
+        SellOrder(user_id='1', market_id = '1', quantity = "23", price = "0.99", quantity_filled = "5", is_yes = True),
+        SellOrder(user_id='2', market_id = '1', quantity = "121", price = "0.96", quantity_filled = "25", is_yes = True),
+        SellOrder(user_id='3', market_id = '1', quantity = "41", price = "0.95", quantity_filled = "13", is_yes = True),
+        SellOrder(user_id='3', market_id = '1', quantity = "1", price = "0.92", quantity_filled = "0", is_yes = True),
 
-    order4 = SellOrder(user_id='1', market_id = '1', quantity = "10", price = "0.65", quantity_filled = "3", is_yes = False)
-    order5 = SellOrder(user_id='2', market_id = '1', quantity = "30", price = "0.50", quantity_filled = "2", is_yes = False)
-    order6 = SellOrder(user_id='3', market_id = '1', quantity = "10", price = "0.55", quantity_filled = "1", is_yes = False)
+        SellOrder(user_id='1', market_id = '1', quantity = "10", price = "0.11", quantity_filled = "3", is_yes = False),
+        SellOrder(user_id='2', market_id = '1', quantity = "30", price = "0.13", quantity_filled = "2", is_yes = False),
+        SellOrder(user_id='3', market_id = '1', quantity = "10", price = "0.12", quantity_filled = "1", is_yes = False),
+    ]
 
-    market = Market.query.filter_by(id='1').first()
-    market.is_in_play = True
+    orders.extend(forAMarket(2,95))
+    orders.extend(forAMarket(3,5))
+    orders.extend(forAMarket(4,4))
+    for x in range(5, 24):
+        is_traded = random.choice([True, True, False])
+        if is_traded == False: continue
 
-
-    db.session.add(order1)
-    db.session.add(order2)
-    db.session.add(order3)
-    db.session.add(order4)
-    db.session.add(order5)
-    db.session.add(order6)
-    db.session.add(order7)
+        market = Market.query.filter_by(id=x).first()
+        market.is_in_play = True
+        db.session.commit()
+        if market.short_title == "Yasamine Cruz Passing": orders.extend(forAMarket(x,95))
+        else: orders.extend(forAMarket(x,random.randint(5,95)))
 
 
 
-
+    for order in orders: db.session.add(order)
 
     db.session.commit()
 
@@ -42,5 +84,5 @@ def seed_orders():
 # dependent entities
 def undo_orders():
     db.session.execute('TRUNCATE sellorders RESTART IDENTITY CASCADE;')
-    db.session.execute('TRUNCATE buyorders RESTART IDENTITY CASCADE;')
+    # db.session.execute('TRUNCATE buyorders RESTART IDENTITY CASCADE;')
     db.session.commit()

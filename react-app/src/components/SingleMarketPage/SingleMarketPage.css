@@ -17,6 +17,7 @@
     height: 40%;
     font-size: 1.75vw;
     font-weight: 600;
+    display: flex;
     /* text-align: center; */
     /* vertical-align: bottom; */
     /* border: 1px solid black; */

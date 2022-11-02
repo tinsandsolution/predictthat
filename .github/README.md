@@ -26,7 +26,15 @@ Every new account begins with $1000 in fake money.
 
 # Future Features
 
-1. Implement websockets
-2. Add user reviews
-3. Add account searches
-4. Add odds slider (metaculus like) to simplify trades
+## Add odds slider (metaculus-like) to simplify trades
+
+## Implement websockets
+## Add user reviews
+
+## Search
+
+If a user would like to search for specific markets, there will be a searchbar at the top of the page which will allow them to enter queries, returning any markets that have the queries within the title and search description.
+
+## Positions
+
+A user will be able to view their current holdings in each respective market, closed or open. Each market will show the total and % loss and return for each market, and the top of the page will show overall gains and losses.

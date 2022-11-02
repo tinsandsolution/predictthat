@@ -14,11 +14,26 @@ def seed_positions():
     position2 = Position(user_id='2', market_id = '1', yes_shares = "100", no_shares = "50")
     position3 = Position(user_id='3', market_id = '1', yes_shares = "60", no_shares = "20")
 
+    positions = [
+        Position(user_id='1', market_id = '2', yes_shares = "10", no_shares = "10"),
+        Position(user_id='2', market_id = '2', yes_shares = "10", no_shares = "10"),
+        Position(user_id='3', market_id = '2', yes_shares = "10", no_shares = "10"),
+
+        Position(user_id='1', market_id = '3', yes_shares = "10", no_shares = "10"),
+        Position(user_id='2', market_id = '3', yes_shares = "10", no_shares = "10"),
+        Position(user_id='3', market_id = '3', yes_shares = "10", no_shares = "10"),
+
+
+        Position(user_id='1', market_id = '4', yes_shares = "10", no_shares = "10"),
+        Position(user_id='2', market_id = '4', yes_shares = "10", no_shares = "10"),
+        Position(user_id='3', market_id = '4', yes_shares = "10", no_shares = "10"),
+    ]
+
     db.session.add(position1)
     db.session.add(position2)
     db.session.add(position3)
 
-
+    for position in positions: db.session.add(position)
 
     db.session.commit()
 

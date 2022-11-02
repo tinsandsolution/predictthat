@@ -18,6 +18,9 @@ const SignUpForm = () => {
     const emailRegex = /^.{1,100}@.{1,100}?\..{1,100}$/
     if (!email.match(emailRegex)) errors.push("Please enter a valid email")
     if (password !== repeatPassword) errors.push(["password : Passwords must match"])
+    if (email.length < 10 || email.length > 100) errors.push("Email must be between 10 and 100 characters.")
+    if (password.length < 5 || password.length > 60) errors.push("Password must be between 5 and 60 characters.")
+    if (username.length < 10 || username.length > 20) errors.push("Description must be between 10 and 20 characters.")
 
     setErrors(errors)
 

@@ -5,12 +5,14 @@
 }
 
 .card-yes {
-    color: #AA00FF;
+    color: #265CFF;
+
     margin-right: 2%;
     /* width: 50%; */
 }
 
 .card-no {
-    color: #265CFF;
+    color: #AA00FF;
+
     /* width: 50%; */
 }

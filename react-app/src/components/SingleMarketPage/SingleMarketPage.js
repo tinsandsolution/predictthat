@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
 import ListShares from "./ListSharesModal/ListSharesModal";
+import HelpModalButton from "./HelpModal/HelpModal";
 import OrderBook from "./OrderBook";
 import { showOdds } from "../../utils/showPrices";
 
@@ -60,7 +61,7 @@ const SingleMarketPage = () => {
                 sessionUser
                     ?
                         <div className="single-market-bottom">
-                            <div className="single-market-title"> Order Book </div>
+                            <div className="single-market-title"> Order Book <HelpModalButton /></div>
                             <OrderBook market={market} />
                             <ListShares market={market} />
                         </div>

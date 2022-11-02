@@ -161,6 +161,11 @@ body {
     font-weight: 600;
 }
 
+.red {
+    color: red;
+    /* font-weight: 600; */
+}
+
 @media screen and (max-width: 1190px) {
     .gthft {
       display: none;

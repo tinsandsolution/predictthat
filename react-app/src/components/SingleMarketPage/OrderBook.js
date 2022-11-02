@@ -31,7 +31,7 @@ const OrderBook = ({market}) => {
                 })}
             </div>
         </div>
-        {market.sellOrders.length !== 0 ? "" : <div className="no-open-orders-yet">No Open Orders Yet</div>}
+        {market.sellOrders.length !== 0 ? "" : <div className="no-open-orders-yet">No Open Orders</div>}
         </>
     )
 }
