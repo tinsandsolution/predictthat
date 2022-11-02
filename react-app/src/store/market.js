@@ -155,6 +155,13 @@ export const deleteOrderAction = (order_id) => async (dispatch) => {
   const response = await fetch(`/api/orders/${order_id}`, {
     method: "DELETE",
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
@@ -171,6 +178,13 @@ export const modifyOrderAction = ({quantity, price},order_id) => async (dispatch
       "price" : price/100,
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())
@@ -179,6 +193,7 @@ export const modifyOrderAction = ({quantity, price},order_id) => async (dispatch
 }
 
 export const fillOrderAction = (order, quantity) => async (dispatch) => {
+  // console.log("dfdsafsed")
   const response = await fetch(`/api/orders/${order.id}/fill`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -190,6 +205,13 @@ export const fillOrderAction = (order, quantity) => async (dispatch) => {
       "is_yes" : order.is_yes
     }),
   });
+  if (response.status === 400) {
+    const data = await response.json();
+    if (data.errors) {
+      // console.log("dfasdfasf")
+      return data;
+    }
+  }
   if (response.ok) {
     const data = await response.json();
     dispatch(getAllMarkets())

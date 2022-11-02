@@ -12,7 +12,7 @@ const ManageSharesForm = ({setShowModal, order, sharesAvailable}) => {
 
   const is_yes = order.isYes
   const order_id = order.id
-  console.log(order)
+  // console.log(order)
 
   let availableShares = sharesAvailable
 
@@ -44,7 +44,11 @@ const ManageSharesForm = ({setShowModal, order, sharesAvailable}) => {
     else {
       const quantity = shares
       const data = await dispatch(modifyOrderAction({quantity, price},order_id));
-      setShowModal(false)
+      if (data.errors) {
+        // console.log(data)sdasd
+        setErrors(data.errors);
+      }
+      else setShowModal(false)
       // return history.push('/yourmarkets')
     }
   };
@@ -53,7 +57,12 @@ const ManageSharesForm = ({setShowModal, order, sharesAvailable}) => {
     // e.preventDefault();
     let order_id = order.id
     const data = await dispatch(deleteOrderAction(order_id));
-    setShowModal(false)
+    if (data.errors) {
+      console.log(data)
+      //
+      setErrors(data.errors);
+    }
+    else setShowModal(false)
   };
 
   let formData = <></>
