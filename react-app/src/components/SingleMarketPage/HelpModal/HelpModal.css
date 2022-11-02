@@ -27,14 +27,14 @@ datalist {
 }
 
 .odds-range-slider {
-    appearance: none;
+    /* appearance: none; */
     /* color: black; */
     /* outline: none; */
 
 
     /* background-color: black; */
-    height: 5%;
-    outline: none;
+    /* height: 5%; */
+    /* outline: none; */
 
     /* border: 1px solid green; */
     /* -fx-background-color: red; */

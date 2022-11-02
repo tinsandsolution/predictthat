@@ -79,6 +79,11 @@ def fillOrder(id):
     emptyOrder = SellOrder()
     form.populate_obj(emptyOrder)
 
+    userPosition = Position.query.filter_by(user_id=buyer_id, market_id=emptyOrder.market_id).first()
+    if userPosition is None:
+        db.session.add(Position(user_id=buyer_id, market_id = emptyOrder.market_id, yes_shares = "0", no_shares = "0"))
+    db.session.commit()
+
     # i'm too lazy how to figure out how to harvest data from this. so i guess i'll just use what i did before.
 
     # 1. decrease the buyer's funds
