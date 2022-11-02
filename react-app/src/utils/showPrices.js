@@ -60,7 +60,7 @@ export const showOdds = (market) => {
     if(!isNaN(noOdds) && !isNaN(yesOdds)) return Math.round((100-parseInt(noOdds) + parseInt(yesOdds))/2)
     // if there has a yesOdds
     if (!isNaN(yesOdds)) return Math.round(parseInt(yesOdds))
-    if (!isNaN(noOdds)) return Math.round(1 - parseInt(noOdds))
+    if (!isNaN(noOdds)) return Math.round(100 - parseInt(noOdds))
     // if there has a noOdds
 
 

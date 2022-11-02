@@ -62,7 +62,7 @@ const ManageSharesForm = ({setShowModal, order, sharesAvailable}) => {
       <>
       <div className='form-explanation'>
         <ul>
-          <li>You have listed {order.quantity} {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) at $.{makeProperCents(order.price)} each. All are unsold.</li>
+          <li>You have listed {order.quantity} {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) at {makeProperCents(order.price)}¢ each. All are unsold.</li>
           <li>
               {
                 order.quantity_filled === 0
@@ -122,7 +122,7 @@ const ManageSharesForm = ({setShowModal, order, sharesAvailable}) => {
       <>
       <div className='form-explanation'>
         <ul>
-          <li>You have listed {order.quantity} {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) at $.{makeProperCents(order.price)} each. <span className='green'>{order.quantity_filled}</span> are unsold.</li>
+          <li>You have listed {order.quantity} {order.is_yes ? "\"Yes\"" : "\"No\""} share(s) at {makeProperCents(order.price)}¢ each. <span className='green'>{order.quantity_filled}</span> are unsold.</li>
           <li>
             This order is partially filled. You are able to delete the rest of the order.
            </li>

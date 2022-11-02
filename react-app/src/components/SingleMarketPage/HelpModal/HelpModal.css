@@ -1,0 +1,48 @@
+.help-modal-button-container {
+    /* height: 40%; */
+    /* height: 10px; */
+    /* height: auto; */
+    /* border: 1px solid black; */
+    /* display: flex; */
+    /* align-items: flex-start; */
+    /* flex-direction: column; */
+    color: black;
+    /* background-color: black; */
+    /* -fx-background-color: red; */
+    margin-left: 1%;
+    cursor: pointer;
+}
+
+datalist {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    /* writing-mode: vertical-lr; */
+  }
+
+
+.help-modal-odds{
+    margin: auto;
+    font-size: 125%;
+}
+
+.odds-range-slider {
+    appearance: none;
+    /* color: black; */
+    /* outline: none; */
+
+
+    /* background-color: black; */
+    height: 5%;
+    outline: none;
+
+    /* border: 1px solid green; */
+    /* -fx-background-color: red; */
+}
+
+input[type='range']::slider-thumb {
+    appearance: none;
+    color: black;
+    background-color: black;
+
+}
