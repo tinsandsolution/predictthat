@@ -45,7 +45,7 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
     <form className="modal-form" onSubmit={onSubmitMarket}>
       <div className='form-title'> List Your {isYes ? "\"Yes\"" : "\"No\""} Shares </div>
       <div className='form-explanation'>
-        The minimum listing price is $0.01. The maximum is $.99. <br />
+        The minimum listing price is 1¢. The maximum is 99¢. <br />
         When you list your shares:
         <ul>
           <li>The order book for this market will display your open offer</li>
