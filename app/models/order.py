@@ -11,7 +11,7 @@ class SellOrder(db.Model):
     price = db.Column(db.Float, nullable=False)
     quantity_filled = db.Column(db.Integer, server_default="0", nullable=False)
     is_yes = db.Column(db.Boolean, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.utcnow)
+    updated_at = db.Column(db.String, nullable=False, default=datetime.timestamp(datetime.now())*1000, onupdate=datetime.timestamp(datetime.now())*1000)
 
     #relationships
     user = db.relationship("User", back_populates="sellOrders")
