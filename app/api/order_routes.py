@@ -84,8 +84,13 @@ def fillOrder(id):
 
     errorCheckOrder = SellOrder.query.filter_by(id=id).first()
     if errorCheckOrder == None: return { "errors" : ["This market is closed. You are unable to purchase shares.", "Please refresh to see how the market resolved."] }, 400
+
     if errorCheckOrder.updated_at != emptyOrder.updated_at:
-         return { "errors" : ["This listing has been modified. Please refresh to view the updated version of this listing."] }, 400
+        # print(form.updated_at,"f\n\n\n\n\n")
+         return { "errors" : ["This listing has been modified. Please refresh to view the updated version of this listing.",
+                            #   errorCheckOrder.updated_at,
+                            #   emptyOrder.updated_at,
+                             ]}, 400
 
 
 

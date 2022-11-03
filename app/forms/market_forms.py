@@ -58,7 +58,7 @@ class FillOrderForm(FlaskForm):
     user_id = IntegerField('user_id')
     market_id = IntegerField('market_id')
     is_yes = BooleanField('is_yes')
-    updated_at = DateField('updated_at')
+    updated_at = StringField('updated_at')
     # id = IntegerField('id')
 
 

@@ -61,7 +61,11 @@ def seed_orders():
     orders.extend(forAMarket(3,5))
     orders.extend(forAMarket(4,4))
     for x in range(5, 24):
+        market = Market.query.filter_by(id=x).first()
         is_traded = random.choice([True, True, False])
+
+        if market.short_title == "Yasamine Cruz Passing":
+            is_traded = True
         if is_traded == False: continue
 
         market = Market.query.filter_by(id=x).first()
