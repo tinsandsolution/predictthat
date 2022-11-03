@@ -148,14 +148,15 @@
 }
 
 .splash-yes {
-    color: #AA00FF;
+    color: #265CFF;
     /* color: black; */
     margin-right: 4%;
     /* font-size: 90%; */
 }
 
 .splash-no {
-    color: #265CFF
+    color: #AA00FF;
+
 
 }
 

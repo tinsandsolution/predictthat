@@ -53,7 +53,7 @@ const BuySharesForm = ({setShowModal, order}) => {
       <div className='form-explanation'>
         {/* When you create a pair of shares: */}
         <ul>
-          <li>{available} {order.is_yes ? "\"Yes\"" : "\"No\""} shares are available at $.{makeProperCents(order.price)} each.</li>
+          <li>{available} {order.is_yes ? "\"Yes\"" : "\"No\""} shares are available at {makeProperCents(order.price)}¢ each.</li>
           <li>You have enough funds to purchase <span className='green'>{findMaxPoss()}</span>. </li>
         </ul>
       </div>
