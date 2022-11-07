@@ -123,6 +123,7 @@ def settlePositions(market_id, outcome_yes):
     positions = Position.query.filter_by(market_id = market_id).all()
 
     # now we basically need to iterate through this list
+    print("iterating through positions\n\n\n\n\n")
     for position in positions:
         # we're going to grab three things, user_id, yes_shares, no_shares
         user_id = position.user_id
@@ -130,9 +131,10 @@ def settlePositions(market_id, outcome_yes):
         no_shares = position.no_shares
 
         user = User.query.filter_by(id= user_id).first()
-        if outcome_yes: user.funds + yes_shares
-        else: user.funds + no_shares
+        if outcome_yes: user.funds = user.funds + yes_shares
+        else: user.funds = user.funds + no_shares
 
+        # db.session.add(user)
         db.session.delete(position)
         pass
 
