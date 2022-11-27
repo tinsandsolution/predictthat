@@ -3,7 +3,7 @@ import Slider from 'react-input-slider';
 import { useState } from 'react';
 import './OddsSlider.css'
 
-function OddsSlider({marketOdds}) {
+function OddsSlider({marketOdds, setForecast}) {
 
     const [odds, setOdds] = useState(marketOdds);
 
@@ -16,7 +16,10 @@ function OddsSlider({marketOdds}) {
                 x = {odds}
                 xmin={0}
                 xmax={100}
-                onChange={(e) => setOdds(parseInt(e.x)) }
+                onChange={(e) => {
+                    setOdds(parseInt(e.x))
+                    setForecast(parseInt(e.x))
+                }}
                 styles={{
                 track: {
                     width: "100%",
@@ -32,7 +35,7 @@ function OddsSlider({marketOdds}) {
             />
             <span className='odds-label'> 100% </span>
         </div>
-        <span className='entered-odds'>{odds}%</span>
+        <span className='entered-odds'>Given your forecast of {odds}% -</span>
         </>
     )
 

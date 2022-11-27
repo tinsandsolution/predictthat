@@ -9,6 +9,7 @@ import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
 import ListShares from "./ListSharesModal/ListSharesModal";
 import HelpModalButton from "./HelpModal/HelpModal";
 import OrderBook from "./OrderBook";
+import GuidedOrderBook from "./GuidedOrderBook";
 import OddsSlider from "./OddsSlider/OddsSlider";
 import { showOdds } from "../../utils/showPrices";
 
@@ -18,7 +19,8 @@ const SingleMarketPage = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
     const markets = useSelector((state) => state.markets)
-    const [isManual, setIsManual] = useState(false);
+    const [isGuided, setIsGuided] = useState(false);
+    const [forecast, setForecast] = useState(null);
 
 
 
@@ -61,7 +63,6 @@ const SingleMarketPage = () => {
                     <div className="single-market-odds"> Current Odds: {showOdds(market)}% </div>
                 </div>
             </div>
-
             {
                 sessionUser
                     ?
@@ -70,13 +71,17 @@ const SingleMarketPage = () => {
                                 Order Book
                                 <HelpModalButton />
                                 <div className="toggle-section" >
-                                    <ToggleSlider  onToggle={state => setIsManual(state)}/>
-                                    <span className="toggle-text">{isManual ? "Guided" : "Manual"} Mode</span>
+                                    <ToggleSlider  onToggle={state => {
+                                        setIsGuided(state)
+                                        setForecast(null)
+                                    }}/>
+                                    <span className="toggle-text">{isGuided ? "Guided" : "Manual"} Mode</span>
                                 </div>
                             </div>
-                            {isManual ?
+                            {isGuided ?
                                 <>
-                                    <OddsSlider marketOdds={showOdds(market)}/>
+                                    <OddsSlider marketOdds={showOdds(market)} setForecast={setForecast}/>
+                                    <GuidedOrderBook market={market} forecast={forecast} />
                                 </>
                                 :
                                 <>
