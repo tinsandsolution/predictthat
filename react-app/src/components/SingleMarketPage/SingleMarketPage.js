@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory} from 'react-router-dom';
+import { useState } from "react";
+
+import { ToggleSlider }  from "react-toggle-slider";
+
 
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
@@ -15,6 +18,7 @@ const SingleMarketPage = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
     const markets = useSelector((state) => state.markets)
+    const [isManual, setIsManual] = useState(false);
 
 
 
@@ -61,7 +65,14 @@ const SingleMarketPage = () => {
                 sessionUser
                     ?
                         <div className="single-market-bottom">
-                            <div className="single-market-title"> Order Book <HelpModalButton /></div>
+                            <div className="order-book-title">
+                                Order Book
+                                <HelpModalButton />
+                                <div className="toggle-section" >
+                                    <ToggleSlider />
+                                    <span className="toggle-text">{isManual ? "Guided" : "Manual"} Mode</span>
+                                </div>
+                            </div>
                             <OrderBook market={market} />
                             <ListShares market={market} />
                         </div>
