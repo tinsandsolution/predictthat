@@ -1,15 +1,15 @@
 import { useSelector } from "react-redux";
 import { useParams, useHistory} from 'react-router-dom';
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { ToggleSlider }  from "react-toggle-slider";
-
 
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
 import ListShares from "./ListSharesModal/ListSharesModal";
 import HelpModalButton from "./HelpModal/HelpModal";
 import OrderBook from "./OrderBook";
+import OddsSlider from "./OddsSlider/OddsSlider";
 import { showOdds } from "../../utils/showPrices";
 
 const SingleMarketPage = () => {
@@ -61,6 +61,7 @@ const SingleMarketPage = () => {
                     <div className="single-market-odds"> Current Odds: {showOdds(market)}% </div>
                 </div>
             </div>
+
             {
                 sessionUser
                     ?
@@ -69,12 +70,19 @@ const SingleMarketPage = () => {
                                 Order Book
                                 <HelpModalButton />
                                 <div className="toggle-section" >
-                                    <ToggleSlider />
+                                    <ToggleSlider  onToggle={state => setIsManual(state)}/>
                                     <span className="toggle-text">{isManual ? "Guided" : "Manual"} Mode</span>
                                 </div>
                             </div>
-                            <OrderBook market={market} />
-                            <ListShares market={market} />
+                            {isManual ?
+                                <>
+                                    <OddsSlider marketOdds={showOdds(market)}/>
+                                </>
+                                :
+                                <>
+                                    <OrderBook market={market} />
+                                    <ListShares market={market} />
+                                </>}
                         </div>
                     :
                     ""
