@@ -6,6 +6,7 @@ import './OddsSlider.css'
 function OddsSlider({marketOdds, setForecast}) {
 
     const [odds, setOdds] = useState(marketOdds);
+    setForecast(odds)
 
     return (
         <>
@@ -35,7 +36,7 @@ function OddsSlider({marketOdds, setForecast}) {
             />
             <span className='odds-label'> 100% </span>
         </div>
-        <span className='entered-odds'>Given your forecast of {odds}% -</span>
+        <span className='entered-odds'>Given a forecast of {odds}% -</span>
         </>
     )
 

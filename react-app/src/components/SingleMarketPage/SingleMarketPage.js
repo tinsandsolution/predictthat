@@ -7,6 +7,8 @@ import { ToggleSlider }  from "react-toggle-slider";
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
 import ListShares from "./ListSharesModal/ListSharesModal";
+import GuidedListShares from "./GuidedListSharesModal/ListSharesModal";
+
 import HelpModalButton from "./HelpModal/HelpModal";
 import OrderBook from "./OrderBook";
 import GuidedOrderBook from "./GuidedOrderBook";
@@ -71,10 +73,13 @@ const SingleMarketPage = () => {
                                 Order Book
                                 <HelpModalButton />
                                 <div className="toggle-section" >
-                                    <ToggleSlider  onToggle={state => {
-                                        setIsGuided(state)
-                                        setForecast(null)
-                                    }}/>
+                                    <ToggleSlider
+                                        onToggle={state => {
+                                            setIsGuided(state)
+                                            setForecast(null)
+                                        }}
+                                        barBackgroundColorActive="black"
+                                    />
                                     <span className="toggle-text">{isGuided ? "Guided" : "Manual"} Mode</span>
                                 </div>
                             </div>
@@ -82,6 +87,7 @@ const SingleMarketPage = () => {
                                 <>
                                     <OddsSlider marketOdds={showOdds(market)} setForecast={setForecast}/>
                                     <GuidedOrderBook market={market} forecast={forecast} />
+                                    <GuidedListShares market={market} forecast={forecast} />
                                 </>
                                 :
                                 <>
