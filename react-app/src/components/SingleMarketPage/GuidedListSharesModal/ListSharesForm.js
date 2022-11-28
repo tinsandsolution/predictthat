@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { listSharesAction } from '../../../store/market';
-const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
+const ListSharesForm = ({setShowModal, isYes, availableShares, market, forecast}) => {
   // console.log(market_id)
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -46,6 +46,9 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
       <div className='form-title'> List Your {isYes ? "\"Yes\"" : "\"No\""} Shares </div>
       <div className='form-explanation'>
         The minimum listing price is 1¢. The maximum is 99¢. <br />
+        You are viewing this form in guided mode. You should list these shares for a minimum of
+        <span className='green'> {isYes ? forecast + 1 : 100 - forecast + 1}¢.</span>
+        <br />
         When you list your shares:
         <ul>
           <li>The order book for this market will display your open offer</li>
@@ -78,9 +81,9 @@ const ListSharesForm = ({setShowModal, isYes, availableShares, market}) => {
             id='input-price'
             name='price'
             type='number'
-            min="1"
-            max="99"
-            placeholder="19"
+            min={isYes ? forecast + 1 : 100 - forecast + 1 }
+            max="100"
+            placeholder={isYes ? forecast + 1 : 100 - forecast + 1 }
             value={price}
             onChange={updatePrice}
             required={true}

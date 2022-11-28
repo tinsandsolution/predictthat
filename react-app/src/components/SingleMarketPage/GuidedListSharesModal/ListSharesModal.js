@@ -63,8 +63,7 @@ function ListShares({market, forecast}) {
             </div>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    hay
-                    <ListSharesForm setShowModal={setShowModal} isYes={isYes} availableShares={availableShares} market={market} />
+                    <ListSharesForm setShowModal={setShowModal} isYes={isYes} availableShares={availableShares} market={market} forecast={forecast} />
                 </Modal>
             )}
         </>
