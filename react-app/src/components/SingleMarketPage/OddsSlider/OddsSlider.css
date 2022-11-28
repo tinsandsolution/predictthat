@@ -1,0 +1,21 @@
+.odds-slider-wrapper {
+    /* border: 1px solid black; */
+    width: 60%;
+    display: flex;
+    align-items: center;
+}
+
+.odds-slider {
+    margin-left: .5%;
+    margin-right: .5%;
+
+}
+
+.odds-label {
+    font-weight: 600;
+}
+
+.entered-odds {
+    font-size: 130%;
+    margin-top: 1%;
+}

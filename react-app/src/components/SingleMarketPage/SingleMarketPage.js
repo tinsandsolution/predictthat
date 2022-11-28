@@ -1,15 +1,18 @@
 import { useSelector } from "react-redux";
 import { useParams, useHistory} from 'react-router-dom';
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { ToggleSlider }  from "react-toggle-slider";
-
 
 import './SingleMarketPage.css'
 import CreateSharesModalButton from "./CreateSharesModal/CreateSharesModal";
 import ListShares from "./ListSharesModal/ListSharesModal";
+import GuidedListShares from "./GuidedListSharesModal/ListSharesModal";
+
 import HelpModalButton from "./HelpModal/HelpModal";
 import OrderBook from "./OrderBook";
+import GuidedOrderBook from "./GuidedOrderBook";
+import OddsSlider from "./OddsSlider/OddsSlider";
 import { showOdds } from "../../utils/showPrices";
 
 const SingleMarketPage = () => {
@@ -18,7 +21,8 @@ const SingleMarketPage = () => {
 
     const sessionUser = useSelector((state) => state.session.user);
     const markets = useSelector((state) => state.markets)
-    const [isManual, setIsManual] = useState(false);
+    const [isGuided, setIsGuided] = useState(false);
+    const [forecast, setForecast] = useState(null);
 
 
 
@@ -69,12 +73,27 @@ const SingleMarketPage = () => {
                                 Order Book
                                 <HelpModalButton />
                                 <div className="toggle-section" >
-                                    <ToggleSlider />
-                                    <span className="toggle-text">{isManual ? "Guided" : "Manual"} Mode</span>
+                                    <ToggleSlider
+                                        onToggle={state => {
+                                            setIsGuided(state)
+                                            setForecast(null)
+                                        }}
+                                        barBackgroundColorActive="black"
+                                    />
+                                    <span className="toggle-text">{isGuided ? "Guided" : "Manual"} Mode</span>
                                 </div>
                             </div>
-                            <OrderBook market={market} />
-                            <ListShares market={market} />
+                            {isGuided ?
+                                <>
+                                    <OddsSlider marketOdds={showOdds(market)} setForecast={setForecast}/>
+                                    <GuidedOrderBook market={market} forecast={forecast} />
+                                    <GuidedListShares market={market} forecast={forecast} />
+                                </>
+                                :
+                                <>
+                                    <OrderBook market={market} />
+                                    <ListShares market={market} />
+                                </>}
                         </div>
                     :
                     ""
