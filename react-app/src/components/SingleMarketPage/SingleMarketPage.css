@@ -23,6 +23,35 @@
     /* border: 1px solid black; */
 }
 
+.order-book-title {
+    width: 100%;
+    height: 40%;
+    font-size: 1.75vw;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
+    /* vertical-align: bottom; */
+    /* border: 1px solid black; */
+}
+
+.toggle-section {
+    margin-left: 1%;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    /* border: 1px solid blue; */
+    font-size: .6em;
+}
+
+.toggle-text {
+    margin-left: 10%;
+    width: 200px;
+    /* text-overflow: clip; */
+    /* width: fit-content; */
+}
+
+
 .single-market-below-title {
     width: 100%;
     height: 50%;
