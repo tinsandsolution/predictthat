@@ -1,0 +1,28 @@
+.search-wrapper {
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-magnifying-glass {
+    width: 15%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-icon-color {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.search-textfield{
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+}

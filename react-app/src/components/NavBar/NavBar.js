@@ -10,6 +10,7 @@ import LoginFormModalButton from './Login';
 import './NavBar.css'
 import Logo from '../../assets/predictthatlogo.png'
 import { useSelector } from "react-redux";
+import Searchbar from './Searchbar';
 
 
 const NavBar = () => {
@@ -31,6 +32,7 @@ const NavBar = () => {
             <div className='nav-image-container'>
               <img className='nav-logo' alt="logo" src={Logo} onClick={() => {history.push('/')}}></img>
             </div>
+            <Searchbar/>
           </div>
           <div className='nav-right-logged-in'>
             {/* <div className='nav-card'>

@@ -21,6 +21,11 @@
     align-items: center;
 }
 
+.nav-left {
+    /* border: 1px solid black; */
+    display: flex;
+}
+
 .nav-inner-logged-in {
     /* border: 1px solid blue; */
     margin: auto;
