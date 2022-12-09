@@ -13,7 +13,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import { getAllMarkets } from './store/market';
-
+import Search from './components/Search/Search';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -43,6 +43,9 @@ function App() {
         {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute> */}
+        <Route path="/search/">
+          <Search />
+        </Route>
         <ProtectedRoute path='/yourmarkets' exact={true} >
           <ManageMarkets />
         </ProtectedRoute>

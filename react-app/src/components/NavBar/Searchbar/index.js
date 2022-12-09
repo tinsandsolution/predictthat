@@ -1,15 +1,35 @@
+import React, { useEffect, useState } from "react";
 import './Searchbar.css'
+import { useHistory} from "react-router-dom";
+
 
 function Searchbar() {
+    const [searchPhrase, setSearchPhrase] = useState("")
+    const [isActive, setIsActive] = useState(false)
+    const history = useHistory()
 
     return (
-        <div className='search-wrapper'>
+        <form
+          className='search-form'
+          id={isActive ? "search-form-active" : ""}
+          onSubmit={(e) => {
+            e.preventDefault()
+            history.push(`/search?q=${searchPhrase}`)
+          }}
+        >
             <div className='search-magnifying-glass'>
-                <i class="fa-solid fa-magnifying-glass" id="nav-card-icon-color"></i>
+                <i class="fa-solid fa-magnifying-glass" id="search-icon-color"></i>
             </div>
-
-            <div className='search-textfield'></div>
-        </div>
+            <input
+                type="text"
+                className="search-textfield"
+                value={searchPhrase}
+                placeholder= {searchPhrase}
+                onFocus = {(e) => {setIsActive(true)}}
+                onBlur = {(e) => {setIsActive(false)}}
+                onChange={(e) => {setSearchPhrase(e.target.value)}}>
+            </input>
+        </form>
     )
 
 }
