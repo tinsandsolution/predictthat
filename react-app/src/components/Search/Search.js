@@ -13,7 +13,7 @@ const filterMarkets = (terms, markets) => {
             let nonalpha = /[^A-Za-z0-9]/g
             let marketWords = [...market.description.split(" "),...market.title.split(" "),...market.short_title.split(" ")]
             marketWords = marketWords.map(marketWord => marketWord.replace(nonalpha, "").toLowerCase())
-
+            console.log(marketWords)
             if (marketWords.includes(term)) return true
         }
         return false
@@ -58,7 +58,7 @@ const Search = () => {
 
     return (
         <div className="search-results">
-        {CreateCards(markets)}
+        {CreateCards(filteredMarkets)}
         </div>
 
     )
