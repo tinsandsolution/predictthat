@@ -43,6 +43,25 @@ export const showPrices = (market) => {
 
 }
 
+export const showSearchPrices = (market) => {
+    let yesno = properYesNo(market)
+
+    if (yesno === "No Sell Orders") {
+        yesno = (
+            <div className="featured-none-at-all">No Bets Yet</div>
+        )
+    }
+
+    if (market.is_open === false) {
+        yesno = (
+            <div className="featured-none-at-all-but-close">Resolved</div>
+        )
+    }
+
+    return yesno
+
+}
+
 export const showOdds = (market) => {
     // if neither yesOdds or noOdds
     if (market.sellOrders.length === 0) return "-- "
