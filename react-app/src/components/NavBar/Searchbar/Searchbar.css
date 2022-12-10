@@ -1,0 +1,45 @@
+.search-form{
+    border-radius: 5px;
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.05);
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form:hover{
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+#search-form-active{
+    background-color: rgba(0, 0, 0, 0.00);
+    border: 1px solid black;
+}
+
+.search-magnifying-glass {
+    width: 15%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-icon-color {
+    color: rgba(0, 0, 0, 1);
+}
+
+
+
+.search-textfield {
+    width: 90%;
+    border: none;
+    /* height: 100%; */
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.00);
+
+}
+
+.search-textfield:focus {
+    outline: none;
+}
