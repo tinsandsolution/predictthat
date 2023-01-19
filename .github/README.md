@@ -25,15 +25,9 @@ Every new account begins with $1000 in fake money.
 ![](https://i.imgur.com/22Yr9Ov.png)
 
 # Future Features
+## Make Mobile-Friendly
 
-## Add odds slider (metaculus-like) to simplify trades
-
-## Implement websockets
 ## Add user reviews
-
-## Search
-
-If a user would like to search for specific markets, there will be a searchbar at the top of the page which will allow them to enter queries, returning any markets that have the queries within the title and search description.
 
 ## Positions
 
