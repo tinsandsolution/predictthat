@@ -26,6 +26,12 @@ Every new account begins with $1000 in fake money.
 
 # Future Features
 ## Make Mobile-Friendly
+[ ] Splash Page
+[ ] Logged-In Page
+[ ] Single Market Page
+[ ] Search Page
+[ ] Admin Page
+[ ] Modals
 
 ## Add user reviews
 
