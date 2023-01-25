@@ -21,7 +21,7 @@ const HelpForm = ({setShowModal, market_id}) => {
     <form className="modal-form create-shares-modal-form" >
       <div className='form-title'> How To Make Money </div>
       <div className='form-explanation'>
-        The first step is to estimate the odds of this market resolving to yes.
+        First, we estimate the odds of this market resolving to yes.
 
       </div>
       <div className='form-single-data'>
